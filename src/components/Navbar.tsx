@@ -12,9 +12,12 @@ const links = [
   { label: "About", href: "/about", anchor: "#about" },
 ];
 
+const sectionIds = ["experience", "visual-arts", "music", "about"];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
@@ -23,10 +26,27 @@ const Navbar = () => {
   const isSubPage = location.pathname !== "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 120);
+
+      if (!isMobile || location.pathname !== "/") return;
+
+      // Find which section is currently in view
+      let current: string | null = null;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 150) {
+            current = id;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile, location.pathname]);
 
   // Handle hash scrolling after navigation
   useEffect(() => {
@@ -125,7 +145,11 @@ const Navbar = () => {
                 <button
                   key={l.href}
                   onClick={() => handleMobileNavClick(l)}
-                  className={`text-base font-medium transition-colors text-left ${location.pathname === "/" && l.href === "/" ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                  className={`text-base font-medium transition-colors text-left ${
+                    (l.anchor && activeSection === l.anchor.slice(1)) || (!l.anchor && !activeSection && location.pathname === "/")
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {l.label}
                 </button>
