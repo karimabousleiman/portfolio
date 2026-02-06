@@ -71,7 +71,15 @@ const MusicSection = () => {
         </div>
       </motion.div>
 
-      {/* Individual Track Embeds */}
+      {/* Sneak Peek */}
+      <motion.h3
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="font-heading text-2xl font-semibold mb-6 flex items-center gap-2"
+      >
+        🎧 Sneak Peek
+      </motion.h3>
       <div className="space-y-4">
         {tracks.map((track, index) => (
           <motion.div
