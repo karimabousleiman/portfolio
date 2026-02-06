@@ -1,12 +1,21 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import InteractiveBackground from "./InteractiveBackground";
-import SplitFlapText from "./SplitFlapText";
 
 const titles = ["Senior Product Manager", "Music Producer", "Visual Storyteller"];
 
 const HeroSection = () => {
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
@@ -16,13 +25,20 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
       <InteractiveBackground />
 
-      <div className="relative z-10 text-center px-6 max-w-4xl">
-        <div className="h-8 md:h-10 mb-6 flex items-center justify-center">
-          <SplitFlapText
-            texts={titles}
-            interval={3500}
-            className="text-primary font-heading font-medium tracking-[0.25em] uppercase text-base md:text-lg"
-          />
+      <div className="relative z-10 text-center px-6 max-w-4xl flex flex-col items-center">
+        <div className="h-8 md:h-10 mb-6 relative w-full flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={titleIndex}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35 }}
+              className="text-primary font-heading font-medium tracking-[0.25em] uppercase text-base md:text-lg absolute"
+            >
+              {titles[titleIndex]}
+            </motion.p>
+          </AnimatePresence>
         </div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
