@@ -40,10 +40,10 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35 }}
-              className="font-heading font-semibold tracking-[0.25em] uppercase text-lg md:text-xl absolute flex items-center gap-3"
+              className="font-heading font-semibold tracking-[0.25em] uppercase text-sm md:text-xl absolute inset-0 flex items-center justify-center gap-3"
               style={{ color: "#C4B5FD" }}
             >
-              <CurrentIcon size={22} />
+              <CurrentIcon size={22} className="flex-shrink-0" />
               {titles[titleIndex].text}
             </motion.p>
           </AnimatePresence>
