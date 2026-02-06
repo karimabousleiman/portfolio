@@ -9,8 +9,6 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <PageHero
-        icon={<User size={28} className="text-primary" />}
-        accent="Who I Am"
         title="About Me"
         subtitle="Tech geek, music lover, and relentless problem solver."
       />
