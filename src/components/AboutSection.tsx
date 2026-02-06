@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import aboutPhoto from "@/assets/about-photo.jpg";
 const AboutSection = () => {
   return (
     <section id="about" className="section-padding max-w-5xl mx-auto">
@@ -20,10 +20,8 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="md:col-span-2"
         >
-          <div className="aspect-[3/4] rounded-xl bg-secondary border border-border flex items-center justify-center overflow-hidden">
-            <p className="text-sm text-muted-foreground text-center px-4">
-              Upload your photo and update <code className="text-primary">AboutSection.tsx</code>
-            </p>
+          <div className="aspect-[3/4] rounded-xl overflow-hidden">
+            <img src={aboutPhoto} alt="About me" className="w-full h-full object-cover" />
           </div>
         </motion.div>
 
