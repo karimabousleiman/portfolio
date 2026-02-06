@@ -28,31 +28,32 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (link: typeof links[0]) => {
+  // Handle hash scrolling after navigation
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(location.hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
+
+  const handleMobileNavClick = (link: typeof links[0]) => {
     setOpen(false);
-    if (isMobile) {
-      if (link.href === "/") {
-        if (location.pathname !== "/") {
-          navigate("/");
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      } else if (link.anchor) {
-        if (location.pathname !== "/") {
-          navigate("/" + link.anchor);
-        } else {
-          const el = document.querySelector(link.anchor);
-          el?.scrollIntoView({ behavior: "smooth" });
-        }
+    if (link.href === "/") {
+      if (location.pathname !== "/") {
+        navigate("/");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else if (link.anchor) {
+      if (location.pathname !== "/") {
+        navigate("/" + link.anchor);
+      } else {
+        const el = document.querySelector(link.anchor);
+        el?.scrollIntoView({ behavior: "smooth" });
       }
     }
-  };
-
-  // Check if a nav item is "active" on mobile single-page
-  const isActive = (link: typeof links[0]) => {
-    if (!isMobile) return location.pathname === link.href;
-    if (link.href === "/") return location.pathname === "/";
-    return location.pathname === link.href;
   };
 
   return (
@@ -113,26 +114,15 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
             <div className="flex flex-col gap-4 px-6 py-6">
-              {links.map((l) =>
-                isMobile ? (
-                  <button
-                    key={l.href}
-                    onClick={() => handleNavClick(l)}
-                    className={`text-base font-medium transition-colors text-left ${isActive(l) ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
-                  >
-                    {l.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={l.href}
-                    to={l.href}
-                    onClick={() => setOpen(false)}
-                    className={`text-base font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
-                  >
-                    {l.label}
-                  </Link>
-                )
-              )}
+              {links.map((l) => (
+                <button
+                  key={l.href}
+                  onClick={() => handleMobileNavClick(l)}
+                  className={`text-base font-medium transition-colors text-left ${location.pathname === "/" && l.href === "/" ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                >
+                  {l.label}
+                </button>
+              ))}
             </div>
           </motion.div>
         )}
