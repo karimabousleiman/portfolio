@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { Music, ExternalLink } from "lucide-react";
+import spotifyLogo from "@/assets/spotify-logo.svg";
+import appleMusicLogo from "@/assets/apple-music-logo.svg";
+import ytMusicLogo from "@/assets/youtube-music-logo.svg";
+import deezerLogo from "@/assets/deezer-logo.svg";
 
 const tracks = [
   { title: "1989a", url: "https://soundcloud.com/karim-abousleiman/1989a" },
@@ -13,10 +17,30 @@ const tracks = [
 ];
 
 const streamingServices = [
-  { name: "Spotify", url: "https://open.spotify.com/artist/0Imw18A2tidYlTFiVFLgBG", icon: "🟢" },
-  { name: "Apple Music", url: "https://music.apple.com/us/artist/kimb%C3%BC/1596942904", icon: "🍎" },
-  { name: "YouTube Music", url: "https://music.youtube.com/channel/UCOxgVKMtQRnLqTLpcZTbSww", icon: "▶️" },
-  { name: "Deezer", url: "https://www.deezer.com/us/artist/152271282", icon: "🎵" },
+  {
+    name: "Spotify",
+    url: "https://open.spotify.com/artist/0Imw18A2tidYlTFiVFLgBG",
+    logo: spotifyLogo,
+    bg: "bg-[#1DB954]/10 hover:bg-[#1DB954]/20",
+  },
+  {
+    name: "Apple Music",
+    url: "https://music.apple.com/us/artist/kimb%C3%BC/1596942904",
+    logo: appleMusicLogo,
+    bg: "bg-[#FA243C]/10 hover:bg-[#FA243C]/20",
+  },
+  {
+    name: "YouTube Music",
+    url: "https://music.youtube.com/channel/UCOxgVKMtQRnLqTLpcZTbSww",
+    logo: ytMusicLogo,
+    bg: "bg-[#FF0000]/10 hover:bg-[#FF0000]/20",
+  },
+  {
+    name: "Deezer",
+    url: "https://www.deezer.com/us/artist/152271282",
+    logo: deezerLogo,
+    bg: "bg-[#A238FF]/10 hover:bg-[#A238FF]/20",
+  },
 ];
 
 const MusicSection = () => {
@@ -71,21 +95,21 @@ const MusicSection = () => {
         viewport={{ once: true }}
         className="glass-card p-6 rounded-xl"
       >
-        <h3 className="font-heading text-xl font-semibold mb-4 flex items-center gap-2">
+        <h3 className="font-heading text-xl font-semibold mb-6 flex items-center gap-2">
           <ExternalLink size={20} className="text-primary" />
           Find Me on Streaming Services
         </h3>
-        <div className="flex flex-wrap gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {streamingServices.map((service) => (
             <a
               key={service.name}
               href={service.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors text-sm font-medium"
+              className={`flex flex-col items-center justify-center gap-3 aspect-square rounded-xl ${service.bg} border border-border/50 transition-all duration-300 hover:scale-105 hover:shadow-lg`}
             >
-              <span>{service.icon}</span>
-              {service.name}
+              <img src={service.logo} alt={service.name} className="w-12 h-12" />
+              <span className="text-sm font-medium text-foreground">{service.name}</span>
             </a>
           ))}
         </div>
