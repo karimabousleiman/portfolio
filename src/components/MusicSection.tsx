@@ -25,24 +25,7 @@ const streamingServices = [
 
 const MusicSection = () => {
   return (
-    <section id="music" className="section-padding max-w-5xl mx-auto">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-heading text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3"
-      >
-        <Music size={28} className="text-primary" />
-        Music
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-muted-foreground mb-8 max-w-xl"
-      >
-        Multi-instrumentalist with a particular interest in Jazz. Check out my tracks below.
-      </motion.p>
+    <section id="music" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-5xl mx-auto">
 
       {/* Streaming Services */}
       <motion.div
@@ -51,10 +34,6 @@ const MusicSection = () => {
         viewport={{ once: true }}
         className="glass-card p-6 rounded-xl mb-12"
       >
-        <h3 className="font-heading text-xl font-semibold mb-6 flex items-center gap-2">
-          <ExternalLink size={20} className="text-primary" />
-          Find Me on Streaming Services
-        </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {streamingServices.map((service) => (
             <a
