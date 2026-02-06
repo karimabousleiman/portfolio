@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Linkedin, Mail, Briefcase, Music, Camera } from "lucide-react";
+import { Linkedin, Mail, Briefcase, Music, Clapperboard } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import InteractiveBackground from "./InteractiveBackground";
 
 const titles = [
   { text: "Senior Product Manager", icon: Briefcase },
   { text: "Music Producer", icon: Music },
-  { text: "Visual Storyteller", icon: Camera },
+  { text: "Visual Storyteller", icon: Clapperboard },
 ];
 
 const HeroSection = () => {
