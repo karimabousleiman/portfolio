@@ -55,7 +55,7 @@ const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
             transition={{ duration: 0.4, delay: 0.05 }}
             className="font-heading text-4xl md:text-5xl font-bold tracking-tight"
           >
-            <span className="text-gradient-shimmer">{title}</span>
+            <span className="text-gradient">{title}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
