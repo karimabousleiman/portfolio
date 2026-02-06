@@ -13,11 +13,10 @@ const tracks = [
 ];
 
 const streamingServices = [
-  { name: "Spotify", url: "https://open.spotify.com/artist/YOUR_ID", icon: "🟢" },
-  { name: "Apple Music", url: "https://music.apple.com/artist/YOUR_ID", icon: "🍎" },
-  { name: "YouTube Music", url: "https://music.youtube.com/channel/YOUR_ID", icon: "▶️" },
-  { name: "Tidal", url: "https://tidal.com/artist/YOUR_ID", icon: "🌊" },
-  { name: "Deezer", url: "https://www.deezer.com/artist/YOUR_ID", icon: "🎵" },
+  { name: "Spotify", url: "https://open.spotify.com/artist/0Imw18A2tidYlTFiVFLgBG", icon: "🟢" },
+  { name: "Apple Music", url: "https://music.apple.com/us/artist/kimb%C3%BC/1596942904", icon: "🍎" },
+  { name: "YouTube Music", url: "https://music.youtube.com/channel/UCOxgVKMtQRnLqTLpcZTbSww", icon: "▶️" },
+  { name: "Deezer", url: "https://www.deezer.com/us/artist/152271282", icon: "🎵" },
 ];
 
 const MusicSection = () => {
@@ -90,9 +89,6 @@ const MusicSection = () => {
             </a>
           ))}
         </div>
-        <p className="text-muted-foreground text-xs mt-3 italic">
-          Update the streaming links above with your actual artist profile URLs.
-        </p>
       </motion.div>
     </section>
   );
