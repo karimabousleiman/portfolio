@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="font-heading text-xl font-bold text-primary tracking-tight">
+        <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-heading text-xl font-bold text-primary tracking-tight">
           <span className="relative">
             <AnimatePresence mode="wait">
               {isSubPage && scrolled ? (
