@@ -92,7 +92,7 @@ const ExperienceSection = () => {
           {jobs.map((job, i) => (
             <motion.div key={i} variants={item} className="pl-10 relative">
               {/* Timeline dot */}
-              <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full bg-primary border-4 border-background" />
+              <div className="absolute left-0 top-[10px] w-[15px] h-[15px] rounded-full bg-primary border-4 border-background" />
 
               <div className="glass-card p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-3">
