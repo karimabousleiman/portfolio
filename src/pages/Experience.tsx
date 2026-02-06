@@ -13,7 +13,7 @@ const Experience = () => {
         icon={<Briefcase size={28} className="text-primary" />}
         accent="Career Journey"
         title="Experience"
-        subtitle="8+ years building products that millions of people use every day, from startups to industry leaders."
+        subtitle="From scaling a password manager to 1M users, to driving engagement on France's biggest streaming platform."
       />
       <ExperienceSection />
       <SkillsSection />
