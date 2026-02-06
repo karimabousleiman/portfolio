@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
 const links = [
+  { label: "Home", href: "/" },
   { label: "Experience", href: "/experience" },
+  { label: "Visual Arts", href: "/visual-arts" },
   { label: "Music", href: "/music" },
   { label: "About", href: "/about" },
 ];
