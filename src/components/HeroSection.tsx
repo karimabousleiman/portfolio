@@ -1,21 +1,12 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import InteractiveBackground from "./InteractiveBackground";
+import SplitFlapText from "./SplitFlapText";
 
 const titles = ["Senior Product Manager", "Music Producer", "Visual Storyteller"];
 
 const HeroSection = () => {
-  const [titleIndex, setTitleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % titles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
@@ -26,19 +17,12 @@ const HeroSection = () => {
       <InteractiveBackground />
 
       <div className="relative z-10 text-center px-6 max-w-4xl">
-        <div className="h-8 md:h-10 mb-6 overflow-hidden relative">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={titleIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="text-primary font-heading font-medium tracking-[0.25em] uppercase text-base md:text-lg absolute inset-0"
-            >
-              {titles[titleIndex]}
-            </motion.p>
-          </AnimatePresence>
+        <div className="h-8 md:h-10 mb-6 flex items-center justify-center">
+          <SplitFlapText
+            texts={titles}
+            interval={3500}
+            className="text-primary font-heading font-medium tracking-[0.25em] uppercase text-base md:text-lg"
+          />
         </div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
