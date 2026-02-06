@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const links = [
-  { label: "Home", href: "/" },
-  { label: "Experience", href: "/experience" },
-  { label: "Visual Arts", href: "/visual-arts" },
-  { label: "Music", href: "/music" },
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/", anchor: undefined },
+  { label: "Experience", href: "/experience", anchor: "#experience" },
+  { label: "Visual Arts", href: "/visual-arts", anchor: "#visual-arts" },
+  { label: "Music", href: "/music", anchor: "#music" },
+  { label: "About", href: "/about", anchor: "#about" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const currentPage = links.find((l) => l.href === location.pathname);
   const isSubPage = location.pathname !== "/";
@@ -24,6 +27,33 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (link: typeof links[0]) => {
+    setOpen(false);
+    if (isMobile) {
+      if (link.href === "/") {
+        if (location.pathname !== "/") {
+          navigate("/");
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      } else if (link.anchor) {
+        if (location.pathname !== "/") {
+          navigate("/" + link.anchor);
+        } else {
+          const el = document.querySelector(link.anchor);
+          el?.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  // Check if a nav item is "active" on mobile single-page
+  const isActive = (link: typeof links[0]) => {
+    if (!isMobile) return location.pathname === link.href;
+    if (link.href === "/") return location.pathname === "/";
+    return location.pathname === link.href;
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
@@ -83,16 +113,26 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
             <div className="flex flex-col gap-4 px-6 py-6">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  onClick={() => setOpen(false)}
-                  className={`text-base font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {links.map((l) =>
+                isMobile ? (
+                  <button
+                    key={l.href}
+                    onClick={() => handleNavClick(l)}
+                    className={`text-base font-medium transition-colors text-left ${isActive(l) ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                  >
+                    {l.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={l.href}
+                    to={l.href}
+                    onClick={() => setOpen(false)}
+                    className={`text-base font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                  >
+                    {l.label}
+                  </Link>
+                )
+              )}
             </div>
           </motion.div>
         )}
