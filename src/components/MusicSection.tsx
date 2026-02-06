@@ -80,7 +80,7 @@ const MusicSection = () => {
       >
         🎧 Sneak Peek
       </motion.h3>
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {tracks.map((track, index) => (
           <motion.div
             key={track.url}
@@ -88,16 +88,18 @@ const MusicSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="glass-card rounded-xl overflow-hidden"
+            className="glass-card rounded-xl overflow-hidden p-4"
           >
+            <p className="text-sm font-medium text-foreground mb-3">{track.title}</p>
             <iframe
               width="100%"
-              height="166"
+              height="120"
               scrolling="no"
               frameBorder="no"
               allow="autoplay"
               src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(track.url)}&color=%23d4952b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
               title={track.title}
+              className="rounded-lg"
             />
           </motion.div>
         ))}
