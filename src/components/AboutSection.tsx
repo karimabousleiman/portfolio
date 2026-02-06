@@ -33,17 +33,17 @@ const AboutSection = () => {
           className="md:col-span-3 space-y-4"
         >
           <p className="text-secondary-foreground leading-relaxed">
-            Tech geek interested in how technology can lead positive change in the world. 
-            Passionate about finding new and innovative ways of solving problems and using 
-            this as a guiding principle in my management style.
+            Product Manager with a background in cinema who made the leap into tech — 
+            driven by a love for building things and a curiosity for how technology can 
+            shape the world for the better. I bring a creative, problem-solving mindset 
+            to every product I work on.
           </p>
           <p className="text-secondary-foreground leading-relaxed">
-            People management aficionado with 5+ years of demonstrated experience leading 
-            cross-functional teams. When I'm not building products, you'll find me playing 
-            jazz, exploring cutting-edge tech trends, or gaming competitively.
-          </p>
-          <p className="text-muted-foreground text-sm italic mt-6">
-            Feel free to update this text with your own personal story!
+            Multi-instrumentalist who plays 10+ instruments — from keys and guitar to 
+            brass, woodwinds, and percussion. Art and science aren't opposites to me; 
+            they're two lenses on the same world. Whether I'm composing a track, designing 
+            a product, or diving into a new side project, I'm happiest when I'm making 
+            something from scratch.
           </p>
         </motion.div>
       </div>
