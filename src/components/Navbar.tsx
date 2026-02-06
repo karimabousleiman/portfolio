@@ -40,6 +40,7 @@ const Navbar = () => {
 
   const handleMobileNavClick = (link: typeof links[0]) => {
     setOpen(false);
+    setOpen(false);
     if (link.href === "/") {
       if (location.pathname !== "/") {
         navigate("/");
@@ -48,10 +49,16 @@ const Navbar = () => {
       }
     } else if (link.anchor) {
       if (location.pathname !== "/") {
-        navigate("/" + link.anchor);
+        navigate("/");
+        setTimeout(() => {
+          const el = document.querySelector(link.anchor!);
+          el?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
       } else {
-        const el = document.querySelector(link.anchor);
-        el?.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          const el = document.querySelector(link.anchor!);
+          el?.scrollIntoView({ behavior: "smooth" });
+        }, 200);
       }
     }
   };
