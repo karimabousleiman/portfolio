@@ -77,16 +77,7 @@ const item = {
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="section-padding max-w-5xl mx-auto">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-heading text-3xl md:text-4xl font-bold mb-12"
-      >
-        Experience
-      </motion.h2>
-
+    <section id="experience" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-5xl mx-auto">
       <motion.div
         variants={container}
         initial="hidden"
@@ -95,13 +86,13 @@ const ExperienceSection = () => {
         className="relative"
       >
         {/* Timeline line */}
-        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border hidden md:block" />
+        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" />
 
         <div className="space-y-10">
           {jobs.map((job, i) => (
-            <motion.div key={i} variants={item} className="md:pl-10 relative">
+            <motion.div key={i} variants={item} className="pl-10 relative">
               {/* Timeline dot */}
-              <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full bg-primary border-4 border-background hidden md:block" />
+              <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full bg-primary border-4 border-background" />
 
               <div className="glass-card p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-3">
