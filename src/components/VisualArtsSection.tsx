@@ -79,32 +79,7 @@ const VisualArtsSection = () => {
   }, [lightboxIndex, closeLightbox, goNext, goPrev]);
 
   return (
-    <section id="visual-arts" className="section-padding max-w-5xl mx-auto">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="font-heading text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3"
-      >
-        Gallery
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-muted-foreground mb-10 max-w-xl"
-      >
-        A selection of my photography and cinema work. Explore more on my{" "}
-        <a
-          href="https://www.deviantart.com/skipandcreate"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
-          DeviantArt
-        </a>
-        .
-      </motion.p>
+    <section id="visual-arts" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-5xl mx-auto">
 
       <motion.div
         variants={container}
