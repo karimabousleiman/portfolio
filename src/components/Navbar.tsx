@@ -60,13 +60,14 @@ const Navbar = () => {
 
   const handleMobileNavClick = (link: typeof links[0]) => {
     setOpen(false);
-    setOpen(false);
     if (link.href === "/") {
       if (location.pathname !== "/") {
         navigate("/");
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+      setActiveSection(null);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 200);
     } else if (link.anchor) {
       if (location.pathname !== "/") {
         navigate("/");
