@@ -6,11 +6,12 @@ interface PageHeroProps {
   subtitle: string;
   accent?: string;
   icon?: React.ReactNode;
+  compact?: boolean;
 }
 
-const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
+const PageHero = ({ title, subtitle, accent, icon, compact }: PageHeroProps) => {
   return (
-    <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
+    <section className={`relative ${compact ? 'min-h-[30vh]' : 'min-h-[50vh]'} flex items-center justify-center overflow-hidden pt-20`}>
       <InteractiveBackground />
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
 

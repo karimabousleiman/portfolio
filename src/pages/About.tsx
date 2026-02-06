@@ -11,6 +11,7 @@ const About = () => {
       <PageHero
         title="About Me"
         subtitle="Tech geek, music lover, and relentless problem solver."
+        compact
       />
       <AboutSection />
       <Footer />
