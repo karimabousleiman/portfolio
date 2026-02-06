@@ -34,7 +34,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35 }}
-              className="font-heading font-medium tracking-[0.25em] uppercase text-base md:text-lg absolute"
+              className="font-heading font-semibold tracking-[0.25em] uppercase text-lg md:text-xl absolute"
               style={{ color: "#C4B5FD" }}
             >
               {titles[titleIndex]}
