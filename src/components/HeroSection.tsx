@@ -47,7 +47,7 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-5"
         >
           <a
-            href="https://www.linkedin.com/in/karim-abousleiman/"
+            href="https://www.linkedin.com/in/karim-abousleiman"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:brightness-110 transition-all"
