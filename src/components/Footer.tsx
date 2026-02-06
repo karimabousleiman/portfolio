@@ -3,10 +3,10 @@ import { Linkedin, Mail } from "lucide-react";
 const Footer = () => {
   return (
     <footer id="contact" className="border-t border-border py-12 px-6">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
-          <p className="font-heading font-bold text-lg text-primary">Karim Abousleiman</p>
-          <p className="text-sm text-muted-foreground">Senior Product Manager · Paris, France</p>
+          <p className="font-heading font-bold text-lg text-primary whitespace-nowrap">Karim Abousleiman</p>
+          <p className="text-sm text-muted-foreground whitespace-nowrap">Senior Product Manager · Paris, France</p>
         </div>
         <div className="flex items-center gap-4">
           <a
