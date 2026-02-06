@@ -11,11 +11,10 @@ const strengths = [
 ];
 
 const languages = [
-  { name: "French", level: "Native" },
-  { name: "English", level: "Native" },
-  { name: "Arabic", level: "Native" },
-  { name: "Italian", level: "Intermediate" },
-  { name: "Spanish", level: "Beginner" },
+  { name: "French", level: "Native", percent: 100 },
+  { name: "English", level: "Native", percent: 100 },
+  { name: "Arabic", level: "Native", percent: 100 },
+  { name: "Italian", level: "Intermediate", percent: 55 },
 ];
 
 const SkillsSection = () => {
@@ -61,11 +60,22 @@ const SkillsSection = () => {
             <Globe size={28} className="text-primary" />
             Languages
           </motion.h2>
-          <div className="glass-card p-5 space-y-3">
+          <div className="glass-card p-5 space-y-4">
             {languages.map((l, i) => (
-              <div key={i} className="flex items-center justify-between text-sm">
-                <span className="text-foreground font-medium">{l.name}</span>
-                <span className="text-muted-foreground">{l.level}</span>
+              <div key={i}>
+                <div className="flex items-center justify-between text-sm mb-1.5">
+                  <span className="text-foreground font-medium">{l.name}</span>
+                  <span className="text-muted-foreground text-xs">{l.level}</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full bg-primary"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${l.percent}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
+                  />
+                </div>
               </div>
             ))}
           </div>
