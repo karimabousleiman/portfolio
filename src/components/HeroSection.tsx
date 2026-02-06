@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import InteractiveBackground from "./InteractiveBackground";
 
 const HeroSection = () => {
   return (
@@ -10,6 +11,7 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
+      <InteractiveBackground />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
         <motion.p
