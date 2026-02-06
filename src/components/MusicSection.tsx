@@ -35,13 +35,10 @@ const MusicSection = () => {
           scrolling="no"
           frameBorder="no"
           allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/&color=%23d4952b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/karim-abousleiman&color=%23d4952b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
           className="rounded-lg"
           title="SoundCloud Player"
         />
-        <p className="text-xs text-muted-foreground mt-4 text-center">
-          ↑ Replace this embed with your SoundCloud profile URL in <code className="text-primary">MusicSection.tsx</code>
-        </p>
       </motion.div>
     </section>
   );
