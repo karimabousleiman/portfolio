@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Briefcase, Music, Camera } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import InteractiveBackground from "./InteractiveBackground";
 
-const titles = ["Senior Product Manager", "Music Producer", "Visual Storyteller"];
+const titles = [
+  { text: "Senior Product Manager", icon: Briefcase },
+  { text: "Music Producer", icon: Music },
+  { text: "Visual Storyteller", icon: Camera },
+];
 
 const HeroSection = () => {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -15,6 +19,8 @@ const HeroSection = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  const CurrentIcon = titles[titleIndex].icon;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -34,10 +40,11 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35 }}
-              className="font-heading font-semibold tracking-[0.25em] uppercase text-lg md:text-xl absolute"
+              className="font-heading font-semibold tracking-[0.25em] uppercase text-lg md:text-xl absolute flex items-center gap-3"
               style={{ color: "#C4B5FD" }}
             >
-              {titles[titleIndex]}
+              <CurrentIcon size={22} />
+              {titles[titleIndex].text}
             </motion.p>
           </AnimatePresence>
         </div>
