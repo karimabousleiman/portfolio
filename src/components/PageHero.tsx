@@ -10,7 +10,7 @@ interface PageHeroProps {
 
 const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
   return (
-    <section className="relative pt-24 pb-4 px-6 overflow-hidden sticky top-0 z-30 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <section className="relative pt-24 pb-4 px-6 overflow-hidden">
       {/* Subtle decorative lines */}
       <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
         {Array.from({ length: 4 }).map((_, i) => (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -13,13 +13,47 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const currentPage = links.find((l) => l.href === location.pathname);
+  const isSubPage = location.pathname !== "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 120);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="font-heading text-xl font-bold text-primary tracking-tight">
-          KA
+          <span className="relative">
+            <AnimatePresence mode="wait">
+              {isSubPage && scrolled ? (
+                <motion.span
+                  key="page-title"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {currentPage?.label}
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="logo"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  KA
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
