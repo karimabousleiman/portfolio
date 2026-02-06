@@ -1,32 +1,33 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 const links = [
-  { label: "Experience", href: "#experience" },
-  { label: "Music", href: "#music" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Experience", href: "/experience" },
+  { label: "Music", href: "/music" },
+  { label: "About", href: "/about" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-heading text-xl font-bold text-primary tracking-tight">
+        <Link to="/" className="font-heading text-xl font-bold text-primary tracking-tight">
           KA
-        </a>
+        </Link>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              to={l.href}
+              className={`text-sm font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
         <button
@@ -47,14 +48,14 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4 px-6 py-6">
               {links.map((l) => (
-                <a
+                <Link
                   key={l.href}
-                  href={l.href}
+                  to={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className={`text-base font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>

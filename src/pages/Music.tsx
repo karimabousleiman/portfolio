@@ -1,15 +1,17 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
+import MusicSection from "@/components/MusicSection";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const Music = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
+      <div className="pt-20">
+        <MusicSection />
+      </div>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Music;
