@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Camera, Film, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Camera, Film, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
 
 const container = {
   hidden: {},
@@ -60,6 +61,23 @@ const photos = [
 ];
 
 const VisualArtsSection = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const goNext = useCallback(() => setLightboxIndex((i) => (i !== null ? (i + 1) % photos.length : null)), []);
+  const goPrev = useCallback(() => setLightboxIndex((i) => (i !== null ? (i - 1 + photos.length) % photos.length : null)), []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, closeLightbox, goNext, goPrev]);
+
   return (
     <section id="visual-arts" className="section-padding max-w-5xl mx-auto">
       <motion.h2
@@ -102,13 +120,11 @@ const VisualArtsSection = () => {
             <h3 className="font-heading text-xl font-semibold">Photography</h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((photo) => (
-              <a
+            {photos.map((photo, index) => (
+              <button
                 key={photo.slug}
-                href={`https://www.deviantart.com/skipandcreate/art/${photo.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-card rounded-xl overflow-hidden group block hover:ring-1 hover:ring-primary/30 transition-all"
+                onClick={() => setLightboxIndex(index)}
+                className="glass-card rounded-xl overflow-hidden group block hover:ring-1 hover:ring-primary/30 transition-all text-left cursor-pointer"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -124,7 +140,7 @@ const VisualArtsSection = () => {
                   </p>
                   <ExternalLink size={14} className="text-muted-foreground/50 shrink-0" />
                 </div>
-              </a>
+              </button>
             ))}
           </div>
         </motion.div>
@@ -148,6 +164,62 @@ const VisualArtsSection = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            onClick={closeLightbox}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 p-2"
+            >
+              <X size={28} />
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              className="absolute left-4 text-white/70 hover:text-white transition-colors z-10 p-2"
+            >
+              <ChevronLeft size={36} />
+            </button>
+
+            {/* Image */}
+            <motion.img
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              src={photos[lightboxIndex].url}
+              alt={photos[lightboxIndex].title}
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+            />
+
+            {/* Next */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              className="absolute right-4 text-white/70 hover:text-white transition-colors z-10 p-2"
+            >
+              <ChevronRight size={36} />
+            </button>
+
+            {/* Title */}
+            <div className="absolute bottom-6 text-white/80 text-sm font-medium">
+              {photos[lightboxIndex].title} — {lightboxIndex + 1}/{photos.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
