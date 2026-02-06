@@ -161,6 +161,17 @@ const VisualArtsSection = () => {
                 className="w-full h-full rounded-lg"
               />
             </div>
+            <div className="p-3 flex items-center gap-2">
+              <a
+                href="https://www.imdb.com/title/tt11426640/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
+              >
+                <ExternalLink size={14} />
+                View on IMDb
+              </a>
+            </div>
           </div>
         </motion.div>
       </motion.div>
