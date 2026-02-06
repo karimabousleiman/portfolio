@@ -3,7 +3,7 @@ import aboutPhoto from "@/assets/about-photo.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding max-w-4xl mx-auto flex flex-col items-center text-center">
+    <section id="about" className="section-padding max-w-4xl mx-auto flex flex-col items-center text-center -mt-8">
       {/* Photo */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
