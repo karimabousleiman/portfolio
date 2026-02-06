@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
-import { Users, Zap, Target, GraduationCap, Globe } from "lucide-react";
+import { Users, Zap, Target, Globe, Lightbulb, Rocket, Handshake } from "lucide-react";
 
 const strengths = [
-  { icon: Users, label: "People Management", desc: "Leading and communicating efficiently across large teams." },
-  { icon: Zap, label: "Learning Agility", desc: "Quickly adapting across fast-paced industries." },
-  { icon: Target, label: "Decision Making", desc: "Making fast, actionable decisions under pressure." },
+  { icon: Users, label: "People Management", desc: "Leading and communicating efficiently across large, cross-functional teams." },
+  { icon: Zap, label: "Learning Agility", desc: "Quickly adapting and thriving across fast-paced industries." },
+  { icon: Target, label: "Decision Making", desc: "Making fast, actionable decisions under pressure with limited data." },
+  { icon: Lightbulb, label: "Product Thinking", desc: "Bridging user needs and business goals into cohesive product strategies." },
+  { icon: Rocket, label: "Execution Speed", desc: "Shipping high-quality work fast without sacrificing attention to detail." },
+  { icon: Handshake, label: "Stakeholder Alignment", desc: "Building consensus across diverse teams, partners, and executives." },
 ];
 
 const languages = [
@@ -12,11 +15,7 @@ const languages = [
   { name: "English", level: "Native" },
   { name: "Arabic", level: "Native" },
   { name: "Italian", level: "Intermediate" },
-];
-
-const education = [
-  { title: "Masters in Cinematography", school: "EICAR | International Film & TV School", period: "2013 – 2015" },
-  { title: "C++, iOS & Web Development", school: "Udemy & Udacity", period: "2014 – 2016" },
+  { name: "Spanish", level: "Beginner" },
 ];
 
 const SkillsSection = () => {
@@ -72,28 +71,6 @@ const SkillsSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Education */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-12"
-      >
-        <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8 flex items-center gap-3">
-          <GraduationCap size={28} className="text-primary" />
-          Education
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {education.map((e, i) => (
-            <div key={i} className="glass-card p-5">
-              <h3 className="font-heading font-semibold text-sm mb-1">{e.title}</h3>
-              <p className="text-xs text-muted-foreground">{e.school}</p>
-              <p className="text-xs text-primary mt-1">{e.period}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 };
