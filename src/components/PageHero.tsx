@@ -10,7 +10,7 @@ interface PageHeroProps {
 
 const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
   return (
-    <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
       <InteractiveBackground />
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
 
@@ -33,10 +33,11 @@ const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
       <div className="relative z-10 text-center px-6 max-w-3xl">
         {icon && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, type: "spring" }}
-            className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20"
+            initial={{ opacity: 0, scale: 0.5, rotateX: 40 }}
+            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+            className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.3),inset_0_1px_0_0_hsl(var(--primary)/0.15)]"
+            style={{ perspective: 800 }}
           >
             {icon}
           </motion.div>
