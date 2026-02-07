@@ -86,8 +86,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-8 lg:px-16 py-5">
-        <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-heading text-xl font-bold text-primary tracking-tight">
+      <div className="max-w-[1400px] mx-auto flex items-center justify-between px-8 lg:px-20 py-5">
+        <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-heading text-2xl font-bold text-primary tracking-tight">
           <span className="relative">
             <AnimatePresence mode="wait">
               {isSubPage && scrolled ? (
@@ -119,7 +119,7 @@ const Navbar = () => {
             <Link
               key={l.href}
               to={l.href}
-              className={`text-sm font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+              className={`text-base font-medium transition-colors ${location.pathname === l.href ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
             >
               {l.label}
             </Link>

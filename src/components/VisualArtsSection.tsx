@@ -79,7 +79,7 @@ const VisualArtsSection = () => {
   }, [lightboxIndex, closeLightbox, goNext, goPrev]);
 
   return (
-    <section id="visual-arts" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-5xl mx-auto">
+    <section id="visual-arts" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
 
       <motion.div
         variants={container}

@@ -19,7 +19,7 @@ const languages = [
 
 const SkillsSection = () => {
   return (
-    <section className="section-padding max-w-5xl mx-auto">
+    <section className="section-padding max-w-7xl mx-auto">
       <div className="grid md:grid-cols-3 gap-8">
         {/* Strengths */}
         <div className="md:col-span-2">

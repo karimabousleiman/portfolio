@@ -27,7 +27,7 @@ const PageHero = ({ title, subtitle, accent, icon }: PageHeroProps) => {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center gap-4">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center gap-4">
         {icon && (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
