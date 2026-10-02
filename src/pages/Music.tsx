@@ -4,7 +4,7 @@ import portrait from "@/assets/portrait.webp";
 
 const Music = () => (
   <SiteShell title="Music · Karim Abousleiman">
-    <section aria-labelledby="music-title" className="dusk relative -mx-4 pb-10 md:-mx-12 md:min-h-[720px] md:pb-0">
+    <section aria-labelledby="music-title" className="relative -mx-4 md:-mx-12 md:min-h-[720px]">
       <img
         src={portrait}
         alt="Karim playing a Telecaster-style electric guitar, black and white"
@@ -12,7 +12,7 @@ const Music = () => (
         height={1184}
         className="mono-photo block h-[420px] w-full object-cover object-[30%_center] md:absolute md:right-0 md:top-0 md:h-full md:w-[56%]"
       />
-      <div aria-hidden="true" className="dusk-fade absolute right-0 top-0 hidden h-full w-[56%] md:block" />
+      <div aria-hidden="true" className="photo-fade absolute right-0 top-0 hidden h-full w-[56%] md:block" />
       <div className="relative px-4 pt-8 md:absolute md:bottom-16 md:left-12 md:w-[640px] md:px-0 md:pt-0">
         <p className="mono m-0 text-[var(--h-meta)]">RELEASED AS KIMBÜ</p>
         <h1 id="music-title" className="serif m-0 mt-2 text-[4.5rem] leading-[0.9] tracking-[-0.02em] md:mt-3 md:text-[10.5rem]">Music</h1>

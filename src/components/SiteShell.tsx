@@ -146,7 +146,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
   useEffect(() => {
     const root = document.documentElement;
     const prev = root.style.background;
-    root.style.background = "#15110e";
+    root.style.background = "#0f0f10";
     return () => {
       root.style.background = prev;
     };
@@ -163,17 +163,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
   return (
     <MotionConfig reducedMotion="user">
       <div className="home">
-        <svg aria-hidden="true" width="0" height="0" className="absolute">
-          <filter id="dusk-tone" colorInterpolationFilters="sRGB">
-            <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" />
-            <feComponentTransfer>
-              <feFuncR type="table" tableValues="0.06 0.50 0.96" />
-              <feFuncG type="table" tableValues="0.08 0.46 0.92" />
-              <feFuncB type="table" tableValues="0.17 0.52 0.86" />
-            </feComponentTransfer>
-          </filter>
-        </svg>
-        <header className="sticky top-0 z-20 border-b border-[var(--h-line)] bg-[rgb(21_17_14/0.88)] backdrop-blur-md md:border-transparent md:bg-[var(--h-bg)] md:backdrop-blur-none">
+        <header className="sticky top-0 z-20 border-b border-[var(--h-line)] bg-[rgb(15_15_16/0.88)] backdrop-blur-md md:border-transparent md:bg-[var(--h-bg)] md:backdrop-blur-none">
           <div className="mx-auto flex h-14 max-w-[1280px] items-center justify-between px-4 md:h-16 md:px-12">
             {brand}
             <nav aria-label="Main" className="hidden md:block">

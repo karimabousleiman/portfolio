@@ -95,7 +95,7 @@ const Index = () => (
       </Link>
     </section>
 
-    <section aria-labelledby="craft-title" className="dusk mt-[72px] grid gap-6 py-14 md:mt-[136px] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-end md:gap-16 md:py-24">
+    <section aria-labelledby="craft-title" className="grid gap-6 pb-20 pt-[72px] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-end md:gap-16 md:pb-28 md:pt-[136px]">
       <div>
         <h2 id="craft-title" className="serif m-0 text-[2.5rem] leading-[1.02] md:text-[3.25rem]">Same craft, different medium.</h2>
         <p className="m-0 mt-3.5 max-w-[26rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-5 md:text-base">

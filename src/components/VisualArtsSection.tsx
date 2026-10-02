@@ -64,7 +64,7 @@ const VisualArtsSection = () => {
         className="photo-tile relative -mx-4 block w-[calc(100%+2rem)] overflow-hidden md:-mx-12 md:w-[calc(100%+6rem)]"
       >
         <img src={lead.url} alt={lead.alt} className="block h-[300px] w-full object-cover md:h-[640px]" />
-        <span className="absolute inset-x-0 bottom-0 flex justify-between bg-[linear-gradient(transparent,rgb(21_17_14/0.75))] px-4 pb-4 pt-16 text-left md:px-12 md:pb-6">
+        <span className="absolute inset-x-0 bottom-0 flex justify-between bg-[linear-gradient(transparent,rgb(10_10_11/0.7))] px-4 pb-4 pt-16 text-left md:px-12 md:pb-6">
           <span className="mono text-[0.75rem] text-[var(--h-ink)]">01 — {caption(lead.title).toUpperCase()}</span>
           <span className="mono text-[0.75rem] text-[var(--h-ink)]">1 / {gallery.length}</span>
         </span>
@@ -99,7 +99,7 @@ const VisualArtsSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[rgb(21_17_14/0.95)]"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[rgb(10_10_11/0.94)]"
             onClick={closeLightbox}
           >
             <button onClick={closeLightbox} aria-label="Close" autoFocus className="mono absolute right-3 top-3 z-10 flex h-11 items-center gap-2 px-2 text-[var(--h-ink)]">

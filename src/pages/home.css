@@ -1,14 +1,12 @@
 .home {
-  /* Warm charcoal and cream, with a midnight "dusk": the blue hour above the sunset photographs. */
-  --h-bg: #15110e;
-  --h-dusk: #141c33;
-  --h-ink: #f5ece1;
-  --h-muted: #d0c4b5;
-  --h-body: #bfb3a5;
-  --h-meta: #a3978a;
-  --h-line: #2f2823;
-  --h-line-strong: #42382f;
-  --h-control: #7a6c60;
+  --h-bg: #0f0f10;
+  --h-ink: #f2f0eb;
+  --h-muted: #c9c6bf;
+  --h-body: #b9b7b1;
+  --h-meta: #9b9a96;
+  --h-line: #2a2a2d;
+  --h-line-strong: #3a3a3d;
+  --h-control: #6b6a67;
   --h-accent: #ff8a5c;
   --h-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -147,8 +145,8 @@
 }
 
 @keyframes h-develop {
-  from { filter: url(#dusk-tone) brightness(0.2); }
-  to { filter: url(#dusk-tone) brightness(1); }
+  from { filter: grayscale(1) contrast(1.1) brightness(0.2); }
+  to { filter: grayscale(1) contrast(1.1) brightness(1); }
 }
 
 .home .intro-first { animation: h-focus 600ms var(--h-ease) both; }
@@ -157,20 +155,12 @@
 .home .intro-tag { animation: h-settle 500ms var(--h-ease) 760ms both; }
 .home .intro-portrait { animation: h-develop 1400ms var(--h-ease) 500ms both; }
 
-/* Portraits print in the dusk duotone: midnight shadows, blue-violet mids, cream highlights. */
 .home .mono-photo {
-  filter: url(#dusk-tone);
+  filter: grayscale(1) contrast(1.1);
 }
 
-/* A full-bleed midnight band that owns one region per page without breaking the container. */
-.home .dusk {
-  background: var(--h-dusk);
-  box-shadow: 0 0 0 100vmax var(--h-dusk);
-  clip-path: inset(0 -100vmax);
-}
-
-.home .dusk-fade {
-  background: linear-gradient(90deg, var(--h-dusk) 0%, transparent 40%);
+.home .photo-fade {
+  background: linear-gradient(90deg, var(--h-bg) 0%, transparent 40%);
 }
 
 .home .menu-panel {
