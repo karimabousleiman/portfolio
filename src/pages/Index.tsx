@@ -1,207 +1,123 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Linkedin, Mail, Plus } from "lucide-react";
-import SiteShell, { ContactSection, EMAIL, External, IMDB, LINKEDIN, Section } from "@/components/SiteShell";
-import portrait from "@/assets/about-photo.jpg";
-import { jobs } from "@/components/ExperienceSection";
-import { tracks, streamingServices } from "@/components/MusicSection";
+import SiteShell, { Closing, IMDB, PCMAG, TECHCRUNCH } from "@/components/SiteShell";
+import portrait from "@/assets/portrait.webp";
 import { photos } from "@/components/VisualArtsSection";
+import { tracks } from "@/components/MusicSection";
+import { results } from "@/components/ExperienceSection";
 
-const outcomes: { figure: string; text: string; source: string; href?: string }[] = [
-  { figure: "1M+", text: "daily active users for Myki's password manager, reached in under two years.", source: "Myki · 2017–2020" },
-  { figure: "+17%", text: "user engagement after leading the shift to a product-centric organisation.", source: "TF1+ · 2025–now" },
-  { figure: "+26%", text: "user acquisition from a redesigned onboarding and user experience.", source: "Garantme · 2022–2025" },
-  { figure: "PCMag", text: "Editors' Choice award for Myki's password manager.", source: "Myki · 2018", href: "https://www.pcmag.com/reviews/myki" },
-  { figure: "Disrupt", text: "Myki was presented on the Startup Battlefield stage at TechCrunch Disrupt SF.", source: "Myki · 2016", href: "https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/" },
-];
+const beirut = photos.find((p) => p.slug.startsWith("Under-Beirut"))!;
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const rise = (i: number, reduce: boolean | null) => reduce ? {} : ({
-  initial: { opacity: 0.001, y: 12, filter: "blur(6px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-  transition: { duration: 0.7, ease, delay: 0.06 * i },
-});
-
-const Index = () => {
-  const [open, setOpen] = useState(0);
-  const reduce = useReducedMotion();
-
-  return (
-    <SiteShell>
-          <section aria-labelledby="hero-title" className="hero-band mb-14 grid gap-10 pt-14 pb-14 md:mb-16 md:grid-cols-[minmax(0,1fr)_17rem] md:items-end md:gap-20 md:pt-20 md:pb-20">
-            <div className="max-w-[60rem]">
-              <motion.h1
-                id="hero-title"
-                {...rise(0, reduce)}
-                className="text-balance text-[2.375rem] font-semibold leading-[1.08] tracking-[-0.035em] md:text-[3.125rem] lg:text-[3.75rem]"
-              >
-                Senior Product Manager with eight years growing <span className="mark">products people come back to</span>.
-              </motion.h1>
-              <motion.p {...rise(1, reduce)} className="mt-6 max-w-[40rem] text-[1.0625rem] md:text-[1.125rem] leading-[1.65] text-[var(--h-muted)]">
-                I started in QA, finding what broke, and ended up wanting to build things that don't. Since then I've made
-                products in security, fintech and streaming, and I still love the same things: hard problems, plain language
-                and products that treat people well. When I'm not working, I'm at the piano, finishing a track or out with
-                a camera.
-              </motion.p>
-              <motion.div {...rise(2, reduce)} className="mt-8 flex flex-wrap gap-3">
-                <a href={`mailto:${EMAIL}`} className="btn btn-primary">
-                  <Mail size={16} aria-hidden="true" />
-                  Email me
-                </a>
-                <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                  <Linkedin size={16} aria-hidden="true" />
-                  LinkedIn
-                </a>
-              </motion.div>
-            </div>
-
-            <motion.figure {...rise(2, reduce)} className="order-first m-0 flex items-center gap-4 md:order-none md:block">
-              <img
-                src={portrait}
-                alt="Karim Abousleiman playing an electric guitar"
-                width={864}
-                height={1184}
-                className="aspect-[4/5] w-20 shrink-0 rounded-xl md:w-full object-cover object-[30%_center] shadow-[0_1px_2px_rgb(0_0_0/0.06),0_12px_32px_-12px_rgb(0_0_0/0.18)]"
-              />
-              <figcaption className="md:mt-4">
-                <span className="block font-semibold">Karim Abousleiman</span>
-                <span className="mt-1 flex items-center gap-2 text-[0.875rem] text-[var(--h-muted)]">
-                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--h-accent)]" />
-                  Currently at TF1+ · Paris
-                </span>
-              </figcaption>
-            </motion.figure>
-          </section>
-
-          <motion.ul {...rise(3, reduce)} aria-label="Selected outcomes" className="mb-16 grid border-t border-[var(--h-line)] sm:grid-cols-2 md:mb-20">
-            {outcomes.map((o, i) => (
-              <li
-                key={o.figure}
-                className={`flex flex-col gap-2 border-b border-[var(--h-line)] py-6 sm:pr-8 ${i % 2 === 1 ? "sm:border-l sm:pl-8" : ""}`}
-              >
-                <p className="m-0 text-[1.0625rem] leading-[1.5] text-[var(--h-muted)]">
-                  <span className="figure mr-1.5 text-[1.75rem] font-semibold leading-none text-[var(--h-ink)]">{o.figure}</span>
-                  {o.href ? <External href={o.href}>{o.text}</External> : o.text}
-                </p>
-                <span className="mono">{o.source}</span>
-              </li>
-            ))}
-          </motion.ul>
-
-          <Section id="experience" title="Experience">
-            <ol className="m-0 list-none p-0">
-              {jobs.map((job, i) => {
-                const isOpen = open === i;
-                const current = job.period.includes("Present");
-                return (
-                  <li key={`${job.company}-${job.period}`} className="border-b border-[var(--h-line)] first:border-t">
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-controls={`job-${i}`}
-                      onClick={() => setOpen(isOpen ? -1 : i)}
-                      className="group grid w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-x-6 gap-y-1 py-5 text-left md:grid-cols-[10rem_minmax(0,1fr)_auto]"
-                    >
-                      <span className="mono order-2 col-span-2 flex items-center gap-2 md:order-none md:col-span-1 md:pt-[3px]">
-                        {current && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--h-accent)]" />}
-                        {job.period.replace("Present", "Now")}
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block font-medium">
-                          {job.title} <span className="text-[var(--h-muted)]">· {job.company}</span>
-                        </span>
-                        <span className="mt-1 block text-[0.9375rem] text-[var(--h-muted)]">{job.description}</span>
-                      </span>
-                      <Plus
-                        size={18}
-                        aria-hidden="true"
-                        className={`mt-1 text-[var(--h-meta)] transition-transform duration-300 group-hover:text-[var(--h-ink)] ${isOpen ? "rotate-45" : ""}`}
-                      />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          id={`job-${i}`}
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease }}
-                          className="overflow-hidden"
-                        >
-                          <ul className="m-0 list-none space-y-2.5 pb-6 pl-0 md:pl-[11.5rem] md:pr-10">
-                            {job.highlights.map((h) => (
-                              <li key={h} className="relative pl-4 text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2 before:bg-[var(--h-meta)]">
-                                {h}
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                );
-              })}
-            </ol>
-            <p className="mt-6 text-[0.9375rem]">
-              <Link to="/experience" className="text-link">Full experience and skills</Link>
-            </p>
-          </Section>
-
-          <Section id="outside" title="Outside product">
-            <p className="m-0 max-w-[36rem] text-[1.0625rem] leading-[1.65] text-[var(--h-muted)]">
-              I write and produce music and shoot photographs and film. It is where I practise the craft, taste and
-              storytelling I bring to product work.
-            </p>
-
-            <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-10">
-              <div>
-                <h3 className="mb-4 text-[0.9375rem] font-semibold">
-                  Music <span className="font-normal text-[var(--h-muted)]">on SoundCloud</span>
-                </h3>
-                <ul className="m-0 list-none border-t border-[var(--h-line)] p-0">
-                  {tracks.slice(0, 5).map((t) => (
-                    <li key={t.url} className="border-b border-[var(--h-line)]">
-                      <a
-                        href={t.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-4 py-3 no-underline transition-colors hover:bg-[var(--h-hover)]"
-                      >
-                        <span className="flex-1 font-medium">{t.title}</span>
-                        <ArrowUpRight size={14} aria-hidden="true" className="text-[var(--h-meta)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[0.9375rem]">
-                  {streamingServices.map((s) => (
-                    <External key={s.name} href={s.url}>{s.name}</External>
-                  ))}
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-4 text-[0.9375rem] font-semibold">Photography and film</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  {photos.slice(2, 8).map((p) => (
-                    <Link key={p.title} to="/visual-arts" className="photo-tile block overflow-hidden rounded-md bg-[var(--h-hover)]">
-                      <img src={p.url} alt={p.title} loading="lazy" className="aspect-square w-full object-cover" />
-                    </Link>
-                  ))}
-                </div>
-                <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[0.9375rem]">
-                  <Link to="/visual-arts" className="text-link">All visual work</Link>
-                  <External href={IMDB}>Film on IMDb</External>
-                </p>
-              </div>
-            </div>
-          </Section>
-
-          <ContactSection />
-    </SiteShell>
+const CraftLink = ({ label, meta, to, href }: { label: string; meta: string; to?: string; href?: string }) => {
+  const inner = (
+    <>
+      <span className="serif text-[1.375rem] md:text-[1.5rem]">{label}</span>
+      <span className="mono text-[0.75rem] text-[var(--h-muted)] md:text-[0.8125rem]">
+        {meta} <span className={href ? "arrow arrow-out" : "arrow"} aria-hidden="true">{href ? "↗" : "→"}</span>
+      </span>
+    </>
+  );
+  const cls = "row-link flex min-h-[52px] items-center justify-between border-b border-[var(--h-line)] no-underline";
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}<span className="sr-only"> (opens in a new tab)</span></a>
+  ) : (
+    <Link to={to!} className={cls}>{inner}</Link>
   );
 };
+
+const Index = () => (
+  <SiteShell title="Karim Abousleiman · Senior Product Manager, Paris">
+    <section aria-labelledby="hero-title" className="flex flex-col items-center pt-8 text-center md:pt-14">
+      <h1 id="hero-title" className="m-0 flex flex-col items-center font-normal">
+        <span className="intro-first text-[5rem] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[10.5rem]">KARIM</span>
+        <span className="intro-last serif text-[3.875rem] leading-[0.95] tracking-[-0.02em] md:text-[11rem] md:leading-[0.9]">Abousleiman</span>
+      </h1>
+      <p className="intro-role mono m-0 mt-5 text-[0.8125rem] tracking-[0.03em] md:mt-8 md:text-[0.9375rem]">
+        SENIOR PRODUCT MANAGER · TF1+ · PARIS
+      </p>
+      <p className="intro-tag serif m-0 mt-2.5 max-w-[40rem] text-[1.25rem] italic leading-[1.3] text-[var(--h-muted)] md:mt-3.5 md:text-[1.625rem]">
+        Builds products by day, writes music and shoots film by night.
+      </p>
+      <img
+        src={portrait}
+        alt="Karim playing a Telecaster-style electric guitar in a living room, black and white"
+        width={864}
+        height={1184}
+        className="intro-portrait mono-photo mt-6 h-[200px] w-full object-cover object-[30%_30%] md:mt-10 md:h-[250px] md:w-[200px] md:object-[30%_center]"
+      />
+    </section>
+
+    <section aria-labelledby="product-title" className="pt-12 md:pt-28">
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
+        <h2 id="product-title" className="m-0 max-w-[49rem] text-[1.75rem] font-semibold leading-[1.1] tracking-[-0.02em] md:text-[3rem] md:leading-[1.05] md:tracking-[-0.03em]">
+          Eight years growing products people come back to.
+        </h2>
+        <Link to="/experience" className="row-link mono hidden shrink-0 py-3 no-underline md:block">
+          FULL EXPERIENCE <span className="arrow" aria-hidden="true">→</span>
+        </Link>
+      </div>
+
+      <ul className="m-0 mt-5 list-none border-t border-[var(--h-line-strong)] p-0 md:mt-10">
+        {results.map((r) => (
+          <li
+            key={r.company}
+            className="grid gap-1.5 border-b border-[var(--h-line)] py-5 md:grid-cols-[220px_minmax(0,1fr)_400px] md:items-start md:gap-10 md:py-[30px]"
+          >
+            <span className="flex items-baseline justify-between">
+              <span className="text-[1.25rem] font-semibold tracking-[-0.02em] md:text-[1.875rem]">{r.company}</span>
+              <span className="mono text-[0.75rem] text-[var(--h-muted)] md:hidden">{r.years}</span>
+            </span>
+            <span className="flex flex-col gap-1">
+              <span className="text-[0.875rem] text-[var(--h-muted)] md:text-base">
+                {r.role}
+                <span className="mono ml-2.5 hidden text-[var(--h-meta)] md:inline">{r.years}</span>
+              </span>
+              <span className="text-[0.875rem] leading-[1.5] text-[var(--h-body)] md:text-[0.9375rem]">{r.scope}</span>
+            </span>
+            <span className="mt-1.5 md:mt-0 md:text-right">
+              <span className="figure text-[2.25rem] font-semibold leading-none md:text-[3.5rem]">{r.figure}</span>
+              <span className="ml-1.5 text-[0.9375rem] text-[var(--h-muted)] md:ml-2 md:text-base">{r.label}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="m-0 mt-5 text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-7 md:text-base">
+        Myki was a{" "}
+        <a href={PCMAG} target="_blank" rel="noopener noreferrer" className="text-link text-[var(--h-ink)]">PCMag Editors' Choice in 2018<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>{" "}
+        and launched on the{" "}
+        <a href={TECHCRUNCH} target="_blank" rel="noopener noreferrer" className="text-link text-[var(--h-ink)]">TechCrunch Disrupt SF stage<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a>.
+      </p>
+      <Link
+        to="/experience"
+        className="row-link mono mt-4 flex h-12 items-center justify-between border-y border-[var(--h-line)] no-underline md:hidden"
+      >
+        FULL EXPERIENCE <span className="arrow" aria-hidden="true">→</span>
+      </Link>
+    </section>
+
+    <section aria-labelledby="craft-title" className="dusk mt-[72px] grid gap-6 py-14 md:mt-[136px] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-end md:gap-16 md:py-24">
+      <div>
+        <h2 id="craft-title" className="serif m-0 text-[2.5rem] leading-[1.02] md:text-[3.25rem]">Same craft, different medium.</h2>
+        <p className="m-0 mt-3.5 max-w-[26rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-5 md:text-base">
+          I release music as kimbü, take photographs and have credited film work. It's where I practise the craft,
+          taste and storytelling I bring to product work.
+        </p>
+        <div className="mt-6 border-t border-[var(--h-line)] md:mt-7">
+          <CraftLink label={`Listen to ${tracks[0].title}`} meta="MUSIC" to="/music" />
+          <CraftLink label="Photographs" meta="IMAGE" to="/visual-arts" />
+          <CraftLink label="Film credits" meta="IMDB" href={IMDB} />
+        </div>
+      </div>
+      <figure className="m-0">
+        <div className="overflow-hidden">
+          <img src={beirut.url} alt="Under Beirut's Sky: golden sunset clouds over the sea and the dark Beirut coastline" loading="lazy" className="block aspect-[4/3] w-full object-cover" />
+        </div>
+        <figcaption className="mono mt-2.5 text-[0.75rem] text-[var(--h-muted)]">Under Beirut's Sky</figcaption>
+      </figure>
+    </section>
+
+    <Closing variant="product" />
+  </SiteShell>
+);
 
 export default Index;

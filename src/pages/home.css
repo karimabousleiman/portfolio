@@ -1,11 +1,16 @@
 .home {
-  --h-bg: #fbfbfa;
-  --h-ink: #17181a;
-  --h-muted: #5c5e63;
-  --h-meta: #6b6d72;
-  --h-line: #e6e6e2;
-  --h-hover: #f2f2ef;
-  --h-accent: #e0531c;
+  /* Warm charcoal and cream, with a midnight "dusk": the blue hour above the sunset photographs. */
+  --h-bg: #15110e;
+  --h-dusk: #141c33;
+  --h-ink: #f5ece1;
+  --h-muted: #d0c4b5;
+  --h-body: #bfb3a5;
+  --h-meta: #a3978a;
+  --h-line: #2f2823;
+  --h-line-strong: #42382f;
+  --h-control: #7a6c60;
+  --h-accent: #ff8a5c;
+  --h-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   min-height: 100vh;
   background: var(--h-bg);
@@ -15,64 +20,80 @@
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   caret-color: var(--h-accent);
-  scrollbar-color: #c9c9c4 var(--h-bg);
+  scrollbar-color: var(--h-line-strong) var(--h-bg);
 }
 
 .home ::selection {
-  background: rgb(224 83 28 / 0.18);
+  background: rgb(255 138 92 / 0.3);
   color: var(--h-ink);
 }
 
 .home :focus-visible {
   outline: 2px solid var(--h-accent);
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
 .home a {
+  color: inherit;
   text-underline-offset: 0.22em;
   text-decoration-thickness: 1px;
+}
+
+.home .serif {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-weight: 400;
 }
 
 .home .mono {
   font-family: "Fragment Mono", ui-monospace, monospace;
   font-size: 0.8125rem;
   letter-spacing: 0;
-  color: var(--h-meta);
   font-variant-numeric: tabular-nums;
 }
 
 .home .figure {
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
 }
 
 .home .text-link {
-  color: var(--h-ink);
   text-decoration: underline;
-  text-decoration-color: rgb(107 109 114 / 0.45);
-  transition: text-decoration-color 160ms ease-out;
+  text-decoration-color: var(--h-accent);
+  transition: text-decoration-color 150ms ease-out;
 }
 
 .home .text-link:hover {
-  text-decoration-color: var(--h-accent);
+  text-decoration-color: var(--h-ink);
+}
+
+.home .nav-link {
+  text-decoration: none;
+  background: linear-gradient(var(--h-accent), var(--h-accent)) no-repeat left bottom / 0 1.5px;
+  padding-bottom: 4px;
+  transition: background-size 250ms var(--h-ease), color 150ms ease-out;
+}
+
+.home .nav-link:hover,
+.home .nav-link[aria-current="page"] {
+  background-size: 100% 1.5px;
 }
 
 .home .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  height: 2.5rem;
-  padding: 0 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 3.25rem;
+  padding: 0 1.375rem;
+  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
   text-decoration: none;
-  transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out, transform 100ms ease-out;
 }
 
 .home .btn:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
 }
 
 .home .btn-primary {
@@ -81,40 +102,108 @@
 }
 
 .home .btn-primary:hover {
-  background: #2c2e31;
+  background: #ffffff;
 }
 
 .home .btn-secondary {
-  border: 1px solid var(--h-line);
+  border: 1px solid var(--h-control);
   color: var(--h-ink);
-  background: #fff;
+  background: transparent;
 }
 
 .home .btn-secondary:hover {
-  border-color: #cfcfca;
-  background: var(--h-hover);
+  border-color: var(--h-ink);
 }
 
-.home .photo-tile img {
-  transform: scale(1.14);
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+.home .btn-done {
+  border-color: var(--h-accent);
+  color: var(--h-accent);
 }
 
-.home .photo-tile:hover img {
-  transform: scale(1.18);
+.home .arrow {
+  display: inline-block;
+  transition: transform 200ms var(--h-ease);
 }
 
-/* Full-bleed warm band behind the hero, without breaking out of the container. */
-.home .hero-band {
-  --band: #f8eee6;
-  background: var(--band);
-  box-shadow: 0 0 0 100vmax var(--band);
+.home .row-link:hover .arrow,
+.home .row-link:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+.home .row-link:hover .arrow-out,
+.home .row-link:focus-visible .arrow-out {
+  transform: translate(3px, -3px);
+}
+
+/* Opening: the name racks into focus, the portrait develops like a print. */
+@keyframes h-focus {
+  from { filter: blur(12px); opacity: 0.35; }
+  to { filter: blur(0); opacity: 1; }
+}
+
+@keyframes h-settle {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+
+@keyframes h-develop {
+  from { filter: url(#dusk-tone) brightness(0.2); }
+  to { filter: url(#dusk-tone) brightness(1); }
+}
+
+.home .intro-first { animation: h-focus 600ms var(--h-ease) both; }
+.home .intro-last { animation: h-focus 900ms var(--h-ease) 280ms both; }
+.home .intro-role { animation: h-settle 500ms var(--h-ease) 650ms both; }
+.home .intro-tag { animation: h-settle 500ms var(--h-ease) 760ms both; }
+.home .intro-portrait { animation: h-develop 1400ms var(--h-ease) 500ms both; }
+
+/* Portraits print in the dusk duotone: midnight shadows, blue-violet mids, cream highlights. */
+.home .mono-photo {
+  filter: url(#dusk-tone);
+}
+
+/* A full-bleed midnight band that owns one region per page without breaking the container. */
+.home .dusk {
+  background: var(--h-dusk);
+  box-shadow: 0 0 0 100vmax var(--h-dusk);
   clip-path: inset(0 -100vmax);
 }
 
-.home .mark {
-  background: linear-gradient(transparent 60%, rgb(224 83 28 / 0.24) 60%, rgb(224 83 28 / 0.24) 92%, transparent 92%);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding: 0 0.06em;
+.home .dusk-fade {
+  background: linear-gradient(90deg, var(--h-dusk) 0%, transparent 40%);
+}
+
+.home .menu-panel {
+  animation: h-menu 300ms var(--h-ease) both;
+}
+
+@keyframes h-menu {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+.home .photo-tile img {
+  transition: transform 500ms var(--h-ease);
+}
+
+.home .photo-tile:hover img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home .intro-first,
+  .home .intro-last,
+  .home .intro-role,
+  .home .intro-tag {
+    animation: h-settle 300ms ease-out both;
+  }
+
+  .home .intro-portrait { animation: none; }
+  .home .menu-panel { animation: h-settle 150ms ease-out both; }
+  .home .row-link:hover .arrow,
+  .home .row-link:focus-visible .arrow,
+  .home .row-link:hover .arrow-out,
+  .home .row-link:focus-visible .arrow-out,
+  .home .photo-tile:hover img { transform: none; }
+  .home .btn:active { transform: none; }
 }

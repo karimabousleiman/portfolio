@@ -1,19 +1,26 @@
-import SiteShell, { ContactSection, External, IMDB, PageHeader, Section } from "@/components/SiteShell";
+import SiteShell, { Closing, IMDB, PageTitle } from "@/components/SiteShell";
 import VisualArtsSection, { FilmEmbed } from "@/components/VisualArtsSection";
 
 const VisualArts = () => (
-  <SiteShell>
-    <PageHeader title="Visual arts" lead="Capturing moments and telling stories through the lens." />
-    <Section id="photography" title="Photography">
+  <SiteShell title="Photography and film · Karim Abousleiman">
+    <PageTitle title="Image" lead="Capturing moments and telling stories through the lens. Photographs, and film work credited on IMDb." />
+    <h2 className="sr-only">Photographs</h2>
+    <div className="pt-0">
       <VisualArtsSection />
-    </Section>
-    <Section id="film" title="Film">
-      <FilmEmbed />
-      <p className="mt-4 text-[0.9375rem]">
-        <External href={IMDB}>View on IMDb</External>
-      </p>
-    </Section>
-    <ContactSection />
+    </div>
+
+    <section aria-labelledby="film-title" className="grid gap-4 pb-20 pt-14 md:grid-cols-[200px_minmax(0,1fr)] md:gap-10 md:pb-28 md:pt-24">
+      <h2 id="film-title" className="mono m-0 font-normal text-[var(--h-meta)]">FILM</h2>
+      <div>
+        <FilmEmbed />
+        <a href={IMDB} target="_blank" rel="noopener noreferrer" className="row-link mono mt-4 flex h-12 items-center justify-between border-y border-[var(--h-line)] no-underline">
+          CREDITS ON IMDB <span className="arrow arrow-out" aria-hidden="true">↗</span>
+          <span className="sr-only">(opens in a new tab)</span>
+        </a>
+      </div>
+    </section>
+
+    <Closing variant="something" />
   </SiteShell>
 );
 
