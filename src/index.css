@@ -1,49 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 40 20% 92%;
+    --background: 210 10% 8%;
+    --foreground: 36 24% 94%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 40 20% 92%;
+    --card: 210 8% 12%;
+    --card-foreground: 36 24% 94%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 40 20% 92%;
+    --popover: 210 8% 12%;
+    --popover-foreground: 36 24% 94%;
 
-    --primary: 38 90% 55%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 30 34% 58%;
+    --primary-foreground: 20 10% 8%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 40 15% 80%;
+    --secondary: 210 8% 15%;
+    --secondary-foreground: 36 24% 94%;
 
-    --muted: 220 15% 13%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 210 8% 17%;
+    --muted-foreground: 32 10% 70%;
 
-    --accent: 38 90% 55%;
-    --accent-foreground: 220 20% 7%;
+    --accent: 36 18% 72%;
+    --accent-foreground: 210 10% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 38 90% 55%;
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
+    --ring: 30 34% 58%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 38 90% 55%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 38 90% 55%;
+    --sidebar-background: 210 8% 12%;
+    --sidebar-foreground: 36 24% 94%;
+    --sidebar-primary: 30 34% 58%;
+    --sidebar-primary-foreground: 20 10% 8%;
+    --sidebar-accent: 210 8% 15%;
+    --sidebar-accent-foreground: 36 24% 94%;
+    --sidebar-border: 220 10% 22%;
+    --sidebar-ring: 30 34% 58%;
   }
 }
 
@@ -52,8 +50,40 @@
     @apply border-border;
   }
 
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: hsl(var(--background));
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
+    background:
+      radial-gradient(circle at top, rgba(180, 144, 110, 0.12), transparent 28%),
+      #0b0d10;
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    opacity: 0.16;
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #root {
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -64,38 +94,38 @@
   p, li, span, a {
     text-wrap: pretty;
   }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.32);
+    color: hsl(var(--foreground));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: "Georgia", "Times New Roman", serif;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-[length:200%_auto];
-    background-image: linear-gradient(
-      90deg,
-      hsl(var(--primary)),
-      hsl(38 100% 75%),
-      hsl(var(--primary)),
-      hsl(38 100% 75%),
-      hsl(var(--primary))
-    );
-    animation: shimmer-gradient 6s linear infinite;
+    color: hsl(var(--primary));
   }
 
   .text-gradient-shimmer {
-    @apply bg-clip-text text-transparent bg-[length:200%_auto];
-    background-image: linear-gradient(
-      90deg,
-      hsl(var(--primary)),
-      #C4B5FD,
-      hsl(var(--primary)),
-      #C4B5FD,
-      hsl(var(--primary))
-    );
-    animation: shimmer-gradient 6s linear infinite;
-  }
-
-  @keyframes shimmer-gradient {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
+    color: hsl(var(--primary));
   }
 
   .section-padding {

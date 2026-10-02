@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Space Grotesk", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        heading: ["SF Pro Display", "Segoe UI", "sans-serif"],
+        display: ["Georgia", "Times New Roman", "serif"],
+        body: ["Inter", "Segoe UI", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

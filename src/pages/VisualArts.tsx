@@ -1,23 +1,20 @@
-import Navbar from "@/components/Navbar";
-import PageHero from "@/components/PageHero";
-import VisualArtsSection from "@/components/VisualArtsSection";
-import Footer from "@/components/Footer";
-import { Camera } from "lucide-react";
+import SiteShell, { ContactSection, External, IMDB, PageHeader, Section } from "@/components/SiteShell";
+import VisualArtsSection, { FilmEmbed } from "@/components/VisualArtsSection";
 
-const VisualArts = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <PageHero
-        icon={<Camera size={28} className="text-primary" />}
-        accent="Photography & Cinema"
-        title="Visual Arts"
-        subtitle="Capturing moments and telling stories through the lens."
-      />
+const VisualArts = () => (
+  <SiteShell>
+    <PageHeader title="Visual arts" lead="Capturing moments and telling stories through the lens." />
+    <Section id="photography" title="Photography">
       <VisualArtsSection />
-      <Footer />
-    </div>
-  );
-};
+    </Section>
+    <Section id="film" title="Film">
+      <FilmEmbed />
+      <p className="mt-4 text-[0.9375rem]">
+        <External href={IMDB}>View on IMDb</External>
+      </p>
+    </Section>
+    <ContactSection />
+  </SiteShell>
+);
 
 export default VisualArts;

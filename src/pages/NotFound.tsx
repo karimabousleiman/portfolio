@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import SiteShell from "@/components/SiteShell";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,15 +10,17 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
-    </div>
+    <SiteShell>
+      <section className="py-28 md:py-40">
+        <h1 className="text-[2.375rem] font-semibold leading-[1.08] tracking-[-0.035em] md:text-[3.125rem]">Page not found</h1>
+        <p className="mt-4 text-[1.0625rem] text-[var(--h-muted)]">
+          Nothing lives at <span className="mono">{location.pathname}</span>.
+        </p>
+        <p className="mt-8">
+          <Link to="/" className="btn btn-primary">Back to home</Link>
+        </p>
+      </section>
+    </SiteShell>
   );
 };
 

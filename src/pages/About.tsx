@@ -1,22 +1,14 @@
-import Navbar from "@/components/Navbar";
-import PageHero from "@/components/PageHero";
+import SiteShell, { ContactSection, PageHeader, Section } from "@/components/SiteShell";
 import AboutSection from "@/components/AboutSection";
-import Footer from "@/components/Footer";
-import { User } from "lucide-react";
 
-const About = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <PageHero
-        title="About Me"
-        subtitle="Tech geek, music lover, and relentless problem solver."
-        compact
-      />
+const About = () => (
+  <SiteShell>
+    <PageHeader title="About" lead="Tech geek, music lover, and relentless problem solver." />
+    <Section id="story" title="Story">
       <AboutSection />
-      <Footer />
-    </div>
-  );
-};
+    </Section>
+    <ContactSection />
+  </SiteShell>
+);
 
 export default About;

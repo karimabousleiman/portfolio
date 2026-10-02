@@ -1,25 +1,30 @@
-import Navbar from "@/components/Navbar";
-import PageHero from "@/components/PageHero";
+import { Link } from "react-router-dom";
+import SiteShell, { ContactSection, PageHeader, Section } from "@/components/SiteShell";
 import ExperienceSection from "@/components/ExperienceSection";
-import SkillsSection from "@/components/SkillsSection";
-import Footer from "@/components/Footer";
-import { Briefcase } from "lucide-react";
+import { LanguagesList, StrengthsList } from "@/components/SkillsSection";
 
-const Experience = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <PageHero
-        icon={<Briefcase size={28} className="text-primary" />}
-        accent="Career Journey"
-        title="Experience"
-        subtitle="From scaling a password manager to 1M users, to driving engagement on France's biggest streaming platform."
-      />
+const Experience = () => (
+  <SiteShell>
+    <PageHeader
+      title="Experience"
+      lead="Eight years in product, from scaling a password manager past a million daily users to driving engagement at TF1+."
+    />
+    <Section id="roles" title="Roles">
       <ExperienceSection />
-      <SkillsSection />
-      <Footer />
-    </div>
-  );
-};
+    </Section>
+    <Section id="strengths" title="Strengths">
+      <StrengthsList />
+    </Section>
+    <Section id="languages" title="Languages">
+      <div className="max-w-[28rem]">
+        <LanguagesList />
+      </div>
+      <p className="mt-8 text-[0.9375rem]">
+        <Link to="/about" className="text-link">More about me</Link>
+      </p>
+    </Section>
+    <ContactSection />
+  </SiteShell>
+);
 
 export default Experience;

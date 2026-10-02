@@ -1,18 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, Film, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback, useEffect } from "react";
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const photos = [
+export const photos = [
   {
     slug: "01-176335991",
     title: "01",
@@ -79,77 +69,22 @@ const VisualArtsSection = () => {
   }, [lightboxIndex, closeLightbox, goNext, goPrev]);
 
   return (
-    <section id="visual-arts" className="pt-8 md:pt-12 pb-20 md:pb-28 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="space-y-12"
-      >
-        {/* Photography */}
-        <motion.div variants={item}>
-          <div className="flex items-center gap-2 mb-6">
-            <Camera size={20} className="text-primary" />
-            <h3 className="font-heading text-xl font-semibold">Photography</h3>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((photo, index) => (
-              <button
-                key={photo.slug}
-                onClick={() => setLightboxIndex(index)}
-                className="glass-card rounded-xl overflow-hidden group block hover:ring-1 hover:ring-primary/30 transition-all text-left cursor-pointer"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={photo.url}
-                    alt={photo.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-3 flex items-center justify-between">
-                  <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate">
-                    {photo.title}
-                  </p>
-                  <ExternalLink size={14} className="text-muted-foreground/50 shrink-0" />
-                </div>
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Cinema */}
-        <motion.div variants={item}>
-          <div className="flex items-center gap-2 mb-6">
-            <Film size={20} className="text-primary" />
-            <h3 className="font-heading text-xl font-semibold">Cinema</h3>
-          </div>
-          <div className="glass-card p-2 rounded-xl overflow-hidden">
-            <div className="aspect-video w-full">
-              <iframe
-                src="https://www.youtube.com/embed/Ntqdo39yhVQ"
-                title="Cinema video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-              />
-            </div>
-            <div className="p-3 flex items-center gap-2">
-              <a
-                href="https://www.imdb.com/title/tt11426640/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
-              >
-                <ExternalLink size={14} />
-                View on IMDb
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+    <>
+      <ul className="m-0 grid list-none grid-cols-2 gap-x-3 gap-y-6 p-0 lg:grid-cols-3">
+        {photos.map((photo, index) => (
+          <li key={photo.slug} className="min-w-0">
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(index)}
+              aria-label={`Open ${photo.title}`}
+              className="photo-tile block w-full overflow-hidden rounded-lg bg-[var(--h-hover)]"
+            >
+              <img src={photo.url} alt={photo.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+            </button>
+            <p className="mt-2 truncate text-[0.9375rem]">{photo.title}</p>
+          </li>
+        ))}
+      </ul>
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -165,7 +100,7 @@ const VisualArtsSection = () => {
             {/* Close button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 p-2"
+              aria-label="Close" className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 p-2"
             >
               <X size={28} />
             </button>
@@ -173,6 +108,7 @@ const VisualArtsSection = () => {
             {/* Prev */}
             <button
               onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              aria-label="Previous photo"
               className="absolute left-4 text-white/70 hover:text-white transition-colors z-10 p-2"
             >
               <ChevronLeft size={36} />
@@ -188,12 +124,13 @@ const VisualArtsSection = () => {
               src={photos[lightboxIndex].url}
               alt={photos[lightboxIndex].title}
               onClick={(e) => e.stopPropagation()}
-              className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+              className="max-h-[85vh] max-w-[90vw] object-contain"
             />
 
             {/* Next */}
             <button
               onClick={(e) => { e.stopPropagation(); goNext(); }}
+              aria-label="Next photo"
               className="absolute right-4 text-white/70 hover:text-white transition-colors z-10 p-2"
             >
               <ChevronRight size={36} />
@@ -206,8 +143,21 @@ const VisualArtsSection = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 };
 
 export default VisualArtsSection;
+
+export const FilmEmbed = () => (
+  <div className="overflow-hidden rounded-lg border border-[var(--h-line)] bg-black">
+    <iframe
+      src="https://www.youtube.com/embed/Ntqdo39yhVQ"
+      title="Film by Karim Abousleiman"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="block aspect-video w-full"
+    />
+  </div>
+);
