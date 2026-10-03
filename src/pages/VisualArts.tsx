@@ -3,11 +3,11 @@ import VisualArtsSection, { FilmEmbed } from "@/components/VisualArtsSection";
 
 const VisualArts = () => (
   <SiteShell title="Photography and film · Karim Abousleiman">
-    <PageTitle title="Image" lead="Capturing moments and telling stories through the lens. Photographs, and film work credited on IMDb." />
-    <h2 className="sr-only">Photographs</h2>
-    <div className="pt-0">
+    <PageTitle title="Image" lead="Photographs from Beirut to Venice, and film work credited on IMDb." />
+    <section aria-labelledby="photos-title">
+      <h2 id="photos-title" className="sr-only">Photographs</h2>
       <VisualArtsSection />
-    </div>
+    </section>
 
     <section aria-labelledby="film-title" className="grid gap-4 pb-20 pt-14 md:grid-cols-[200px_minmax(0,1fr)] md:gap-10 md:pb-28 md:pt-24">
       <h2 id="film-title" className="mono m-0 font-normal text-[var(--h-meta)]">FILM</h2>

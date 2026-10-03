@@ -10,7 +10,9 @@ import VisualArts from "./pages/VisualArts";
 import Music from "./pages/Music";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import PortfolioPrototypePage from "./prototypes/PortfolioPrototypePage";
+import { lazy, Suspense } from "react";
+
+const PortfolioPrototypePage = lazy(() => import("./prototypes/PortfolioPrototypePage"));
 
 const queryClient = new QueryClient();
 
@@ -27,7 +29,7 @@ const App = () => (
           <Route path="/visual-arts" element={<VisualArts />} />
           <Route path="/music" element={<Music />} />
           <Route path="/about" element={<About />} />
-          <Route path="/prototype" element={<PortfolioPrototypePage />} />
+          <Route path="/prototype" element={<Suspense fallback={null}><PortfolioPrototypePage /></Suspense>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

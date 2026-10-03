@@ -65,6 +65,17 @@ export function useModal<T extends HTMLElement>(open: boolean, onClose: () => vo
   return ref;
 }
 
+/** Scroll to the contact band and move keyboard focus there, after any overlay has handed focus back. */
+const goToContact = (e: React.MouseEvent) => {
+  const target = document.getElementById("contact-title");
+  if (!target) return;
+  e.preventDefault();
+  window.setTimeout(() => {
+    target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    target.focus({ preventScroll: true });
+  }, 60);
+};
+
 const parisTime = () =>
   new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit" }).format(new Date());
 
@@ -76,7 +87,7 @@ const ParisClock = () => {
   }, []);
   return (
     <span className="mono">
-      PARIS · <time aria-label={`Paris time ${time}`}>{time}</time>
+      PARIS · <time>{time}</time>
     </span>
   );
 };
@@ -115,7 +126,7 @@ const CopyEmail = () => {
 /** The closing contact band every page ends on. "product" speaks to hiring managers. */
 export const Closing = ({ variant = "product" }: { variant?: "product" | "something" }) => (
   <section id="contact" aria-labelledby="contact-title" className="scroll-mt-16 border-t border-[var(--h-line)] pb-16 pt-16 md:pb-20 md:pt-24">
-    <h2 id="contact-title" className="serif m-0 text-[3rem] leading-none md:text-[4.5rem]">
+    <h2 id="contact-title" tabIndex={-1} className="serif m-0 text-[3rem] leading-none md:text-[4.5rem]">
       {variant === "product" ? "Let's talk about " : "Let's make "}
       <em className="text-[var(--h-accent)]">{variant === "product" ? "your product" : "something"}</em>.
     </h2>
@@ -163,7 +174,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
   return (
     <MotionConfig reducedMotion="user">
       <div className="home">
-        <header className="sticky top-0 z-20 border-b border-[var(--h-line)] bg-[rgb(15_15_16/0.88)] backdrop-blur-md md:border-transparent md:bg-[var(--h-bg)] md:backdrop-blur-none">
+        <header className="sticky top-0 z-20 border-b border-[var(--h-line)] bg-[color-mix(in_srgb,var(--h-bg)_88%,transparent)] backdrop-blur-md md:border-transparent md:bg-[var(--h-bg)] md:backdrop-blur-none">
           <div className="mx-auto flex h-14 max-w-[1280px] items-center justify-between px-4 md:h-16 md:px-12">
             {brand}
             <nav aria-label="Main" className="hidden md:block">
@@ -174,7 +185,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
                   </li>
                 ))}
                 <li>
-                  <a href="#contact" className="mono nav-link text-[var(--h-accent)]">CONTACT</a>
+                  <a href="#contact" onClick={goToContact} className="mono nav-link text-[var(--h-accent)]">CONTACT</a>
                 </li>
               </ul>
             </nav>
@@ -209,7 +220,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
                   </li>
                 ))}
                 <li className="border-b border-[var(--h-line)]">
-                  <a href="#contact" onClick={closeMenu} className="flex items-baseline justify-between py-3.5 no-underline">
+                  <a href="#contact" onClick={(e) => { closeMenu(); goToContact(e); }} className="flex items-baseline justify-between py-3.5 no-underline">
                     <em className="serif text-[3.25rem] leading-none text-[var(--h-accent)]">Contact</em>
                     <span className="mono text-[0.75rem] text-[var(--h-meta)]" aria-hidden="true">05</span>
                   </a>

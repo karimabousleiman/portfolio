@@ -66,8 +66,9 @@
 
 .home .nav-link {
   text-decoration: none;
+  display: inline-block;
   background: linear-gradient(var(--h-accent), var(--h-accent)) no-repeat left bottom / 0 1.5px;
-  padding-bottom: 4px;
+  padding: 12px 0 4px;
   transition: background-size 250ms var(--h-ease), color 150ms ease-out;
 }
 
@@ -155,6 +156,11 @@
 .home .intro-tag { animation: h-settle 500ms var(--h-ease) 760ms both; }
 .home .intro-portrait { animation: h-develop 1400ms var(--h-ease) 500ms both; }
 
+/* Company logos print in the page's off-white so three different brands sit as one row. */
+.home .logo-mono {
+  filter: brightness(0) invert(0.94);
+}
+
 .home .mono-photo {
   filter: grayscale(1) contrast(1.1);
 }
@@ -189,6 +195,8 @@
   }
 
   .home .intro-portrait { animation: none; }
+  .home .nav-link { transition: none; }
+
   .home .menu-panel { animation: h-settle 150ms ease-out both; }
   .home .row-link:hover .arrow,
   .home .row-link:focus-visible .arrow,

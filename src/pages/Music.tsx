@@ -17,7 +17,7 @@ const Music = () => (
         <p className="mono m-0 text-[var(--h-meta)]">RELEASED AS KIMBÜ</p>
         <h1 id="music-title" className="serif m-0 mt-2 text-[4.5rem] leading-[0.9] tracking-[-0.02em] md:mt-3 md:text-[10.5rem]">Music</h1>
         <p className="m-0 mt-4 max-w-[30rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-6 md:text-[1.125rem]">
-          Multi-instrumentalist and jazz enthusiast with a passion for improvisation. Here's what I've been working on.
+          Jazz-rooted tracks I write and play across more than ten instruments.
         </p>
         <ul className="m-0 mt-6 grid list-none grid-cols-2 gap-2 p-0 md:mt-8 md:flex md:flex-wrap md:gap-2.5">
           {streamingServices.map((s) => (

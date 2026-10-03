@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import SiteShell from "@/components/SiteShell";
+import SiteShell, { Closing } from "@/components/SiteShell";
 
 const NotFound = () => {
   const { pathname } = useLocation();
@@ -12,8 +12,12 @@ const NotFound = () => {
         <p className="m-0 mt-6 text-base text-[var(--h-muted)] md:text-[1.125rem]">
           Nothing lives at <span className="mono text-[var(--h-ink)]">{pathname}</span>.
         </p>
-        <Link to="/" className="btn btn-primary mt-8">BACK TO HOME</Link>
+        <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+          <Link to="/" className="btn btn-primary">BACK TO HOME</Link>
+          <Link to="/experience" className="btn btn-secondary">SEE PRODUCT WORK</Link>
+        </div>
       </section>
+      <Closing variant="product" />
     </SiteShell>
   );
 };

@@ -1,23 +1,26 @@
+import tf1Logo from "@/assets/work/tf1plus-logo.svg";
+import garantmeLogo from "@/assets/work/garantme-logo.svg";
+import mykiLogo from "@/assets/work/myki-logo.png";
+
 interface Job {
   title: string;
   company: string;
   location: string;
   period: string;
-  description: string;
   highlights: string[];
 }
 
+// Each highlight leads with the outcome, then how. Activity without a result was cut.
 export const jobs: Job[] = [
   {
     title: "Senior Product Manager",
     company: "TF1+",
     location: "Boulogne-Billancourt, France",
     period: "Mar 2025 – Present",
-    description: "France's leading multimedia company; focused on the TF1 streaming platform.",
     highlights: [
-      "Led the shift to a product-centric organization, driving a 17% increase in user engagement by instituting rigorous discovery frameworks and cross-functional squad alignment.",
-      "Led the move from tracking only revenue to measuring product health and defining product metrics to guide upper management's decision-making.",
-      "Delivered a 12% increase in first-session watch rates by redesigning the initial user journey and streamlining the path-to-content.",
+      "Raised first-session watch rate 12% by redesigning the first journey and shortening the path to content.",
+      "Replaced revenue-only reporting with product-health metrics for TF1+ leadership.",
+      "Moved the team to a product-led model built on discovery and cross-functional squads.",
     ],
   },
   {
@@ -25,13 +28,11 @@ export const jobs: Job[] = [
     company: "Garantme",
     location: "Paris, France",
     period: "Jan 2022 – Mar 2025",
-    description: "Insurtech that builds and deploys simple and innovative insurance products for real estate professionals.",
     highlights: [
-      "Led a product squad of 11 people, including developers, product managers, product designers and QA.",
-      "Led and set the product process for a team of 4 product managers.",
-      "Boosted user acquisition by 26% by redesigning the onboarding process and enhancing user experience.",
-      "Created and maintained a discovery framework to better integrate Product Discovery within company culture and processes.",
-      "Set up an additional revenue stream through upsell, generating €200k yearly.",
+      "Built an upsell revenue stream worth €200k a year.",
+      "Grew user acquisition 26% by redesigning onboarding.",
+      "Managed 4 PMs and led an 11-person squad of engineers, designers and QA.",
+      "Introduced a discovery framework that made product discovery part of how the company works.",
     ],
   },
   {
@@ -39,12 +40,9 @@ export const jobs: Job[] = [
     company: "Garantme",
     location: "Paris, France",
     period: "Jan 2021 – Jan 2022",
-    description: "Fast-growing insurtech startup offering real estate insurance products as well as digital products to both agents and tenants.",
     highlights: [
-      "Rolled out product changes that increased the conversion rate of the website by 8%.",
-      "Discovered, improved and maintained the product integration between Garantme and key partners across France.",
-      "Launched and grew Garantme's core SaaS product to 10k daily active users in 6 months.",
-      "Assessed and improved the implementation of agile methodologies.",
+      "Launched the core SaaS product for estate agencies and grew it to 10k daily users in six months.",
+      "Raised website conversion 8%.",
     ],
   },
   {
@@ -52,21 +50,61 @@ export const jobs: Job[] = [
     company: "Myki",
     location: "Beirut, Lebanon",
     period: "Apr 2017 – Jul 2020",
-    description: "Offline password manager for consumers, enterprises and Managed Service Providers. PCMag award winner, presented at TechCrunch Disrupt.",
     highlights: [
-      "Worked with a team of 12 engineers through cross-functional processes, growing the product to over 1M DAU in less than 2 years.",
-      "Redesigned product onboarding and developed a new data-driven approach, increasing retention rate by 29%.",
-      "Designed and led entire internal workflow introducing agile methodologies, daily stand-ups, sprint planning and backlog grooming sessions.",
-      "Assessed user feedback and led initiatives for product adjustments to grow user base and customer satisfaction.",
-      "Kick-started customer support department, gathering continuous user feedback increasing positive reviews by 39% QoQ.",
+      "Lifted retention 29% by rebuilding onboarding around usage data.",
+      "Helped grow the product to 1M+ daily users in under two years, working with 12 engineers.",
+      "Designed and ran the team's whole delivery process: sprints, planning, backlog grooming and stand-ups.",
+      "Started the customer support function and used it as a continuous source of user feedback.",
     ],
   },
 ];
 
 /** One headline result per company, used everywhere a role is summarised. */
 export const results = [
-  { company: "TF1+", role: "Senior Product Manager", years: "2025 — NOW", figure: "+17%", label: "user engagement", scope: "Moved leadership from revenue-only reporting to product-health metrics" },
-  { company: "Garantme", role: "Product Manager → Group Product Manager", years: "2021 — 2025", figure: "+26%", label: "user acquisition", scope: "Led a squad of 11 and set the product process for 4 PMs" },
-  { company: "Myki", role: "Product Manager", years: "2017 — 2020", figure: "1M+", label: "daily active users", scope: "Grew to 1M+ DAU in under two years with a team of 12 engineers" },
+  {
+    company: "TF1+",
+    role: "Senior Product Manager",
+    years: "2025 — NOW",
+    figure: "+12%",
+    label: "first-session watch rate",
+    scope: "Redesigned the first journey and shortened the path to content",
+  },
+  {
+    company: "Garantme",
+    role: "Product Manager → Group Product Manager",
+    years: "2021 — 2025",
+    figure: "€200k",
+    label: "upsell revenue a year",
+    scope: "Managed 4 PMs and led an 11-person squad",
+  },
+  {
+    company: "Myki",
+    role: "Product Manager",
+    years: "2017 — 2020",
+    figure: "+29%",
+    label: "user retention",
+    scope: "Helped grow to 1M+ daily users in under two years",
+  },
 ];
 
+/** What each product is, with its logo. */
+export const companies: Record<string, { about: string; logo: string; logoHeight: string; size: [number, number] }> = {
+  "TF1+": {
+    about: "The TF1 group's free streaming platform: live channels, replay and a catalogue of films and series.",
+    logo: tf1Logo,
+    logoHeight: "h-5",
+    size: [1663, 391],
+  },
+  Garantme: {
+    about: "Rent-guarantee insurance plus a SaaS platform that estate agencies use to verify and manage tenant applications.",
+    logo: garantmeLogo,
+    logoHeight: "h-5",
+    size: [348, 55],
+  },
+  Myki: {
+    about: "A password manager and authenticator that kept credentials on the user's devices instead of the cloud. Launched at TechCrunch Disrupt SF in 2016, acquired by JumpCloud in 2022.",
+    logo: mykiLogo,
+    logoHeight: "h-6",
+    size: [562, 152],
+  },
+};

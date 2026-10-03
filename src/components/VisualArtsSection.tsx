@@ -15,15 +15,15 @@ import d120108 from "@/assets/photos/12-1-08.webp";
 
 // Self-hosted, cropped exports of the DeviantArt originals (frames and watermark removed).
 export const photos = [
-  { slug: "01-176335991", title: "01", url: untitled01, alt: "Long-exposure light trails in pink, yellow and green curving through darkness" },
-  { slug: "02-176335199", title: "02", url: untitled02, alt: "Red and yellow light trails sweeping across a black frame" },
-  { slug: "Look-The-Sun-Is-Leaving-Us-159257163", title: "Look, The Sun Is Leaving Us...", url: lookTheSun, alt: "A hooded figure in silhouette at a railing, watching the sun set over the sea" },
-  { slug: "On-My-Way-159257892", title: "On My Way.", url: onMyWay, alt: "A small aeroplane crossing an orange sunset reflected on the water" },
-  { slug: "Under-Beirut-s-Sky-159252769", title: "Under Beirut's Sky.", url: underBeirut, alt: "Golden sunset clouds over the sea and the dark Beirut coastline" },
-  { slug: "Chaotic-Vision-159093712", title: "Chaotic Vision", url: chaoticVision, alt: "A misty golden sunset over a shoreline and still water" },
-  { slug: "Prince-From-The-Biomass-152154122", title: "Prince From The Biomass.", url: princeBiomass, alt: "A figure with outstretched arms in silhouette against a glowing pink and violet sky" },
-  { slug: "Whatever-Works-In-Venice-156905640", title: "Whatever Works In Venice.", url: venice, alt: "Gondolas and moored boats along Venice's Grand Canal in saturated colour" },
-  { slug: "12-1-08-157283589", title: "12.1.08", url: d120108, alt: "Colourful lakeside hotels lit at dusk, reflected in dark water" },
+  { slug: "01-176335991", title: "01", url: untitled01, width: 999, height: 664, alt: "Long-exposure light trails in pink, yellow and green curving through darkness" },
+  { slug: "02-176335199", title: "02", url: untitled02, width: 950, height: 631, alt: "Red and yellow light trails sweeping across a black frame" },
+  { slug: "Look-The-Sun-Is-Leaving-Us-159257163", title: "Look, The Sun Is Leaving Us...", url: lookTheSun, width: 840, height: 556, alt: "A hooded figure in silhouette at a railing, watching the sun set over the sea" },
+  { slug: "On-My-Way-159257892", title: "On My Way.", url: onMyWay, width: 838, height: 556, alt: "A small aeroplane crossing an orange sunset reflected on the water" },
+  { slug: "Under-Beirut-s-Sky-159252769", title: "Under Beirut's Sky.", url: underBeirut, width: 824, height: 549, alt: "Golden sunset clouds over the sea and the dark Beirut coastline" },
+  { slug: "Chaotic-Vision-159093712", title: "Chaotic Vision", url: chaoticVision, width: 812, height: 537, alt: "A misty golden sunset over a shoreline and still water" },
+  { slug: "Prince-From-The-Biomass-152154122", title: "Prince From The Biomass.", url: princeBiomass, width: 824, height: 545, alt: "A figure with outstretched arms in silhouette against a glowing pink and violet sky" },
+  { slug: "Whatever-Works-In-Venice-156905640", title: "Whatever Works In Venice.", url: venice, width: 824, height: 614, alt: "Gondolas and moored boats along Venice's Grand Canal in saturated colour" },
+  { slug: "12-1-08-157283589", title: "12.1.08", url: d120108, width: 824, height: 614, alt: "Colourful lakeside hotels lit at dusk, reflected in dark water" },
 ];
 
 // Display order: the strongest image leads, the untitled pair closes.
@@ -63,7 +63,7 @@ const VisualArtsSection = () => {
         aria-label={`Open ${caption(lead.title)}`}
         className="photo-tile relative -mx-4 block w-[calc(100%+2rem)] overflow-hidden md:-mx-12 md:w-[calc(100%+6rem)]"
       >
-        <img src={lead.url} alt={lead.alt} className="block h-[300px] w-full object-cover md:h-[640px]" />
+        <img src={lead.url} alt={lead.alt} width={lead.width} height={lead.height} className="block h-[300px] w-full object-cover md:h-[640px]" />
         <span className="absolute inset-x-0 bottom-0 flex justify-between bg-[linear-gradient(transparent,rgb(10_10_11/0.7))] px-4 pb-4 pt-16 text-left md:px-12 md:pb-6">
           <span className="mono text-[0.75rem] text-[var(--h-ink)]">01 — {caption(lead.title).toUpperCase()}</span>
           <span className="mono text-[0.75rem] text-[var(--h-ink)]">1 / {gallery.length}</span>
@@ -79,7 +79,7 @@ const VisualArtsSection = () => {
               aria-label={`Open ${caption(photo.title)}`}
               className="photo-tile block w-full overflow-hidden"
             >
-              <img src={photo.url} alt={photo.alt} loading="lazy" className="block aspect-[4/3] w-full object-cover" />
+              <img src={photo.url} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" className="block aspect-[4/3] w-full object-cover" />
             </button>
             <p className="mono m-0 mt-2.5 text-[0.75rem] text-[var(--h-muted)]">
               {num(i + 1)} — {caption(photo.title)}

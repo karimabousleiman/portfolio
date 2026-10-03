@@ -3,7 +3,7 @@ import AboutSection from "@/components/AboutSection";
 
 const About = () => (
   <SiteShell title="About · Karim Abousleiman">
-    <PageTitle title="About" lead="Tech geek, music lover, and relentless problem solver." />
+    <PageTitle title="About" lead="A product manager who came from cinema and never stopped making things." />
     <AboutSection />
     <Closing variant="product" />
   </SiteShell>
