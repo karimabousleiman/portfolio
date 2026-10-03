@@ -93,24 +93,18 @@ components:
   button-secondary:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    borderColor: "{colors.control}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "0 22px"
     height: "52px"
-  button-secondary-hover:
-    borderColor: "{colors.ink}"
   button-done:
-    borderColor: "{colors.accent}"
     textColor: "{colors.accent}"
   text-link:
     textColor: "{colors.ink}"
-    decorationColor: "{colors.accent}"
   nav-link:
     typography: "{typography.label}"
     textColor: "{colors.ink}"
   row-link:
-    borderColor: "{colors.line}"
     height: "52px"
 ---
 
@@ -118,9 +112,17 @@ components:
 
 ## Overview
 
+**Creative North Star: "The Plucked String"**
+
 A dark, editorial portfolio whose job is to make a recruiter or hiring manager reach out. The page is near-black, the type does the work, and one warm orange marks what matters: the results, the dates, links and the closing call to action. Creative work (music, photographs, film) appears as proof of craft, never as a second identity.
 
 The signature moments are the home first screen and its **sound field**: a band of fine vertical lines behind the name that breathes on its own and ripples outward when the cursor plucks it, like a played note. It ties the two halves of the person together: product and music.
+
+**Key Characteristics:**
+- Near-black ground, off-white type, one orange accent that only ever means something.
+- Three typefaces, each with a single job: sans for proof, serif for voice, mono for metadata.
+- Flat and square: hairline rules instead of cards, shadows or rounded corners.
+- One authored motion moment per page; everything else is quiet micro-feedback.
 
 ## Colors
 
@@ -139,9 +141,11 @@ All tokens live on `.home` in `src/pages/home.css` as `--h-*` custom properties.
 - **Control `#6b6a67`**: outlined button borders (3.5:1, the minimum for control edges).
 
 ### Named Rules
-- **One accent.** No second hue. Warm, plum, midnight and cream variants were tried and rejected.
-- **Logos are off-white.** Company logos print through `.logo-mono` (`brightness(0) invert(0.94)`). Coloured brand logos were rejected. Streaming-service icons are the exception and keep their brand colours.
-- **Photos carry their own colour.** Portraits (Music, About) and the gallery are in full colour; the interface around them stays neutral.
+**The One Accent Rule.** No second hue. Warm, plum, midnight and cream variants were tried and rejected.
+
+**The Off-White Logo Rule.** Company logos print through `.logo-mono` (`brightness(0) invert(0.94)`). Coloured brand logos were rejected. Streaming-service icons are the exception and keep their brand colours.
+
+**The Photos Carry Colour Rule.** Portraits (Music, About) and the gallery are in full colour; the interface around them stays neutral.
 
 ## Typography
 
@@ -159,8 +163,9 @@ Three faces, each with one job:
 5. Body 15–18px; labels 12–13px mono.
 
 ### Named Rules
-- **Sans for proof, serif for voice.** Results and roles are never set in the serif.
-- **Separators travel with the text before them**, so a wrapped line never starts with "·".
+**The Proof and Voice Rule.** Sans for proof, serif for voice. Results and roles are never set in the serif.
+
+**The Trailing Separator Rule.** Separators travel with the text before them, so a wrapped line never starts with "·".
 
 ## Layout
 
@@ -177,16 +182,6 @@ Flat. No shadows. Depth comes from hairline rules, the sound field behind the he
 ## Shapes
 
 Square corners everywhere (buttons, photos, tiles). No pills, no cards.
-
-## Motion
-
-One authored moment per page, all with `prefers-reduced-motion` alternatives:
-- **Home**: the name racks into focus (blur → sharp) while the sound field fades in. The field runs a 1-D wave simulation on canvas, pauses off-screen and in hidden tabs, autoplays a note every few seconds on touch devices, and draws a still frame for reduced motion.
-- **Visual Arts**: the clicked photo lifts from the grid into the lightbox and settles back on close (framer-motion `layoutId`); paging crossfades.
-- **Music**: a track's SoundCloud player unfolds from its row.
-- **Contact jump**: an accent underline sweeps under the closing line's italic word.
-- Micro: arrows nudge on hover/focus, buttons press to 0.98, nav underline wipes in.
-- Easing: `cubic-bezier(0.16, 1, 0.3, 1)` throughout.
 
 ## Components
 
@@ -210,6 +205,16 @@ Numbered rows with serif titles; LISTEN opens an inline SoundCloud player, one a
 
 ### Gallery (Visual Arts)
 Full-bleed lead photo, then a 2-up (phone) to 4-up (≥1280px) grid with numbered mono captions; all nine photos stay.
+
+### Motion
+
+One authored moment per page, all with `prefers-reduced-motion` alternatives:
+- **Home**: the name racks into focus (blur → sharp) while the sound field fades in. The field runs a 1-D wave simulation on canvas, pauses off-screen and in hidden tabs, autoplays a note every few seconds on touch devices, and draws a still frame for reduced motion.
+- **Visual Arts**: the clicked photo lifts from the grid into the lightbox and settles back on close (framer-motion `layoutId`); paging crossfades.
+- **Music**: a track's SoundCloud player unfolds from its row.
+- **Contact jump**: an accent underline sweeps under the closing line's italic word.
+- Micro: arrows nudge on hover/focus, buttons press to 0.98, nav underline wipes in.
+- Easing: `cubic-bezier(0.16, 1, 0.3, 1)` throughout.
 
 ## Do's and Don'ts
 

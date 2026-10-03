@@ -10,7 +10,7 @@ Personal portfolio of Karim Abousleiman (Senior Product Manager, music composer,
 - `npm run lint`: ESLint. The `react-refresh/only-export-components` warnings are expected (data and components share files).
 - `npm run preview`: serve the production build.
 
-Repo: GitHub `karimabousleiman/karimabousleiman`. The hosting is assumed to build from `main` (not confirmed in this repo). Work on a branch, then fast-forward `main` when the owner approves.
+Repo: GitHub `karimabousleiman/karimabousleiman`. The hosting is assumed to build from `main` (not confirmed in this repo); `public/_redirects` is the Netlify SPA fallback so deep links load. Work on a branch, then fast-forward `main` when the owner approves.
 
 ## Stack
 
@@ -57,4 +57,4 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 
 - Accessibility is part of done: 44px touch targets, visible focus, `prefers-reduced-motion` paths for every animation, sr-only "(opens in a new tab)" on external links, descriptive alt text.
 - Verify visually at 390, 768, 1024, 1280 and 1440 widths before calling a layout change done (headless Chrome screenshots work; see `/impeccable` critique history in `.impeccable/critique/`).
-- Don't commit or push without the owner asking. Untracked files left alone on purpose: `.agents/`, `.claude/skills/`, `skills-lock.json`, `public/_redirects`, `src/pages/home 2.css`.
+- Don't commit or push without the owner asking. Untracked files left alone on purpose: `.agents/`, `.claude/skills/`, `skills-lock.json`. `.impeccable/` (critiques, design.json sidecar) is gitignored.
