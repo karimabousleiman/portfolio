@@ -24,6 +24,7 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 - `src/components/SoundField.tsx`: the interactive canvas behind the home hero (wave-propagation lines; pointer plucks them; autoplays on touch; pauses off-screen; still frame for reduced motion). Tuning constants are at the top of the file.
 - `src/components/ExperienceSection.tsx`: data only. `jobs` (roles and outcome-first bullets), `results` (one headline result per company, used on home), `companies` (one-line description, logo, logo size).
 - `src/pages/Experience.tsx`: Experience page (company blocks, roles, languages).
+- `src/components/ProductsSection.tsx`: `products` (Karim's own products: name, link, description, role, screenshot in `src/assets/products`). `src/pages/Products.tsx` renders them; home shows the newest as a teaser above the craft section.
 - `src/components/MusicSection.tsx`: `tracks`, `streamingServices` and `TrackList` (inline SoundCloud players; `/music#track-1` opens a track paused).
 - `src/components/VisualArtsSection.tsx`: `photos` (self-hosted WebP in `src/assets/photos`, with alt text and sizes), gallery order, lightbox with shared-element open/close, `FilmEmbed`.
 - `src/components/AboutSection.tsx`, `src/components/SkillsSection.tsx` (languages only).
@@ -48,7 +49,7 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 - Streaming-service icons keep their brand colours.
 - Portraits are in colour on Music and About. There is no portrait on the home page.
 - Home first screen: name, "SENIOR PRODUCT MANAGER · MUSIC COMPOSER · PARIS", then "Building products people come back to." with "come back to" in orange. No clock or location in the header on home.
-- Nav labels: Experience, Music, Visual Arts, About, Contact.
+- Nav labels: Experience, Products, Music, Visual Arts, About, Contact.
 - All nine photos stay on the Visual Arts page (curating to five was rejected). No product screenshots and no big KPI numbers on the Experience page.
 - The contact band says "Let's talk about *your product*." (site is for jobs and clients); Music and Visual Arts say "Let's make *something*."
 - Shared design artifacts: design canvas https://claude.ai/artifact/3C6smdaVo6XESqAdUkStnE and Figma file https://www.figma.com/design/i6Tu0TWF23GmwvL9mzFbPY (both older than the code; the code is the source of truth).

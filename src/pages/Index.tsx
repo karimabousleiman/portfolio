@@ -3,6 +3,7 @@ import SiteShell, { Closing, IMDB, PCMAG, TECHCRUNCH } from "@/components/SiteSh
 import { photos } from "@/components/VisualArtsSection";
 import { tracks } from "@/components/MusicSection";
 import { companies, results } from "@/components/ExperienceSection";
+import { products } from "@/components/ProductsSection";
 import SoundField from "@/components/SoundField";
 
 const beirut = photos.find((p) => p.slug.startsWith("Under-Beirut"))!;
@@ -84,6 +85,22 @@ const Index = () => (
       >
         FULL EXPERIENCE <span className="arrow" aria-hidden="true">→</span>
       </Link>
+    </section>
+
+    {/* Own products: the screenshot leads on the left, mirroring the craft section below. */}
+    <section aria-labelledby="products-title" className="grid gap-6 pt-16 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-end md:gap-16 md:pt-28">
+      <div className="md:order-2">
+        <h2 id="products-title" className="serif m-0 text-[2.5rem] leading-[1.02] md:text-[3.25rem]">I build my own products too.</h2>
+        <p className="m-0 mt-4 max-w-[26rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:text-base">
+          The latest is a reading companion to Simon Sebag Montefiore's <cite className="text-[var(--h-ink)]">The Cauldron</cite>: look up anyone in the book and see who ruled where, year by year.
+        </p>
+        <div className="mt-6 border-t border-[var(--h-line)]">
+          <CraftLink label={products[0].name} meta="PRODUCTS" to="/products" />
+        </div>
+      </div>
+      <div className="overflow-hidden border border-[var(--h-line)] md:order-1">
+        <img src={products[0].image.src} alt={products[0].image.alt} width={products[0].image.width} height={products[0].image.height} loading="lazy" className="block aspect-[4/3] w-full object-cover object-left-top" />
+      </div>
     </section>
 
     <section aria-labelledby="craft-title" className="grid gap-6 pb-4 pt-16 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-end md:gap-16  md:pt-28">

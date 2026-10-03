@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import Experience from "./pages/Experience";
+import Products from "./pages/Products";
 import VisualArts from "./pages/VisualArts";
 import Music from "./pages/Music";
 import About from "./pages/About";
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/visual-arts" element={<VisualArts />} />
           <Route path="/music" element={<Music />} />
           <Route path="/about" element={<About />} />

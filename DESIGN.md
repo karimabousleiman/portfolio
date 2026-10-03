@@ -194,6 +194,9 @@ One row per company: off-white logo, role and dates (orange), one scope line, an
 ### Company blocks (Experience)
 Left gutter: logo (as the company heading) and dates in orange. Right: one-line company description, then each role as a heading with bulleted, outcome-first achievements. No big KPIs and no product screenshots on this page.
 
+### Product entry (Products)
+The live product leads: a full-width screenshot framed by a hairline, which opens the tool. Below it, the label gutter holds the kind ("WEB APP"); the right column has the serif name, the description with the book title in italic ink, the role line, and OPEN THE TOOL plus the domain. On home, the newest product appears as a teaser mirrored against the craft section (image left, text right).
+
 ### Contact band
 Ends every page: serif headline with one italic orange word ("Let's talk about *your product*." on Home, Experience, About and 404; "Let's make *something*." on Music and Visual Arts), then EMAIL ME, LINKEDIN and the address with COPY. If the clipboard is blocked, the address is selected and the button reads SELECTED.
 

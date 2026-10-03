@@ -22,7 +22,7 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
 
 ## Operating Context
 
-- Routes: `/` (home), `/experience` (nav label "Experience"), `/music`, `/visual-arts` (nav label "Visual Arts"), `/about`, plus `/prototype` (old design-direction explorer, lazy-loaded, not linked).
+- Routes: `/` (home), `/experience` (nav label "Experience"), `/products` (own products, starting with Cauldron Who's Who), `/music`, `/visual-arts` (nav label "Visual Arts"), `/about`, plus `/prototype` (old design-direction explorer, lazy-loaded, not linked).
 - Domain: https://karimabousleiman.com
 - Contact paths: LinkedIn and email (mailto plus a copy-email button). No forms. Every page ends on the same contact band.
 - Visitors are typically on desktop between tasks or on mobile from a LinkedIn tap.

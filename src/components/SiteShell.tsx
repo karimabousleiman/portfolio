@@ -16,6 +16,7 @@ export const TECHCRUNCH = "https://techcrunch.com/2016/09/13/myki-rolls-out-a-pa
 
 export const nav = [
   { label: "Experience", to: "/experience" },
+  { label: "Products", to: "/products" },
   { label: "Music", to: "/music" },
   { label: "Visual Arts", to: "/visual-arts" },
   { label: "About", to: "/about" },
@@ -219,7 +220,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
                 <li className="border-b border-[var(--h-line)]">
                   <a href="#contact" onClick={(e) => { closeMenu(); goToContact(e); }} className="flex items-baseline justify-between py-3.5 no-underline">
                     <em className="serif text-[3.25rem] leading-none text-[var(--h-accent)]">Contact</em>
-                    <span className="mono text-[0.75rem] text-[var(--h-meta)]" aria-hidden="true">05</span>
+                    <span className="mono text-[0.75rem] text-[var(--h-meta)]" aria-hidden="true">0{nav.length + 1}</span>
                   </a>
                 </li>
               </ul>
