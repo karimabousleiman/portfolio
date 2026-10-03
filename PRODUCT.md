@@ -22,33 +22,37 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
 
 ## Operating Context
 
-- Routes: `/` (home), `/experience`, `/visual-arts`, `/music`, `/about`, plus `/prototype` (design-direction explorer with five variants: Archive, Signal, Monolith, Bloom, Pulse).
-- Contact paths: LinkedIn and email (mailto). No forms.
+- Routes: `/` (home), `/experience` (nav label "Experience"), `/music`, `/visual-arts` (nav label "Visual Arts"), `/about`, plus `/prototype` (old design-direction explorer, lazy-loaded, not linked).
+- Domain: https://karimabousleiman.com
+- Contact paths: LinkedIn and email (mailto plus a copy-email button). No forms. Every page ends on the same contact band.
 - Visitors are typically on desktop between tasks or on mobile from a LinkedIn tap.
 
 ## Capabilities and Constraints
 
 - Existing stack: Vite, React, TypeScript, Tailwind, shadcn/ui, react-router single-page app.
-- Experience section lists roles, companies, periods and quantified achievements.
+- Experience page lists each company (logo, one-line description) and the roles held there, with outcome-first bullets. Home shows one headline result per company.
 - Music section links to releases on Spotify, Apple Music, YouTube Music and Deezer.
-- Visual arts section links to external project pages.
-- Open decision: which `/prototype` direction becomes the production design.
+- Visual Arts page shows nine self-hosted photographs in a lightbox gallery, plus a film embed and the IMDb link.
+- Production design is the dark editorial direction (see DESIGN.md); the `/prototype` explorer is historical.
 
 ## Brand Commitments
 
-- Name: Karim Abousleiman. Monogram "KA" used in the nav.
+- Name: Karim Abousleiman. Role line: "Senior Product Manager · Music Composer · Paris". Music is released as kimbü.
 - Only real work: show only real releases, projects, roles and metrics. Never placeholder work, invented clients, testimonials or claims.
 
 ## Evidence on Hand
 
 - Career (in `src/components/ExperienceSection.tsx`):
-  - Senior Product Manager, TF1+ (Mar 2025 – present): +17% user engagement; +12% first-session watch rate; product-health metrics for leadership.
-  - Group Product Manager, Garantme (Jan 2022 – Mar 2025; Product Manager there Jan 2021 – Jan 2022): led a squad of 11 and a team of 4 PMs; +26% user acquisition; €200k/year upsell revenue; +8% site conversion; core SaaS to 10k DAU in 6 months.
-  - Product Manager, Myki (Apr 2017 – Jul 2020): 1M+ DAU in under 2 years; +29% retention; +39% QoQ positive reviews.
+  - Senior Product Manager, TF1+ (Mar 2025 – present): +12% first-session watch rate (headline); replaced revenue-only reporting with product-health metrics for TF1+ leadership; moved the team to a product-led model.
+  - Group Product Manager, Garantme (Jan 2022 – Mar 2025; Product Manager there Jan 2021 – Jan 2022): €200k/year upsell revenue (headline); managed 4 PMs and led an 11-person squad; +26% user acquisition via onboarding redesign (label unconfirmed); +8% site conversion; launched the core SaaS to 10k daily users in 6 months.
+  - Product Manager, Myki (Apr 2017 – Jul 2020): +29% retention (headline; period unconfirmed); helped grow to 1M+ daily users in under 2 years with 12 engineers.
+  - Removed as vanity or undefined: "+17% user engagement", "+39% QoQ positive reviews".
 - Music releases (in `src/components/MusicSection.tsx`): including "Prelude to Freedom", "Bittersweet Relief", "Curse of Knowledge", "Soul Swap", "Kayafet Part II", "Je t'offre", "Honey Tea", "12.1.08", "1989a".
 - Visual projects (in `src/components/VisualArtsSection.tsx`): "Look, The Sun Is Leaving Us...", "On My Way.", "Under Beirut's Sky.", "Chaotic Vision", "Prince From The Biomass.", "Whatever Works In Venice."
-- Photo: `src/assets/about-photo.jpg` (Karim playing guitar).
-- Absent: testimonials, press, client logos, case-study write-ups. Do not fabricate these.
+- Photo: `src/assets/portrait.webp` (Karim playing guitar; used on Music and About).
+- Press (real, linked): Myki named PCMag Editors' Choice in 2018 (https://www.pcmag.com/reviews/myki), during Karim's tenure. Myki launched at TechCrunch Disrupt SF in 2016 (https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/), before he joined: credit the company, not Karim.
+- Background: cinema, then QA, then product. 10+ instruments. Native French, English and Arabic; intermediate Italian.
+- Absent: testimonials, client logos, case-study write-ups, CV PDF. Do not fabricate these.
 
 ## Product Principles
 
