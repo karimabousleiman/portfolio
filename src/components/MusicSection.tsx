@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import spotifyLogo from "@/assets/spotify-logo.svg";
+import appleMusicLogo from "@/assets/apple-music-logo.svg";
+import ytMusicLogo from "@/assets/youtube-music-logo.svg";
+import deezerLogo from "@/assets/deezer-logo.svg";
 
 export const tracks = [
   { title: "1989a", url: "https://soundcloud.com/karim-abousleiman/1989a" },
@@ -13,10 +17,10 @@ export const tracks = [
 ];
 
 export const streamingServices = [
-  { name: "Spotify", url: "https://open.spotify.com/artist/0Imw18A2tidYlTFiVFLgBG" },
-  { name: "Apple Music", url: "https://music.apple.com/us/artist/kimb%C3%BC/1596942904" },
-  { name: "YouTube Music", url: "https://music.youtube.com/channel/UCOxgVKMtQRnLqTLpcZTbSww" },
-  { name: "Deezer", url: "https://www.deezer.com/us/artist/152271282" },
+  { name: "Spotify", url: "https://open.spotify.com/artist/0Imw18A2tidYlTFiVFLgBG", logo: spotifyLogo },
+  { name: "Apple Music", url: "https://music.apple.com/us/artist/kimb%C3%BC/1596942904", logo: appleMusicLogo },
+  { name: "YouTube Music", url: "https://music.youtube.com/channel/UCOxgVKMtQRnLqTLpcZTbSww", logo: ytMusicLogo },
+  { name: "Deezer", url: "https://www.deezer.com/us/artist/152271282", logo: deezerLogo },
 ];
 
 const playerSrc = (url: string, autoPlay: boolean) =>

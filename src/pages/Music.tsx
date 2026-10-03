@@ -19,15 +19,16 @@ const Music = () => (
         <p className="m-0 mt-4 max-w-[30rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-6 md:text-[1.125rem]">
           Jazz-rooted tracks I write and play across more than ten instruments.
         </p>
-        <ul className="m-0 mt-6 grid list-none grid-cols-2 gap-2 p-0 md:mt-8 md:max-w-[30rem] xl:flex xl:max-w-none xl:flex-wrap xl:gap-2.5">
+        <ul className="m-0 mt-6 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2 md:mt-8 md:max-w-[30rem] xl:flex xl:max-w-none xl:flex-wrap xl:gap-2.5">
           {streamingServices.map((s) => (
             <li key={s.name}>
               <a
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary !h-11 w-full xl:w-auto"
+                className="btn btn-secondary !h-11 w-full whitespace-nowrap xl:w-auto"
               >
+                <img src={s.logo} alt="" className="h-[18px] w-auto shrink-0" />
                 {s.name.toUpperCase()} <span aria-hidden="true">↗</span>
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
