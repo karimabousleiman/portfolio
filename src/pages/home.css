@@ -19,6 +19,13 @@
   -webkit-font-smoothing: antialiased;
   caret-color: var(--h-accent);
   scrollbar-color: var(--h-line-strong) var(--h-bg);
+  overflow-x: clip;
+}
+
+/* Full-bleed band: spans the viewport from inside the centred container. */
+.home .bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .home ::selection {
@@ -134,7 +141,7 @@
   transform: translate(3px, -3px);
 }
 
-/* Opening: the name racks into focus, the portrait develops like a print. */
+/* Opening: the name racks into focus over the sound field. */
 @keyframes h-focus {
   from { filter: blur(12px); opacity: 0.35; }
   to { filter: blur(0); opacity: 1; }
@@ -145,24 +152,34 @@
   to { opacity: 1; }
 }
 
-@keyframes h-develop {
-  from { filter: grayscale(1) contrast(1.1) brightness(0.2); }
-  to { filter: grayscale(1) contrast(1.1) brightness(1); }
+.home .sound-field {
+  animation: h-settle 1600ms var(--h-ease) 200ms both;
 }
 
 .home .intro-first { animation: h-focus 600ms var(--h-ease) both; }
 .home .intro-last { animation: h-focus 900ms var(--h-ease) 280ms both; }
 .home .intro-role { animation: h-settle 500ms var(--h-ease) 650ms both; }
 .home .intro-tag { animation: h-settle 500ms var(--h-ease) 760ms both; }
-.home .intro-portrait { animation: h-develop 1400ms var(--h-ease) 500ms both; }
 
 /* Company logos print in the page's off-white so three different brands sit as one row. */
 .home .logo-mono {
   filter: brightness(0) invert(0.94);
 }
 
-.home .mono-photo {
-  filter: grayscale(1) contrast(1.1);
+/* Arrival cue after a CONTACT jump: an accent underline sweeps under the closing line's italic word. */
+.home #contact-title em {
+  background: linear-gradient(var(--h-accent), var(--h-accent)) no-repeat left 92% / 0 2px;
+}
+
+.home #contact-title.arrive em {
+  animation: h-arrive 1100ms var(--h-ease) 150ms both;
+}
+
+@keyframes h-arrive {
+  0% { background-size: 0 2px; }
+  45% { background-size: 100% 2px; }
+  75% { background-size: 100% 2px; opacity: 1; }
+  100% { background-size: 100% 2px; background-position: right 92%; background-size: 0 2px; }
 }
 
 .home .photo-fade {
@@ -178,11 +195,11 @@
   to { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 
-.home .photo-tile img {
+.home .photo-zoom {
   transition: transform 500ms var(--h-ease);
 }
 
-.home .photo-tile:hover img {
+.home .photo-tile:hover .photo-zoom {
   transform: scale(1.03);
 }
 
@@ -194,7 +211,7 @@
     animation: h-settle 300ms ease-out both;
   }
 
-  .home .intro-portrait { animation: none; }
+  .home #contact-title.arrive em { animation: none; }
   .home .nav-link { transition: none; }
 
   .home .menu-panel { animation: h-settle 150ms ease-out both; }
@@ -202,6 +219,6 @@
   .home .row-link:focus-visible .arrow,
   .home .row-link:hover .arrow-out,
   .home .row-link:focus-visible .arrow-out,
-  .home .photo-tile:hover img { transform: none; }
+  .home .photo-tile:hover .photo-zoom { transform: none; }
   .home .btn:active { transform: none; }
 }

@@ -15,17 +15,17 @@ export const PCMAG = "https://www.pcmag.com/reviews/myki";
 export const TECHCRUNCH = "https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/";
 
 export const nav = [
-  { label: "Product", to: "/experience" },
+  { label: "Experience", to: "/experience" },
   { label: "Music", to: "/music" },
-  { label: "Image", to: "/visual-arts" },
+  { label: "Visual Arts", to: "/visual-arts" },
   { label: "About", to: "/about" },
 ];
 
 /** Big serif page word with its lead, ruled off from the content below. */
 export const PageTitle = ({ title, lead }: { title: string; lead: string }) => (
-  <header className="grid gap-6 border-b border-[var(--h-line-strong)] pb-12 pt-12 md:grid-cols-[minmax(0,1fr)_22rem] md:items-end md:gap-16 md:pb-16 md:pt-20">
-    <h1 className="serif m-0 text-[4.5rem] leading-[0.9] tracking-[-0.02em] md:text-[10rem]">{title}</h1>
-    <p className="m-0 text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:text-[1.0625rem]">{lead}</p>
+  <header className="grid gap-6 border-b border-[var(--h-line-strong)] pb-12 pt-12 md:pb-16 md:pt-20 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end lg:gap-16">
+    <h1 className="serif m-0 text-[4.5rem] leading-[0.9] tracking-[-0.02em] md:text-[7rem] lg:text-[10rem]">{title}</h1>
+    <p className="m-0 max-w-[36rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:text-[1.0625rem]">{lead}</p>
   </header>
 );
 
@@ -73,52 +73,52 @@ const goToContact = (e: React.MouseEvent) => {
   window.setTimeout(() => {
     target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     target.focus({ preventScroll: true });
+    // A one-off underline sweep under the closing line confirms where the jump landed.
+    target.classList.remove("arrive");
+    void target.offsetWidth;
+    target.classList.add("arrive");
   }, 60);
 };
 
-const parisTime = () =>
-  new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit" }).format(new Date());
-
-const ParisClock = () => {
-  const [time, setTime] = useState(parisTime);
-  useEffect(() => {
-    const id = window.setInterval(() => setTime(parisTime()), 30_000);
-    return () => window.clearInterval(id);
-  }, []);
-  return (
-    <span className="mono">
-      PARIS · <time>{time}</time>
-    </span>
-  );
-};
-
 const CopyEmail = () => {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const addressRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
-    if (!copied) return;
-    const id = window.setTimeout(() => setCopied(false), 1800);
+    if (status !== "copied") return;
+    const id = window.setTimeout(() => setStatus("idle"), 1800);
     return () => window.clearTimeout(id);
-  }, [copied]);
+  }, [status]);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
+      setStatus("copied");
     } catch {
-      window.location.href = `mailto:${EMAIL}`;
+      // Clipboard blocked (some in-app browsers): select the address so it can be copied by hand.
+      const range = document.createRange();
+      if (addressRef.current) range.selectNodeContents(addressRef.current);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+      setStatus("failed");
     }
   };
+  const label = { idle: "COPY", copied: "COPIED", failed: "SELECTED" }[status];
+  const message = {
+    idle: "",
+    copied: "Email address copied",
+    failed: "Couldn't copy automatically. The address is selected, so you can copy it yourself.",
+  }[status];
   return (
     <div className="mono flex items-center gap-3.5 text-[var(--h-muted)]">
-      <span className="break-all text-[0.875rem]">{EMAIL}</span>
+      <span ref={addressRef} className="break-all text-[0.875rem]">{EMAIL}</span>
       <button
         type="button"
         onClick={copy}
         aria-label="Copy email address"
-        className={`btn btn-secondary !h-11 shrink-0 !px-3.5 !text-[0.75rem] ${copied ? "btn-done" : ""}`}
+        className={`btn btn-secondary !h-11 shrink-0 !px-3.5 !text-[0.75rem] ${status === "copied" ? "btn-done" : ""}`}
       >
-        {copied ? "COPIED" : "COPY"}
+        {label}
       </button>
-      <span aria-live="polite" className="sr-only">{copied ? "Email address copied" : ""}</span>
+      <span aria-live="polite" className="sr-only">{message}</span>
     </div>
   );
 };
@@ -126,7 +126,7 @@ const CopyEmail = () => {
 /** The closing contact band every page ends on. "product" speaks to hiring managers. */
 export const Closing = ({ variant = "product" }: { variant?: "product" | "something" }) => (
   <section id="contact" aria-labelledby="contact-title" className="scroll-mt-16 border-t border-[var(--h-line)] pb-16 pt-16 md:pb-20 md:pt-24">
-    <h2 id="contact-title" tabIndex={-1} className="serif m-0 text-[3rem] leading-none md:text-[4.5rem]">
+    <h2 id="contact-title" tabIndex={-1} className="serif m-0 scroll-mt-24 text-[3rem] leading-none md:text-[4.5rem]">
       {variant === "product" ? "Let's talk about " : "Let's make "}
       <em className="text-[var(--h-accent)]">{variant === "product" ? "your product" : "something"}</em>.
     </h2>
@@ -165,11 +165,8 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
 
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  const brand = isHome ? (
-    <ParisClock />
-  ) : (
-    <Link to="/" className="mono no-underline">KARIM ABOUSLEIMAN</Link>
-  );
+  // On home the name is already the hero, so the header's left slot stays empty.
+  const brand = isHome ? <span /> : <Link to="/" className="mono no-underline">KARIM ABOUSLEIMAN</Link>;
 
   return (
     <MotionConfig reducedMotion="user">
@@ -238,7 +235,7 @@ const SiteShell = ({ title, children }: { title: string; children: React.ReactNo
 
         <footer className="mx-auto flex max-w-[1280px] flex-col gap-2 border-t border-[var(--h-line)] px-4 py-6 sm:flex-row sm:justify-between md:px-12">
           <span className="mono text-[0.75rem] text-[var(--h-meta)]">© {new Date().getFullYear()} Karim Abousleiman · Paris</span>
-          <span className="mono text-[0.75rem] text-[var(--h-meta)]">Released as kimbü</span>
+          <span className="mono text-[0.75rem] text-[var(--h-meta)]">Music released as kimbü</span>
         </footer>
       </div>
     </MotionConfig>

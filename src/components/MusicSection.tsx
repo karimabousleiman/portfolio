@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 export const tracks = [
   { title: "1989a", url: "https://soundcloud.com/karim-abousleiman/1989a" },
@@ -31,6 +32,7 @@ export const TrackList = () => {
   });
   // Only a click on the row plays straight away; arriving from a link opens the player paused.
   const [clicked, setClicked] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     // Wait for the route's scroll-to-top, then bring the linked track into view.
@@ -57,8 +59,18 @@ export const TrackList = () => {
               <span className="serif text-[1.5rem] leading-none md:text-[2.5rem]">{t.title}</span>
               <span className="mono text-[0.75rem] text-[var(--h-muted)]">{isOpen ? "CLOSE" : "LISTEN"}</span>
             </button>
+            <AnimatePresence initial={false}>
             {isOpen && (
-              <div id={`player-${i}`} className="pb-5">
+              // The player unfolds from its row, so it reads as part of that track rather than a new block.
+              <motion.div
+                id={`player-${i}`}
+                className="overflow-hidden"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: reduce ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="pb-5">
                 <iframe
                   width="100%"
                   height="120"
@@ -68,7 +80,9 @@ export const TrackList = () => {
                   className="block border-0"
                 />
               </div>
+              </motion.div>
             )}
+            </AnimatePresence>
           </li>
         );
       })}
