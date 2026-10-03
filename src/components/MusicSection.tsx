@@ -6,7 +6,7 @@ import ytMusicLogo from "@/assets/youtube-music-logo.svg";
 import deezerLogo from "@/assets/deezer-logo.svg";
 
 export const tracks = [
-  { title: "1989a", url: "https://soundcloud.com/karim-abousleiman/1989a" },
+  { title: "1989", url: "https://soundcloud.com/karim-abousleiman/1989a" },
   { title: "Prelude to Freedom", url: "https://soundcloud.com/karim-abousleiman/prelude-to-freedom" },
   { title: "Bittersweet Relief", url: "https://soundcloud.com/karim-abousleiman/bittersweet-relief" },
   { title: "Curse of Knowledge", url: "https://soundcloud.com/karim-abousleiman/curse-of-knowledge" },
@@ -28,7 +28,7 @@ const playerSrc = (url: string, autoPlay: boolean) =>
 
 /** Numbered track list; opening a row loads its SoundCloud player in place, one at a time. */
 export const TrackList = () => {
-  // "/music#track-1" opens that track, so "Listen to 1989a" on the home page lands on a player.
+  // "/music#track-1" opens that track, so "Listen to 1989" on the home page lands on a player.
   const [open, setOpen] = useState<number | null>(() => {
     const m = /^#track-(\d+)$/.exec(window.location.hash);
     const i = m ? Number(m[1]) - 1 : -1;

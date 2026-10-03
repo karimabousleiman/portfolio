@@ -10,7 +10,7 @@ Personal portfolio of Karim Abousleiman (Senior Product Manager, music composer,
 - `npm run lint`: ESLint. The `react-refresh/only-export-components` warnings are expected (data and components share files).
 - `npm run preview`: serve the production build.
 
-Repo: GitHub `karimabousleiman/karimabousleiman`. The hosting is assumed to build from `main` (not confirmed in this repo); `public/_redirects` is the Netlify SPA fallback so deep links load. Work on a branch, then fast-forward `main` when the owner approves.
+Repo: GitHub `karimabousleiman/portfolio`. The hosting is assumed to build from `main` (not confirmed in this repo); `public/_redirects` is the Netlify SPA fallback so deep links load. Work on a branch, then fast-forward `main` when the owner approves.
 
 ## Stack
 

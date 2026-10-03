@@ -47,7 +47,7 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
   - Group Product Manager, Garantme (Jan 2022 – Mar 2025; Product Manager there Jan 2021 – Jan 2022): €200k/year upsell revenue (headline); managed 4 PMs and led an 11-person squad; +26% user acquisition via onboarding redesign (label unconfirmed); +8% site conversion; launched the core SaaS to 10k daily users in 6 months.
   - Product Manager, Myki (Apr 2017 – Jul 2020): +29% retention (headline; period unconfirmed); helped grow to 1M+ daily users in under 2 years with 12 engineers.
   - Removed as vanity or undefined: "+17% user engagement", "+39% QoQ positive reviews".
-- Music releases (in `src/components/MusicSection.tsx`): including "Prelude to Freedom", "Bittersweet Relief", "Curse of Knowledge", "Soul Swap", "Kayafet Part II", "Je t'offre", "Honey Tea", "12.1.08", "1989a".
+- Music releases (in `src/components/MusicSection.tsx`): including "Prelude to Freedom", "Bittersweet Relief", "Curse of Knowledge", "Soul Swap", "Kayafet Part II", "Je t'offre", "Honey Tea", "12.1.08", "1989".
 - Visual projects (in `src/components/VisualArtsSection.tsx`): "Look, The Sun Is Leaving Us...", "On My Way.", "Under Beirut's Sky.", "Chaotic Vision", "Prince From The Biomass.", "Whatever Works In Venice."
 - Photo: `src/assets/portrait.webp` (Karim playing guitar; used on Music and About).
 - Press (real, linked): Myki named PCMag Editors' Choice in 2018 (https://www.pcmag.com/reviews/myki), during Karim's tenure. Myki launched at TechCrunch Disrupt SF in 2016 (https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/), before he joined: credit the company, not Karim.
