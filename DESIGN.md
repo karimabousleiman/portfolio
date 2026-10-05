@@ -141,7 +141,7 @@ All tokens live on `.home` in `src/pages/home.css` as `--h-*` custom properties.
 - **Control `#6b6a67`**: outlined button borders (3.5:1, the minimum for control edges).
 
 ### Named Rules
-**The One Accent Rule.** No second hue. Warm, plum, midnight and cream variants were tried and rejected.
+**The One Accent Rule.** No second hue in the interface. Warm, plum, midnight and cream variants were tried and rejected. The one exception is the home sound field: plucked lines cycle through a palette (orange, amber, rose, violet, sky; `PALETTE` in `SoundField.tsx`), and the letters of "come back to" take the colour of the lines above them, settling back to the accent at rest.
 
 **The Off-White Logo Rule.** Company logos print through `.logo-mono` (`brightness(0) invert(0.94)`). Coloured brand logos were rejected. Streaming-service icons are the exception and keep their brand colours.
 
@@ -212,7 +212,7 @@ Full-bleed lead photo, then a 2-up (phone) to 4-up (≥1280px) grid with numbere
 ### Motion
 
 One authored moment per page, all with `prefers-reduced-motion` alternatives:
-- **Home**: the name racks into focus (blur → sharp) while the sound field fades in. The field runs a 1-D wave simulation on canvas, pauses off-screen and in hidden tabs, autoplays a note every few seconds on touch devices, and draws a still frame for reduced motion.
+- **Home**: the name racks into focus (blur → sharp) while the sound field fades in. The field runs a 1-D wave simulation on canvas, pauses off-screen and in hidden tabs, autoplays a note every few seconds on touch devices, and draws a still frame for reduced motion. Plucked lines take colours from a drifting palette, and each letter of "come back to" takes the colour of the lines above it as the wave passes.
 - **Visual Arts**: the clicked photo lifts from the grid into the lightbox and settles back on close (framer-motion `layoutId`); paging crossfades.
 - **Music**: a track's SoundCloud player unfolds from its row.
 - **Contact jump**: an accent underline sweeps under the closing line's italic word.

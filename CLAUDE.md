@@ -52,7 +52,7 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 
 ## Owner decisions (don't relitigate)
 
-- Neutral near-black palette (`#0f0f10`) with off-white text and one orange accent (`#ff8a5c`). Warm, plum, midnight and cream colour passes were all tried and rejected.
+- Neutral near-black palette (`#0f0f10`) with off-white text and one orange accent (`#ff8a5c`). Warm, plum, midnight and cream colour passes were all tried and rejected. Only exception: the home sound field's plucked lines cycle through a colour palette, and "come back to" changes colour with them (owner request, Oct 2026).
 - Company logos stay monochrome off-white. Coloured brand logos were tried and rejected.
 - Streaming-service icons keep their brand colours.
 - Portraits are in colour on Music and About. There is no portrait on the home page.

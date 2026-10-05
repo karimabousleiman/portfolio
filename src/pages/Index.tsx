@@ -43,7 +43,19 @@ const Index = () => (
         </p>
       </section>
       <h2 id="product-title" className="intro-tag relative m-0 px-4 pb-10 text-center text-[2rem] font-semibold leading-[1.1] tracking-[-0.02em] md:pb-14 md:text-[3.25rem] md:leading-[1.05] md:tracking-[-0.03em]">
-        Building products people <span className="text-[var(--h-accent)]">come back to</span>.
+        Building products people{" "}
+        {/* Each letter answers the sound field: it lights up when the lines above it are played (see SoundField). */}
+        <span className="text-[var(--h-accent)]">
+          <span className="sr-only">come back to</span>
+          <span aria-hidden="true">
+            {"come back to".split(" ").map((word, w) => (
+              <span key={w} className="whitespace-nowrap">
+                {w > 0 && " "}
+                {[...word].map((ch, i) => <span key={i} data-echo>{ch}</span>)}
+              </span>
+            ))}
+          </span>
+        </span>.
       </h2>
     </div>
 
