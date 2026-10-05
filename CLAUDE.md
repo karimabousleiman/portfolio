@@ -10,7 +10,15 @@ Personal portfolio of Karim Abousleiman (Senior Product Manager, music composer,
 - `npm run lint`: ESLint. The `react-refresh/only-export-components` warnings are expected (data and components share files).
 - `npm run preview`: serve the production build.
 
-Repo: GitHub `karimabousleiman/portfolio`. The hosting is assumed to build from `main` (not confirmed in this repo); `public/_redirects` is the Netlify SPA fallback so deep links load. Work on a branch, then fast-forward `main` when the owner approves.
+Repo: GitHub `karimabousleiman/portfolio`. Work on a branch, then fast-forward `main` when the owner approves.
+
+## Hosting
+
+- Netlify builds and deploys every push to `main` (site `karimabousleiman.netlify.app`). Pushing to `main` is publishing.
+- `public/_redirects` is the SPA fallback so deep links like `/music` load. Don't remove it.
+- Domain is registered at IONOS, and DNS stays there: `@` A → `75.2.60.5` (Netlify), `www` CNAME → `karimabousleiman.netlify.app`, no AAAA on `@`. Leave the MX records alone (email).
+- HTTPS is Netlify's Let's Encrypt certificate; `www` redirects to the bare domain.
+- The site used to be hosted by Lovable (`185.158.133.1`, behind Cloudflare). A Cloudflare "Error 1001" means a stale DNS cache still points there; clear the browser or OS DNS cache.
 
 ## Stack
 
