@@ -22,22 +22,22 @@ Repo: GitHub `karimabousleiman/portfolio`. Work on a branch, then fast-forward `
 
 ## Stack
 
-Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-motion, lucide-react. Fonts are self-hosted through `@fontsource` (Schibsted Grotesk Variable, Instrument Serif, Fragment Mono). shadcn/ui components exist in `src/components/ui` but the site pages don't use them.
+Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-motion, lucide-react. Fonts are self-hosted through `@fontsource` (Anton for display, DM Sans 500 for body). shadcn/ui components exist in `src/components/ui` but the site pages don't use them.
 
 ## Where things live
 
-- `src/components/SiteShell.tsx`: header and nav, full-screen phone menu, `PageTitle`, contact band (`Closing`) with copy-email, footer, `useModal` (focus trap, scroll lock, focus return), contact links (`EMAIL`, `LINKEDIN`, `IMDB`, `PCMAG`, `TECHCRUNCH`). Every page wraps in `<SiteShell title="…">`, which sets `document.title`.
-- `src/pages/home.css`: all design tokens (`--h-*` custom properties on `.home`), buttons, links, motion and reduced-motion rules. Change colours and spacing here, not inline.
-- `src/pages/Index.tsx`: home. First screen is a full-viewport hero over `SoundField`, then the results ledger, craft section, contact band.
-- `src/components/SoundField.tsx`: the interactive canvas behind the home hero (wave-propagation lines; pointer plucks them; autoplays on touch; pauses off-screen; still frame for reduced motion). Tuning constants are at the top of the file.
-- `src/components/ExperienceSection.tsx`: data only. `jobs` (roles and outcome-first bullets), `results` (one headline result per company, used on home), `companies` (one-line description, logo, logo size).
-- `src/pages/Experience.tsx`: Experience page (company blocks, roles, languages).
-- `src/components/ProductsSection.tsx`: `products` (Karim's own products: name, link, description, role, screenshot in `src/assets/products`). `src/pages/Products.tsx` renders them; home shows the newest as a teaser above the craft section.
-- `src/components/MusicSection.tsx`: `tracks`, `streamingServices` and `TrackList` (inline SoundCloud players; `/music#track-1` opens a track paused).
-- `src/components/VisualArtsSection.tsx`: `photos` (self-hosted WebP in `src/assets/photos`, with alt text and sizes), gallery order, lightbox with shared-element open/close, `FilmEmbed`.
-- `src/components/AboutSection.tsx`, `src/components/SkillsSection.tsx` (languages only).
-- `src/prototypes/`: old design-direction explorer at `/prototype`, lazy-loaded; not part of the live design.
+- `src/data/site.ts`: all content. `chapters` (TF1+, Garantme, Myki: role, dates, headline result, extra results, rows, roles, press), `products`, `tracks`, `streamingServices`, `photos` (gallery order and mosaic spans), `languages`, contact links (`EMAIL`, `LINKEDIN`, `IMDB`, `FILM`).
+- `src/site/site.css`: the Caldera design system. Theme tokens on `:root[data-theme="light"]` (Limestone) and `[data-theme="dark"]` (Magma), plus every component class. Change colours and spacing here, not inline.
+- `src/site/Shell.tsx`: header pill nav (Work dropdown, theme toggle, Contact), full-screen phone menu that grows from the Menu button, contact band with copy-email, footer. Every page wraps in `<Shell title active band>`, which sets `document.title`.
+- `src/site/theme.ts` + the inline script in `index.html`: theme is the saved choice (`localStorage.theme`), else the system setting, applied before first paint.
+- `src/site/Iso.tsx` (+ `iso.css`): isometric scenes (home sound-wave chart, TF1+ wordmark, Garantme G-house, Myki owl mark), traced from the real logos.
+- `src/pages/`: `Home`, `Work` (one data-driven page per company at `/work/:slug`), `Products`, `Music` (inline SoundCloud players; `/music#track-1` opens a track paused), `PhotoFilm` (mosaic, lightbox that opens from the tapped photo and can be dragged away, YouTube film), `Bio` (cut-out portrait hero with pointer parallax), `NotFound`.
+- Old URLs redirect: `/experience` → `/work/tf1`, `/visual-arts` → `/photo-film`, `/about` → `/bio`.
 - `public/og.png`: link-preview image (1200×630). `index.html` holds the title, description and absolute `og:image` URL.
+
+## Rollback to the previous site
+
+The dark editorial site that ran until Nov 2026 is preserved as tag `legacy-dark-editorial` and branch `legacy/dark-editorial`. To put it back live: `git checkout main && git reset --hard legacy-dark-editorial && git push --force-with-lease origin main` (Netlify redeploys), or redeploy that commit from the Netlify dashboard's deploy list.
 
 ## Rules for content
 
@@ -52,15 +52,16 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 
 ## Owner decisions (don't relitigate)
 
-- Neutral near-black palette (`#0f0f10`) with off-white text and one orange accent (`#ff8a5c`). Warm, plum, midnight and cream colour passes were all tried and rejected. Only exception: the home sound field's plucked lines cycle through a colour palette, and "come back to" changes colour with them (owner request, Oct 2026).
-- Company logos stay monochrome off-white. Coloured brand logos were tried and rejected.
-- Streaming-service icons keep their brand colours.
-- Portraits are in colour on Music and About. There is no portrait on the home page.
-- Home first screen: name, "SENIOR PRODUCT MANAGER · MUSIC COMPOSER · PARIS", then "Building products people come back to." with "come back to" in orange. No clock or location in the header on home.
-- Nav labels: Experience, Products, Music, Visual Arts, About, Contact.
-- All nine photos stay on the Visual Arts page (curating to five was rejected). No product screenshots and no big KPI numbers on the Experience page.
-- The contact band says "Let's talk about *your product*." (site is for jobs and clients); Music and Visual Arts say "Let's make *something*."
-- Shared design artifacts: design canvas https://claude.ai/artifact/3C6smdaVo6XESqAdUkStnE and Figma file https://www.figma.com/design/i6Tu0TWF23GmwvL9mzFbPY (both older than the code; the code is the source of truth).
+- Visual direction is Caldera (Nov 2026): pill nav, huge condensed Anton caps, 40px-radius cards, halftone dot fields, isometric illustrations in Caldera's style (black machined objects, white edges, flat orange/violet/yellow fields). The previous near-black editorial direction is retired (see Rollback).
+- Two themes with a toggle: Limestone (light: `#e2e2df` ground, ember `#fc5000`, violet `#524ae9`, sulfur) and Magma (dark: `#101418` ground, ember `#ff5c1a`, teal `#1aa894`, yellow). Other palettes (Basalt, Tidewater, Cobalt, Pink, Moss) were offered and not chosen.
+- Isometric scenes must echo each company's real logo and alternate direction from scene to scene.
+- Bio hero: natural-colour cut-out portrait, zoomed to head and chest, between a giant white "KARIM" and a solid black "ABOUSLEIMAN"; no floating tags. Heavier stylisation (screenprint) was rejected.
+- Mission/vision lines per company are not shown until the owner confirms them; screenshot slots stay hidden until real images exist.
+- Company logos print monochrome (ink); streaming-service icons keep their brand colours.
+- Nav labels: Work (TF1+, Garantme, Myki), Products, Music, Photo & Film, Bio, Contact.
+- All nine photos stay on Photo & Film.
+- The contact band says "Let's talk about *your product*." (site is for jobs and clients); Music and Photo & Film say "Let's make *something*."
+- Design canvas (source for this direction): https://claude.ai/artifact/FoWPFDWFRsU4iwJz17cyNS. The code is the source of truth.
 
 ## Working conventions
 

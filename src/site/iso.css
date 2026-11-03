@@ -1,0 +1,12 @@
+.iso-fig { margin: 0; width: 100%; border-radius: 40px; overflow: hidden; }
+.iso { display: block; width: 100%; height: 100%; }
+.iso polygon { stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.iso polygon.ins { fill: none; stroke-width: 1.2; }
+.iso .blk { animation: isoIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes isoIn { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: none; } }
+.iso .hv { transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+.iso:hover .hv { transform: translateY(-24px); }
+.iso .eq { transform-box: fill-box; transform-origin: 50% 100%; animation: isoIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both, eq 1.5s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate; }
+@keyframes eq { from { scale: 1 0.45; } to { scale: 1 1; } }
+@media (max-width: 900px) { .iso-fig { border-radius: 28px; } }
+@media (prefers-reduced-motion: reduce) { .iso * { animation: none !important; transition: none !important; } }

@@ -1,50 +1,79 @@
-import SiteShell, { Closing } from "@/components/SiteShell";
-import { streamingServices, TrackList } from "@/components/MusicSection";
+import { useEffect, useState } from "react";
+import Shell, { NewTab } from "@/site/Shell";
+import { streamingServices, tracks } from "@/data/site";
 import portrait from "@/assets/portrait.webp";
 
-const Music = () => (
-  <SiteShell title="Music · Karim Abousleiman">
-    <section aria-labelledby="music-title" className="bleed relative lg:min-h-[720px]">
-      <img
-        src={portrait}
-        alt="Karim playing a Telecaster-style electric guitar, black and white"
-        width={864}
-        height={1184}
-        className="block h-[420px] w-full object-cover object-[30%_center] md:h-[520px] lg:absolute lg:right-0 lg:top-0 lg:h-full lg:w-[56%]"
-      />
-      <div aria-hidden="true" className="photo-fade absolute right-0 top-0 hidden h-full w-[56%] lg:block" />
-      <div className="relative mx-auto max-w-[1280px] px-4 pt-8 md:px-12 lg:absolute lg:bottom-16 lg:left-[max(3rem,calc(50%-592px))] lg:w-[min(640px,calc(44%-3rem))] lg:px-0 lg:pt-0">
-        <p className="mono m-0 text-[var(--h-meta)]">RELEASED AS KIMBÜ</p>
-        <h1 id="music-title" className="serif m-0 mt-2 text-[4.5rem] leading-[0.9] tracking-[-0.02em] md:mt-3 md:text-[7rem] lg:text-[10.5rem]">Music</h1>
-        <p className="m-0 mt-4 max-w-[30rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:mt-6 md:text-[1.125rem]">
-          Jazz-rooted tracks I write and play across more than ten instruments.
-        </p>
-        <ul className="m-0 mt-6 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2 md:mt-8 md:max-w-[30rem] xl:flex xl:max-w-none xl:flex-wrap xl:gap-2.5">
-          {streamingServices.map((s) => (
-            <li key={s.name}>
-              <a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary !h-11 w-full whitespace-nowrap xl:w-auto"
-              >
-                <img src={s.logo} alt="" className="h-[18px] w-auto shrink-0" />
-                {s.name.toUpperCase()} <span aria-hidden="true">↗</span>
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+const playerSrc = (url: string, autoPlay: boolean) =>
+  `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23fc5000&auto_play=${autoPlay}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
 
-    <section aria-labelledby="tracks-title" className="grid gap-4 pb-4 pt-12 md:grid-cols-[200px_minmax(0,1fr)] md:gap-10  md:pt-24">
-      <h2 id="tracks-title" className="mono m-0 font-normal text-[var(--h-meta)]">TRACKS</h2>
-      <TrackList />
-    </section>
+const Music = () => {
+  // "/music#track-1" opens that track, paused; only a click on a row plays straight away.
+  const [open, setOpen] = useState<number | null>(() => {
+    const m = /^#track-(\d+)$/.exec(window.location.hash);
+    const i = m ? Number(m[1]) - 1 : -1;
+    return i >= 0 && i < tracks.length ? i : null;
+  });
+  const [clicked, setClicked] = useState(false);
+  useEffect(() => {
+    if (open === null || !window.location.hash) return;
+    const id = window.setTimeout(() => document.getElementById(`track-${open + 1}`)?.scrollIntoView({ block: "start" }), 80);
+    return () => window.clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only on arrival
+  }, []);
 
-    <Closing variant="something" />
-  </SiteShell>
-);
+  return (
+    <Shell title="Music · kimbü · Karim Abousleiman" active="music" band="make">
+      <section className="wrap" style={{ paddingTop: 32 }}>
+        <div className="ht rise" style={{ minHeight: 760, padding: "clamp(28px, 4vw, 56px)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))", gap: 40, alignItems: "end", color: "var(--on-plasma)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <span className="tag" style={{ alignSelf: "flex-start" }}>Released as kimbü</span>
+            <h1 className="d" style={{ fontSize: "clamp(72px, 17vw, 250px)", lineHeight: 0.84 }}>Music</h1>
+            <p style={{ margin: 0, maxWidth: "28rem", fontSize: 20 }}>Jazz-rooted tracks I write and play across more than ten instruments.</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {streamingServices.map((s) => (
+                <a key={s.name} className="chip" href={s.url} target="_blank" rel="noopener noreferrer"><img src={s.logo} alt="" />{s.name}<NewTab /></a>
+              ))}
+            </div>
+          </div>
+          <div style={{ justifySelf: "end", width: "min(100%, 440px)", aspectRatio: "864 / 1184", borderRadius: "800px 800px 40px 40px", overflow: "hidden" }}>
+            <img src={portrait} alt="Karim playing a Telecaster-style electric guitar in a living room" width={864} height={1184} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "30% center", display: "block" }} />
+          </div>
+        </div>
+      </section>
+
+      <section className="wrap sec" aria-labelledby="tracks-h">
+        <h2 id="tracks-h" className="d h2">Eight tracks</h2>
+        <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {tracks.map((t, i) => {
+            const isOpen = open === i;
+            return (
+              <li key={t.url} id={`track-${i + 1}`} className="trk" style={{ scrollMarginTop: 96 }}>
+                <div className="trk-h">
+                  <span className="d" style={{ fontSize: 28, color: "var(--soft)" }}>{String(i + 1).padStart(2, "0")}</span>
+                  <p className="d" style={{ fontSize: "clamp(28px, 4.4vw, 64px)" }}>{t.title}</p>
+                  <button
+                    type="button"
+                    className={isOpen ? "play on" : "play"}
+                    aria-expanded={isOpen}
+                    aria-controls={isOpen ? `player-${i}` : undefined}
+                    aria-label={isOpen ? `Close the ${t.title} player` : `Listen to ${t.title}`}
+                    onClick={() => { setClicked(true); setOpen(isOpen ? null : i); }}
+                  >
+                    {isOpen ? "Close" : "Listen"}
+                  </button>
+                </div>
+                {isOpen && (
+                  <div id={`player-${i}`} className="player">
+                    <iframe title={`${t.title} on SoundCloud`} src={playerSrc(t.url, clicked)} allow="autoplay" loading="lazy" />
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    </Shell>
+  );
+};
 
 export default Music;

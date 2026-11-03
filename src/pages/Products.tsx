@@ -1,42 +1,40 @@
-import SiteShell, { Closing, PageTitle } from "@/components/SiteShell";
-import { products } from "@/components/ProductsSection";
-
-const NewTab = () => <span className="sr-only"> (opens in a new tab)</span>;
+import Shell, { NewTab, OutArrow } from "@/site/Shell";
+import { products } from "@/data/site";
 
 const Products = () => (
-  <SiteShell title="Products · Karim Abousleiman">
-    <PageTitle title="Products" lead="Tools I design and build on my own time, from the first idea to something people can use." />
+  <Shell title="Products · Karim Abousleiman" active="products">
+    <section className="wrap" style={{ paddingTop: 56 }}>
+      <span className="tag rise">Designed and built on my own</span>
+      <h1 className="d rise" style={{ fontSize: "clamp(65px, 18vw, 260px)", lineHeight: 0.84, marginTop: 24, animationDelay: ".08s" }}>Products</h1>
+      <p className="lede rise" style={{ marginTop: 32, maxWidth: "40rem", animationDelay: ".16s" }}>Things I make outside the day job, start to finish: the idea, the design and the build.</p>
+    </section>
 
-    {products.map((p) => (
-      <article key={p.slug} aria-labelledby={`${p.slug}-title`} className="border-b border-[var(--h-line)] pb-12 pt-10 md:pb-16 md:pt-16">
-        {/* The product leads: a live capture that opens the tool itself. */}
-        <a href={p.url} target="_blank" rel="noopener noreferrer" className="photo-tile block overflow-hidden border border-[var(--h-line)]" aria-label={`Open ${p.name} (opens in a new tab)`}>
-          <span className="photo-zoom block">
-            <img src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} className="block h-auto w-full" />
-          </span>
+    {products.map((p, n) => (
+      <section key={p.slug} className="wrap" style={{ paddingTop: n === 0 ? 96 : 120 }} aria-labelledby={`${p.slug}-h`}>
+        <a className="shot" href={p.url} target="_blank" rel="noopener noreferrer" style={n === 1 ? { background: "var(--plasma)" } : undefined}>
+          <img src={p.image.src} width={p.image.width} height={p.image.height} alt={p.image.alt} loading={n === 0 ? undefined : "lazy"} />
+          <span className="sr">Open {p.name} (opens in a new tab)</span>
         </a>
-
-        <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-[200px_minmax(0,1fr)] md:gap-10">
-          <p className="mono m-0 text-[var(--h-meta)]">{p.kind}</p>
-          <div className="min-w-0">
-            <h2 id={`${p.slug}-title`} className="serif m-0 text-[2.5rem] leading-[1.02] md:text-[3.25rem]">{p.name}</h2>
-            <p className="m-0 mt-4 max-w-[40rem] text-[0.9375rem] leading-[1.6] text-[var(--h-muted)] md:text-base">
-              {p.book && <>A reading companion to Simon Sebag Montefiore's <cite className="text-[var(--h-ink)]">{p.book}</cite>. </>}{p.description}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))", gap: 40, marginTop: 40, alignItems: "start" }}>
+          <div>
+            <span className="tag">{p.kind}</span>
+            <h2 id={`${p.slug}-h`} className="d" style={{ fontSize: "clamp(44px, 7.5vw, 112px)", marginTop: 20 }}>{p.name}</h2>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingTop: 8 }}>
+            <p style={{ margin: 0, fontSize: 20 }}>
+              {p.book && <>A companion to <em>{p.book}</em>. </>}
+              {p.description}
             </p>
-            <p className="m-0 mt-3 max-w-[40rem] text-[0.9375rem] leading-[1.6] text-[var(--h-body)]">{p.role}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href={p.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                {p.cta} <span aria-hidden="true">↗</span><NewTab />
-              </a>
-              <span className="mono text-[0.75rem] text-[var(--h-meta)]">{p.domain.toUpperCase()}</span>
+            <p className="muted" style={{ margin: 0 }}>{p.role}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+              <a className="cta" href={p.url} target="_blank" rel="noopener noreferrer">{p.cta} <OutArrow /><NewTab /></a>
+              <span className="cap">{p.domain}</span>
             </div>
           </div>
         </div>
-      </article>
+      </section>
     ))}
-
-    <Closing variant="product" />
-  </SiteShell>
+  </Shell>
 );
 
 export default Products;

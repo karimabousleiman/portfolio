@@ -2,18 +2,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import Index from "./pages/Index";
-import Experience from "./pages/Experience";
+import Home from "./pages/Home";
+import Work from "./pages/Work";
 import Products from "./pages/Products";
-import VisualArts from "./pages/VisualArts";
 import Music from "./pages/Music";
-import About from "./pages/About";
+import PhotoFilm from "./pages/PhotoFilm";
+import Bio from "./pages/Bio";
 import NotFound from "./pages/NotFound";
-import { lazy, Suspense } from "react";
-
-const PortfolioPrototypePage = lazy(() => import("./prototypes/PortfolioPrototypePage"));
 
 const queryClient = new QueryClient();
 
@@ -25,13 +22,17 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/experience" element={<Experience />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Navigate to="/work/tf1" replace />} />
+          <Route path="/work/:slug" element={<Work />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/visual-arts" element={<VisualArts />} />
           <Route path="/music" element={<Music />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/prototype" element={<Suspense fallback={null}><PortfolioPrototypePage /></Suspense>} />
+          <Route path="/photo-film" element={<PhotoFilm />} />
+          <Route path="/bio" element={<Bio />} />
+          {/* Old addresses from the previous site keep working. */}
+          <Route path="/experience" element={<Navigate to="/work/tf1" replace />} />
+          <Route path="/visual-arts" element={<Navigate to="/photo-film" replace />} />
+          <Route path="/about" element={<Navigate to="/bio" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

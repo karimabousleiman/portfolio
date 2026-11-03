@@ -22,7 +22,7 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
 
 ## Operating Context
 
-- Routes: `/` (home), `/experience` (nav label "Experience"), `/products` (own products, starting with Cauldron Who's Who), `/music`, `/visual-arts` (nav label "Visual Arts"), `/about`, plus `/prototype` (old design-direction explorer, lazy-loaded, not linked).
+- Routes: `/` (home), `/work/tf1`, `/work/garantme`, `/work/myki` (one chapter per company; nav label "Work"), `/products` (own products), `/music`, `/photo-film` (nav label "Photo & Film"), `/bio`. Old URLs (`/experience`, `/visual-arts`, `/about`) redirect.
 - Domain: https://karimabousleiman.com
 - Contact paths: LinkedIn and email (mailto plus a copy-email button). No forms. Every page ends on the same contact band.
 - Visitors are typically on desktop between tasks or on mobile from a LinkedIn tap.
@@ -30,10 +30,10 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
 ## Capabilities and Constraints
 
 - Existing stack: Vite, React, TypeScript, Tailwind, shadcn/ui, react-router single-page app.
-- Experience page lists each company (logo, one-line description) and the roles held there, with outcome-first bullets. Home shows one headline result per company.
+- Each company gets a full chapter page: role, dates, place, what the company does, an isometric scene from its logo, the headline result first, then supporting results, roles and press. Home shows one headline result per company.
 - Music section links to releases on Spotify, Apple Music, YouTube Music and Deezer.
-- Visual Arts page shows nine self-hosted photographs in a lightbox gallery, plus a film embed and the IMDb link.
-- Production design is the dark editorial direction (see DESIGN.md); the `/prototype` explorer is historical.
+- Photo & Film shows nine self-hosted photographs in a lightbox gallery, plus a film embed and the IMDb link.
+- Production design is the Caldera direction with Limestone (light) and Magma (dark) themes (see DESIGN.md). The previous dark editorial site is preserved as git tag `legacy-dark-editorial`.
 
 ## Brand Commitments
 
