@@ -16,7 +16,8 @@ Repo: GitHub `karimabousleiman/portfolio`. Work on a branch, then fast-forward `
 
 - Netlify builds and deploys every push to `main` (site `karimabousleiman.netlify.app`). Pushing to `main` is publishing.
 - `public/_redirects` is the SPA fallback so deep links like `/music` load. Don't remove it.
-- Domain is registered at IONOS, and DNS stays there: `@` A → `75.2.60.5` (Netlify), `www` CNAME → `karimabousleiman.netlify.app`, no AAAA on `@`. Leave the MX records alone (email).
+- Domain is registered at IONOS, but its nameservers are Cloudflare (`maxim`/`veda.ns.cloudflare.com`), so DNS records live in Cloudflare: `@` A → `75.2.60.5` (Netlify), `www` CNAME → `karimabousleiman.netlify.app`, no AAAA on `@`, records DNS only (grey cloud). Leave the IONOS MX records alone (email).
+- Subdomains are separate Netlify sites and need a Cloudflare CNAME each: `cauldron` → `fluffy-arithmetic-6395e1.netlify.app` (repo `cauldron-companion`), `meridian` → `meridian-karimabousleiman.netlify.app`.
 - HTTPS is Netlify's Let's Encrypt certificate; `www` redirects to the bare domain.
 - The site used to be hosted by Lovable (`185.158.133.1`, behind Cloudflare). A Cloudflare "Error 1001" means a stale DNS cache still points there; clear the browser or OS DNS cache.
 
