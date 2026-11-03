@@ -14,7 +14,7 @@ const Home = () => {
     <Shell title="Karim Abousleiman · Senior Product Manager, Paris" active={null}>
       <section className="wrap" style={{ paddingTop: 56 }}>
         <p className="cap rise" style={{ margin: "0 0 20px", color: "var(--ink)" }}>Senior Product Manager · Music Composer · Paris</p>
-        <h1 className="d rise" style={{ fontSize: "clamp(48px, 13.2vw, 189px)", animationDelay: ".08s" }}>Karim<br />Abousleiman</h1>
+        <h1 className="d rise name-xl" style={{ animationDelay: ".08s" }}>Karim<br />Abousleiman</h1>
         <div className="grid2" style={{ marginTop: 40 }}>
           <div className="card rise" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 40, animationDelay: ".18s" }}>
             <p className="d" style={{ fontSize: "clamp(40px, 4.4vw, 64px)", lineHeight: 1.14 }}>Building products people <span className="mark">come back to.</span></p>
@@ -31,7 +31,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="ht rise" style={{ minHeight: 520, animationDelay: ".26s" }}>
+          <div className="ht rise hero-tile" style={{ animationDelay: ".26s" }}>
             <div style={{ position: "absolute", inset: 0 }}><Iso scene="home" height={520} transparent /></div>
             <span className="tag" style={{ position: "absolute", top: 28, left: 28, zIndex: 1 }}>Product × Music</span>
           </div>
@@ -40,7 +40,7 @@ const Home = () => {
 
       <section className="wrap sec" aria-labelledby="work-h">
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: 24, marginBottom: 40 }}>
-          <h2 id="work-h" className="d" style={{ fontSize: "clamp(36px, 4.6vw, 64px)" }}>Three companies,<br />three results</h2>
+          <h2 id="work-h" className="d h2" style={{ marginBottom: 0 }}>Three companies,<br />three results</h2>
           <Link className="ghost" to="/work/tf1">Read every chapter <Arrow /></Link>
         </div>
         <div className="grid3">
@@ -75,14 +75,14 @@ const Home = () => {
       <section className="wrap sec" aria-labelledby="off-h">
         <h2 id="off-h" className="d h2" style={{ marginBottom: 40 }}>Off the clock</h2>
         <div className="grid2">
-          <Link to="/music" className="ht lift" style={{ textDecoration: "none", color: "var(--on-plasma)", minHeight: 560, padding: 40, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <Link to="/music" className="ht lift tile" style={{ color: "var(--on-plasma)" }}>
             <span className="tag" style={{ alignSelf: "flex-start" }}>Released as kimbü</span>
             <div>
               <p className="d" style={{ fontSize: "clamp(56px, 10vw, 160px)" }}>Music</p>
               <p style={{ margin: "12px 0 0", maxWidth: "26rem" }}>Jazz-rooted tracks I write and play across more than ten instruments.</p>
             </div>
           </Link>
-          <Link to="/photo-film" className="lift" style={{ textDecoration: "none", position: "relative", overflow: "hidden", borderRadius: 40, minHeight: 560, padding: 40, display: "flex", flexDirection: "column", justifyContent: "space-between", color: "#ffffff" }}>
+          <Link to="/photo-film" className="lift tile" style={{ position: "relative", overflow: "hidden", color: "#ffffff" }}>
             <img src={lookTheSun} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             <span style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(7,6,7,.72), rgba(7,6,7,0) 60%)" }} />
             <span className="tag" style={{ alignSelf: "flex-start", position: "relative" }}>Beirut to Venice</span>

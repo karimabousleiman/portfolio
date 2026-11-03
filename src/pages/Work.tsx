@@ -42,10 +42,10 @@ const Work = () => {
         {c.second ? (
           <div className="grid2">
             {[{ ...c.result, tone: "stat" }, { ...c.second, tone: "stat r-plasma" }].map((s) => (
-              <div key={s.figure} className={s.tone} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 40, minHeight: 520 }}>
+              <div key={s.figure} className={`${s.tone} stat-tall`}>
                 <p style={{ margin: 0, fontSize: 16 }}>{s.label}</p>
                 <div>
-                  <p className="d" style={{ fontSize: "clamp(54px, 15vw, 240px)", lineHeight: 0.84 }}>{s.figure}</p>
+                  <p className="d fig-xl">{s.figure}</p>
                   <p style={{ margin: "24px 0 0", fontSize: "clamp(18px, 1.6vw, 24px)", lineHeight: 1.35, maxWidth: "30rem" }}>{s.text}</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ const Work = () => {
           <div className="stat" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))", gap: 40, alignItems: "end" }}>
             <div>
               <p style={{ margin: "0 0 8px", fontSize: 16 }}>{c.result.label}</p>
-              <p className="d" style={{ fontSize: "clamp(50px, 14vw, 220px)", lineHeight: 0.84 }}>{c.result.figure}</p>
+              <p className="d fig-xl">{c.result.figure}</p>
             </div>
             <p style={{ margin: 0, fontSize: "clamp(20px, 1.8vw, 26px)", lineHeight: 1.35, maxWidth: "32rem" }}>{c.result.text}</p>
           </div>
@@ -63,8 +63,8 @@ const Work = () => {
         {c.extras && (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 16, marginTop: 16 }}>
             {c.extras.map((x) => (
-              <div key={x.figure} className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 32, minHeight: 300 }}>
-                <p className="d" style={{ fontSize: "clamp(36px, 6.5vw, 96px)" }}>{x.figure}</p>
+              <div key={x.figure} className="card extra">
+                <p className="d fig-l">{x.figure}</p>
                 <p style={{ margin: 0 }}>{x.text}</p>
               </div>
             ))}

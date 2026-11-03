@@ -57,6 +57,7 @@ Two themes share one structure. Limestone (light) is warm grey with ember orange
 - Anton, uppercase, +0.02em tracking (the reference forbids negative tracking): page names, headline numbers, section titles one step smaller. Long sentences never go in Anton.
 - DM Sans 500 for everything else; system-ui caps at 13px for small labels.
 - Display sizes are `clamp()` with phone minimums sized so the longest word fits 358px.
+- Phones (≤900px): cards drop their desktop min-heights and size to content with 24px padding; headline figures stay big (about 90–105px) so a number fills its card; sections are 56–64px apart. Hover lifts are disabled on touch (`hover: none`), tap highlight is off, and the header, phone menu and lightbox respect safe-area insets.
 
 ## Surfaces and shape
 
@@ -70,7 +71,7 @@ Flat: no drop shadows except the floating nav and dropdown. Cards are 40px-radiu
 - **Isometric scenes (`Iso.tsx`):** black objects with white edges on a flat colour field, traced from each company's logo, alternating direction; hovering lifts a piece; the home chart pulses like a sound wave.
 - **Bio hero:** cut-out portrait between a white "KARIM" and a black "ABOUSLEIMAN" on ember, pointer parallax by depth, dotted dissolve at the chest.
 - **Lightbox:** opens from the tapped photo and closes back into it; drag follows 1:1, rubber-bands upward, and a flick is judged by its projected momentum.
-- **Contact band:** ember block ending every page, with Email, LinkedIn and copy-email (announces "Copied").
+- **Contact band:** ember block ending every page, with Email, LinkedIn and copy-email. The copy button shows only the address; a copy icon fades in on hover/focus (always visible on touch), swaps to a check after copying, and announces "Copied". On phones the three actions stack as full-width 52px pills.
 
 ## Motion
 

@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ChevronDown, Moon, Sun } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Moon, Sun } from "lucide-react";
 import "@fontsource/anton";
 import "@fontsource/dm-sans/500.css";
 import "@fontsource/dm-sans/500-italic.css";
@@ -98,7 +98,10 @@ const CopyEmail = () => {
   };
   return (
     <>
-      <button className="ghost" type="button" onClick={copy}>{EMAIL} · {copied ? "Copied" : "Copy"}</button>
+      <button className={copied ? "ghost copy-btn done" : "ghost copy-btn"} type="button" onClick={copy} aria-label={`Copy email address ${EMAIL}`}>
+        {EMAIL}
+        <span className="ic" aria-hidden="true">{copied ? <Check size={18} strokeWidth={2.2} /> : <Copy size={16} strokeWidth={2} />}</span>
+      </button>
       <span className="sr" aria-live="polite">{copied ? "Email address copied" : ""}</span>
     </>
   );
@@ -110,7 +113,7 @@ const ContactBand = ({ variant }: { variant: "product" | "make" }) => (
       <h2 id="contact-h" className="d" tabIndex={-1}>
         {variant === "product" ? <>Let's talk about <span>your product.</span></> : <>Let's make <span>something.</span></>}
       </h2>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+      <div className="acts">
         <a className="inkb" href={`mailto:${EMAIL}`}>Email me</a>
         <a className="ghost" href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn<NewTab /></a>
         <CopyEmail />
@@ -118,7 +121,6 @@ const ContactBand = ({ variant }: { variant: "product" | "make" }) => (
     </div>
     <footer className="foot">
       <span>© {new Date().getFullYear()} Karim Abousleiman · Paris</span>
-      <span>Speaks French, English, Arabic and Italian</span>
     </footer>
   </section>
 );

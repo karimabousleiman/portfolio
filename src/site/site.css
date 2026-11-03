@@ -221,6 +221,22 @@ a:hover .arrow { transform: translateX(4px); }
 .lb-cap { margin: 0; font-size: 15px; text-align: center; }
 .lb-cap span { opacity: 0.7; margin-left: 8px; }
 
+
+/* Sized blocks: desktop proportions here, phone overrides in the 900px block below. */
+.name-xl { font-size: clamp(48px, 16.5vw, 189px); }
+.hero-tile { min-height: 520px; }
+.tile { text-decoration: none; min-height: 560px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px; }
+.stat-tall { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 520px; }
+.fig-xl { font-size: clamp(80px, 15vw, 240px); line-height: 0.84; }
+.fig-l { font-size: clamp(64px, 6.5vw, 96px); }
+.extra { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 300px; }
+.music-hero { min-height: 760px; padding: clamp(28px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 40px; align-items: end; color: var(--on-plasma); }
+.arch { justify-self: end; width: min(100%, 440px); aspect-ratio: 864 / 1184; border-radius: 800px 800px 40px 40px; overflow: hidden; }
+.acts { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.copy-btn .ic { display: inline-grid; place-items: center; width: 18px; opacity: 0; transform: scale(0.8); transition: opacity 0.2s ease, transform 0.25s var(--ease); }
+.copy-btn:hover .ic, .copy-btn:focus-visible .ic, .copy-btn.done .ic { opacity: 1; transform: none; }
+@media (hover: none) { .copy-btn .ic { opacity: 1; transform: none; } }
+
 /* Shot frames on Products */
 .shot { display: block; border-radius: 40px; overflow: hidden; background: var(--surface); padding: 16px; }
 .shot img { display: block; width: 100%; height: auto; border-radius: 28px; transition: transform 0.8s var(--ease); }
@@ -265,7 +281,44 @@ a:hover .arrow { transform: translateX(4px); }
   .ph .lbl { opacity: 1; transform: none; }
   .ht, .stage, .film, .shot, .band { border-radius: 28px; }
   .sec { padding-top: 88px; }
+  /* Phone: content sets the height; the figure, not empty colour, fills the card. */
+  .name-xl { font-size: clamp(44px, 16.5vw, 72px); }
+  .hero-tile { min-height: 300px; }
+  .tile { min-height: 380px; padding: 24px; }
+  .result { min-height: 0; gap: 32px; padding: 24px; }
+  .result .num { font-size: clamp(72px, 24vw, 104px); }
+  .stat-tall { min-height: 0; gap: 28px; }
+  .stat { padding: 24px; }
+  .fig-xl { font-size: clamp(72px, 24vw, 112px); }
+  .fig-l { font-size: clamp(56px, 17vw, 72px); }
+  .extra { min-height: 0; gap: 20px; }
+  .half { min-height: 0; padding: 24px; gap: 20px; }
+  .music-hero { min-height: 0; padding: 24px; gap: 24px; }
+  .arch { justify-self: center; width: min(58%, 220px); order: -1; }
+  .h2 { font-size: clamp(40px, 11.5vw, 48px); margin-bottom: 24px; }
+  .band { gap: 32px; padding: 28px 24px; }
+  .band h2 { font-size: clamp(40px, 12vw, 64px); }
+  .band .acts > * { width: 100%; justify-content: center; min-height: 52px; }
+  .card { padding: 24px; }
+  .sec { padding-top: 64px; }
+  .sec-sm { padding-top: 56px; }
+  .lede { font-size: 21px; }
 }
+
+/* Touch: no sticky hover lifts after a tap, no grey tap flash; :active press feedback stays. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.site { -webkit-tap-highlight-color: transparent; min-height: 100dvh; }
+@media (hover: none) {
+  .lift:hover, .cta:hover, .inkb:hover, .chip:hover { transform: none; }
+  .ph:hover img, .shot:hover img { transform: none; }
+  .ghost:hover { background: transparent; color: inherit; }
+}
+/* Safe areas on notched phones (index.html sets viewport-fit=cover). */
+.hdr { padding-top: max(12px, env(safe-area-inset-top)); padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+.mob { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+.lb-close { top: max(16px, env(safe-area-inset-top)); }
+.lb-bar { bottom: max(20px, env(safe-area-inset-bottom)); }
+@media (min-width: 901px) { .hdr { padding-left: 32px; padding-right: 32px; } }
 @media (prefers-reduced-transparency: reduce) { .nav { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @media (prefers-contrast: more) { .nav { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: inset 0 0 0 1.5px var(--ink); } }
 @media (prefers-reduced-motion: reduce) {

@@ -167,7 +167,7 @@ const PhotoFilm = () => {
 
       <section className="wrap sec" aria-labelledby="film-h">
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: 24, marginBottom: 32 }}>
-          <h2 id="film-h" className="d" style={{ fontSize: "clamp(36px, 4.6vw, 64px)" }}>Film</h2>
+          <h2 id="film-h" className="d h2" style={{ marginBottom: 0 }}>Film</h2>
           <a className="ghost" href={IMDB} target="_blank" rel="noopener noreferrer">Credits on IMDb <OutArrow /><NewTab /></a>
         </div>
         <div className="film">

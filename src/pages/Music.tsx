@@ -24,7 +24,7 @@ const Music = () => {
   return (
     <Shell title="Music · kimbü · Karim Abousleiman" active="music" band="make">
       <section className="wrap" style={{ paddingTop: 32 }}>
-        <div className="ht rise" style={{ minHeight: 760, padding: "clamp(28px, 4vw, 56px)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))", gap: 40, alignItems: "end", color: "var(--on-plasma)" }}>
+        <div className="ht rise music-hero">
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <span className="tag" style={{ alignSelf: "flex-start" }}>Released as kimbü</span>
             <h1 className="d" style={{ fontSize: "clamp(72px, 17vw, 250px)", lineHeight: 0.84 }}>Music</h1>
@@ -35,7 +35,7 @@ const Music = () => {
               ))}
             </div>
           </div>
-          <div style={{ justifySelf: "end", width: "min(100%, 440px)", aspectRatio: "864 / 1184", borderRadius: "800px 800px 40px 40px", overflow: "hidden" }}>
+          <div className="arch">
             <img src={portrait} alt="Karim playing a Telecaster-style electric guitar in a living room" width={864} height={1184} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "30% center", display: "block" }} />
           </div>
         </div>
