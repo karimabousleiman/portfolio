@@ -152,9 +152,17 @@ const Shell = ({ title, active, band = "product", children }: ShellProps) => {
       }, 220);
     }
   }, [open, closing]);
+  // The nav sits flush at the top and detaches into a floating pill once the page has scrolled.
+  const [float, setFloat] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setFloat(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
     <div className="site">
-      <header className="hdr">
+      <header className={float ? "hdr float" : "hdr"}>
         <nav aria-label="Main" className="nav">
           <Link to="/" className="brand">Karim <span>Abousleiman</span></Link>
           <NavLinks active={active} />

@@ -81,7 +81,7 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .muted { color: var(--soft); }
 
 /* Header */
-.hdr { position: sticky; top: 0; z-index: 10; padding: 16px 32px 0; }
+.hdr { position: sticky; top: 0; z-index: 10; padding: 16px 32px 0; transition: padding 0.5s var(--ease); }
 .nav {
   display: flex; align-items: center; gap: 8px; max-width: 1312px; margin: 0 auto;
   padding: 8px 8px 8px 24px; border-radius: 800px;
@@ -89,6 +89,11 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
   -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 28px -14px rgba(7, 6, 7, 0.28);
 }
+/* At the top of the page the nav sits flush and full width; once the page scrolls it detaches into a floating pill. */
+.hdr .nav { transition: max-width 0.5s var(--ease), padding 0.5s var(--ease), background-color 0.35s ease, box-shadow 0.35s ease; }
+.hdr.float .nav { max-width: 1040px; }
+.hdr:not(.float) { padding-top: 12px; }
+.hdr:not(.float) .nav { max-width: 1376px; padding: 8px 24px 8px 32px; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
 .brand { font-family: "Anton", Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-decoration: none; text-transform: uppercase; margin-right: auto; display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
 .brand span { color: var(--soft); }
 .links { display: flex; align-items: center; gap: 2px; }
@@ -98,6 +103,8 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .vdiv { width: 0; height: 20px; border-left: 1.5px dotted var(--ink); margin: 0 6px; opacity: 0.5; }
 .has-menu { position: relative; }
 .menu { position: absolute; top: calc(100% + 12px); left: -8px; width: 360px; background: var(--surface); border-radius: 28px; padding: 10px; display: grid; gap: 2px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top left; pointer-events: none; transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); z-index: 5; box-shadow: 0 18px 40px -20px rgba(7, 6, 7, 0.35); }
+/* Invisible bridge over the gap under "Work", so moving the pointer down does not close the menu. */
+.menu::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
 .has-menu:hover .menu, .has-menu:focus-within .menu { opacity: 1; transform: none; pointer-events: auto; }
 .mi { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 16px; border-radius: 20px; text-decoration: none; font-size: 16px; }
 .mi:hover { background: var(--canvas); }
@@ -144,7 +151,7 @@ a:hover .arrow { transform: translateX(4px); }
 .site .r-plasma { background: var(--plasma); color: var(--on-plasma); }
 
 /* Chapters */
-.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; background: var(--surface); border-radius: 800px; padding: 6px; }
+.seg { position: relative; z-index: 2; display: inline-flex; flex-wrap: wrap; gap: 4px; background: var(--surface); border-radius: 800px; padding: 6px; }
 .seg a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 800px; text-decoration: none; font-size: 15px; transition: background-color 0.3s; }
 .seg a:hover { background: var(--canvas); }
 .seg a.on { background: var(--ember); color: var(--on-ember); }
@@ -245,6 +252,7 @@ a:hover .arrow { transform: translateX(4px); }
   .nav .menu-btn { display: inline-flex; }
   .hdr { padding: 12px 12px 0; }
   .nav { padding: 6px 6px 6px 18px; }
+  .hdr:not(.float) .nav { padding: 6px 4px 6px 4px; }
   .brand { font-size: 19px; }
   .wrap { padding-left: 16px; padding-right: 16px; }
   .card, .half, .press, .result { padding: 28px; border-radius: 28px; }
