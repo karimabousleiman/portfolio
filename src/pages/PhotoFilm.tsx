@@ -141,7 +141,6 @@ const PhotoFilm = () => {
       <button key={i} type="button" className={(p.span >= 4 ? "ph wide" : "ph") + (i === 0 ? " fit-photo" : "")} style={{ gridColumn: `span ${p.span}`, aspectRatio: p.ratio || undefined, ...style }}
         aria-label={`View ${p.title} full screen`} onClick={(e) => setOpen({ index: i, origin: rectOf(e.currentTarget)! })}>
         <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading={i > 2 ? "lazy" : undefined} />
-        <span className="lbl">{p.title}</span>
       </button>
     );
   };
