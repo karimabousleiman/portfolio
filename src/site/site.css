@@ -228,7 +228,7 @@ a:hover .arrow { transform: translateX(4px); }
 .hero-tile { height: 100%; background: var(--ember); color: var(--on-ember); }
 .hero-tile::before, .hero-tile::after { display: none; }
 .hero-scene { position: absolute; top: 0; bottom: 0; right: 0; width: 58%; display: flex; align-items: center; }
-.hero-scene > * { width: 100%; }
+.hero-scene > * { width: 100%; height: 100% !important; }
 .hero-body { position: relative; z-index: 1; height: 100%; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
 .hero-main { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
 .hero-name { font-size: min(10.5vw, 17vh); line-height: 0.88; }
@@ -273,6 +273,8 @@ a:hover .arrow { transform: translateX(4px); }
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 
 .rise { animation: rise 0.9s var(--ease) both; }
+.reveal { opacity: 0; transform: translateY(56px); transition: opacity 0.6s var(--ease), transform 0.9s var(--ease); }
+.reveal[data-in] { opacity: 1; transform: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 900px) {
@@ -294,9 +296,9 @@ a:hover .arrow { transform: translateX(4px); }
   .ht, .stage, .film, .shot, .band { border-radius: 28px; }
   .sec { padding-top: 88px; }
   /* Phone: content sets the height; the figure, not empty colour, fills the card. */
-  /* Phone: same tile, scene on top, name and actions at the bottom; buttons side by side. */
-  .hero { height: calc(100svh - 90px); min-height: 600px; max-height: none; padding-top: 8px; padding-bottom: 0; }
-  .hero-scene { left: 0; width: auto; bottom: auto; height: 52%; }
+  /* Phone (owner pick "C2"): shorter tile so the buttons sit in the thumb zone, not under the browser bar. */
+  .hero { height: calc(100svh - 246px); min-height: 560px; max-height: none; padding-top: 8px; padding-bottom: 0; }
+  .hero-scene { left: 0; width: auto; top: 48px; bottom: auto; height: 46%; }
   .hero-body { padding: 24px; justify-content: space-between; }
   .hero-main { gap: 16px; width: 100%; }
   .hero-name { font-size: 15vw; }
@@ -346,4 +348,5 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .site .mob { animation: fadeIn 0.2s ease both !important; }
   .site .mob.out { animation: fadeOut 0.15s ease both !important; }
   .site .lb-img, .site .lb-bg, .site .lb-ui { transition: opacity 0.2s ease !important; }
+  .site .reveal { transform: none; transition: opacity 0.3s ease !important; }
 }

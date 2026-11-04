@@ -138,6 +138,32 @@ interface ShellProps {
   children: ReactNode;
 }
 
+// Tiles below the first screen rise into place once, as they scroll into view (like caldera.xyz).
+const REVEAL = ".card, .ht, .result, .tile, .stat, .ph, .shot, .band, .half, .row, .extra, .press, .film, .music-hero";
+const useReveal = (key: string) => {
+  useEffect(() => {
+    const els = [...document.querySelectorAll<HTMLElement>(`.site :is(${REVEAL})`)].filter(
+      (el) => !el.classList.contains("rise") && !el.parentElement?.closest(REVEAL) && el.getBoundingClientRect().top > window.innerHeight,
+    );
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        // Also catch tiles a fast scroll skipped past, so nothing stays hidden.
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) continue;
+        const el = e.target as HTMLElement;
+        io.unobserve(el);
+        // Siblings entering together stagger by 70ms.
+        const i = [...(el.parentElement?.children ?? [])].indexOf(el);
+        el.style.transitionDelay = `${Math.min(Math.max(i, 0), 3) * 70}ms`;
+        el.dataset.in = "";
+        // Hand transitions back to the tile (hover lift etc.) once it has landed.
+        window.setTimeout(() => { el.classList.remove("reveal"); el.style.transitionDelay = ""; delete el.dataset.in; }, 1300);
+      }
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
+    return () => { io.disconnect(); els.forEach((el) => el.classList.remove("reveal")); };
+  }, [key]);
+};
+
 const Shell = ({ title, active, band = "product", children }: ShellProps) => {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -145,6 +171,7 @@ const Shell = ({ title, active, band = "product", children }: ShellProps) => {
   useEffect(() => {
     document.title = title;
   }, [title]);
+  useReveal(title);
   const toggle = useCallback(() => {
     window.clearTimeout(timer.current);
     if (!open) {
