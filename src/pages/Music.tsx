@@ -23,11 +23,11 @@ const Music = () => {
 
   return (
     <Shell title="Music · kimbü · Karim Abousleiman" active="music" band="make">
-      <section className="wrap" style={{ paddingTop: 32 }}>
+      <section className="wrap fit-music">
         <div className="ht rise music-hero">
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <span className="tag" style={{ alignSelf: "flex-start" }}>Released as kimbü</span>
-            <h1 className="d" style={{ fontSize: "clamp(72px, 17vw, 250px)", lineHeight: 0.84 }}>Music</h1>
+            <h1 className="d" style={{ fontSize: "clamp(72px, min(17vw, 24vh), 250px)", lineHeight: 0.84 }}>Music</h1>
             <p style={{ margin: 0, maxWidth: "28rem", fontSize: 20 }}>Jazz-rooted tracks I write and play across more than ten instruments.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {streamingServices.map((s) => (

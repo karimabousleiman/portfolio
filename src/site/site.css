@@ -239,6 +239,24 @@ a:hover .arrow { transform: translateX(4px); }
 .tile { text-decoration: none; min-height: 560px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px; }
 .stat-tall { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 520px; }
 .d .unit { font-size: 0.42em; letter-spacing: 0.04em; }
+/* First screens fit one laptop screen: each page's opening block sizes itself to the viewport height. */
+.fit-work { height: calc(100svh - 77px); min-height: 600px; max-height: 1000px; box-sizing: border-box; padding-top: 24px; padding-bottom: 24px; display: flex; flex-direction: column; gap: 16px; }
+.fit-work .seg { align-self: flex-start; }
+.fit-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 16px; }
+.fit-card { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 0; }
+.fit-top { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.fit-name { font-size: min(9vw, 19vh); line-height: 0.84; }
+.fit-scene { position: relative; min-height: 0; overflow: hidden; border-radius: 40px; }
+.fit-scene > * { position: absolute; inset: 0; height: 100% !important; }
+.fit-head { padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px; }
+.fit-title { font-size: clamp(65px, min(12vw, 17vh), 260px); line-height: 0.84; }
+.fit-lede { margin: 0 0 10px; max-width: 30rem; font-size: clamp(18px, 1.6vw, 22px); }
+.shot.fit-shot img { height: calc(100svh - 77px - 24px - min(12vw, 17vh) - 90px); min-height: 280px; object-fit: cover; object-position: top; }
+.fit-music { padding-top: 16px; padding-bottom: 24px; }
+.fit-music .music-hero { min-height: 0; height: calc(100svh - 77px - 40px); max-height: 920px; box-sizing: border-box; align-items: center; }
+.fit-music .arch { width: min(100%, 440px, calc((100svh - 220px) * 0.73)); }
+.fit-photo-title { font-size: clamp(54px, min(10vw, 16vh), 220px); line-height: 0.84; }
+.fit-photo { aspect-ratio: auto !important; height: calc(100svh - 77px - 48px - min(10vw, 16vh) * 0.84 - 48px); min-height: 300px; }
 .fig-xl { font-size: clamp(80px, 15vw, 240px); line-height: 0.84; }
 .fig-l { font-size: clamp(64px, 6.5vw, 96px); }
 .extra { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 300px; }
@@ -306,6 +324,18 @@ a:hover .arrow { transform: translateX(4px); }
   .hero-ctas { flex-wrap: nowrap; gap: 8px; width: 100%; }
   .hero-ctas > * { flex: 1 1 0; justify-content: center; padding-left: 12px; padding-right: 12px; white-space: nowrap; }
   .hero-intro { padding: 24px; }
+  .fit-work { height: calc(100svh - 72px); min-height: 640px; max-height: none; padding-top: 8px; padding-bottom: 16px; gap: 12px; }
+  .fit-grid { grid-template-columns: 1fr; grid-template-rows: auto minmax(200px, 1fr); gap: 12px; }
+  .fit-name { font-size: 18vw; }
+  .fit-top, .fit-card { gap: 16px; }
+  .fit-card .facts { font-size: 15px; gap: 4px 20px; }
+  .fit-card .lede { font-size: 17px; }
+  .fit-scene { border-radius: 28px; }
+  .shot.fit-shot img { height: auto; min-height: 0; }
+  .fit-music .music-hero { height: auto; max-height: none; }
+  .fit-music .arch { width: min(58%, 220px); }
+  .fit-photo-title { font-size: 15vw; }
+  .fit-photo { height: auto; min-height: 0; aspect-ratio: 4 / 3 !important; }
   .tile { min-height: 380px; padding: 24px; }
   .result { min-height: 0; gap: 32px; padding: 24px; }
   .result .num { font-size: clamp(72px, 24vw, 104px); }

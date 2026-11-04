@@ -138,7 +138,7 @@ const PhotoFilm = () => {
   const tile = (i: number, style?: CSSProperties) => {
     const p = photos[i];
     return (
-      <button key={i} type="button" className={p.span >= 4 ? "ph wide" : "ph"} style={{ gridColumn: `span ${p.span}`, aspectRatio: p.ratio || undefined, ...style }}
+      <button key={i} type="button" className={(p.span >= 4 ? "ph wide" : "ph") + (i === 0 ? " fit-photo" : "")} style={{ gridColumn: `span ${p.span}`, aspectRatio: p.ratio || undefined, ...style }}
         aria-label={`View ${p.title} full screen`} onClick={(e) => setOpen({ index: i, origin: rectOf(e.currentTarget)! })}>
         <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading={i > 2 ? "lazy" : undefined} />
         <span className="lbl">{p.title}</span>
@@ -148,14 +148,14 @@ const PhotoFilm = () => {
 
   return (
     <Shell title="Photo & Film · Karim Abousleiman" active="photo" band="make">
-      <section className="wrap" style={{ paddingTop: 56 }}>
+      <section className="wrap" style={{ paddingTop: 48 }}>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: 32 }}>
-          <h1 className="d rise" style={{ fontSize: "clamp(72px, 15vw, 220px)", lineHeight: 0.84 }}>Photo<br />&amp; Film</h1>
+          <h1 className="d rise fit-photo-title">Photo &amp; Film</h1>
           <p className="lede rise" style={{ margin: "0 0 12px", maxWidth: "26rem", fontSize: "clamp(20px, 1.8vw, 26px)", animationDelay: ".1s" }}>Photographs from Beirut to Venice, and film work credited on IMDb.</p>
         </div>
       </section>
 
-      <section className="wrap" style={{ paddingTop: 64 }} aria-label="Photographs">
+      <section className="wrap" style={{ paddingTop: 24 }} aria-label="Photographs">
         <div className="mosaic">
           {photos.slice(0, 7).map((_, i) => tile(i))}
           <div className="stack" style={{ gridColumn: "span 2" }}>

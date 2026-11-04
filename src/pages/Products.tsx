@@ -3,15 +3,17 @@ import { products } from "@/data/site";
 
 const Products = () => (
   <Shell title="Products · Karim Abousleiman" active="products">
-    <section className="wrap" style={{ paddingTop: 56 }}>
-      <span className="tag rise">Designed and built on my own</span>
-      <h1 className="d rise" style={{ fontSize: "clamp(65px, 18vw, 260px)", lineHeight: 0.84, marginTop: 24, animationDelay: ".08s" }}>Products</h1>
-      <p className="lede rise" style={{ marginTop: 32, maxWidth: "40rem", animationDelay: ".16s" }}>Things I make outside the day job, start to finish: the idea, the design and the build.</p>
+    <section className="wrap fit-head">
+      <div>
+        <span className="tag rise">Designed and built on my own</span>
+        <h1 className="d rise fit-title" style={{ marginTop: 12, animationDelay: ".08s" }}>Products</h1>
+      </div>
+      <p className="lede rise fit-lede" style={{ animationDelay: ".16s" }}>Things I make outside the day job, start to finish: the idea, the design and the build.</p>
     </section>
 
     {products.map((p, n) => (
-      <section key={p.slug} className="wrap" style={{ paddingTop: n === 0 ? 96 : 120 }} aria-labelledby={`${p.slug}-h`}>
-        <a className="shot" href={p.url} target="_blank" rel="noopener noreferrer" style={n === 1 ? { background: "var(--plasma)" } : undefined}>
+      <section key={p.slug} className="wrap" style={{ paddingTop: n === 0 ? 24 : 120 }} aria-labelledby={`${p.slug}-h`}>
+        <a className={n === 0 ? "shot fit-shot" : "shot"} href={p.url} target="_blank" rel="noopener noreferrer" style={n === 1 ? { background: "var(--plasma)" } : undefined}>
           <img src={p.image.src} width={p.image.width} height={p.image.height} alt={p.image.alt} loading={n === 0 ? undefined : "lazy"} />
           <span className="sr">Open {p.name} (opens in a new tab)</span>
         </a>

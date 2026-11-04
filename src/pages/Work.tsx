@@ -12,7 +12,7 @@ const Work = () => {
 
   return (
     <Shell title={`${c.name} · Karim Abousleiman`} active="work">
-      <section className="wrap" style={{ paddingTop: 48 }}>
+      <section className="wrap fit-work">
         <nav aria-label="Chapters" className="seg rise">
           {chapters.map((ch, n) => (
             <Link key={ch.slug} to={`/work/${ch.slug}`} className={ch.slug === c.slug ? "on" : undefined} aria-current={ch.slug === c.slug ? "page" : undefined}>
@@ -20,20 +20,19 @@ const Work = () => {
             </Link>
           ))}
         </nav>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 24, marginTop: 40 }}>
-          <h1 className="d rise" style={{ fontSize: c.name.length > 5 ? "clamp(61px, 17vw, 260px)" : "clamp(79px, 22vw, 320px)", lineHeight: 0.84, animationDelay: ".08s" }}>{c.name}</h1>
-          <dl className="facts rise" style={{ animationDelay: ".16s" }}>
-            <dt className="cap">Role</dt><dd>{c.role}</dd>
-            <dt className="cap">When</dt><dd>{c.when}</dd>
-            <dt className="cap">Where</dt><dd>{c.where}</dd>
-          </dl>
-        </div>
-        <div className="grid2" style={{ marginTop: 40, alignItems: "stretch" }}>
-          <div className="card rise" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 40, animationDelay: ".22s" }}>
-            <img src={c.logo} alt="" style={{ height: c.logoHeight, width: "auto", alignSelf: "flex-start", filter: "var(--logo)" }} />
+        <div className="fit-grid">
+          <div className="card rise fit-card" style={{ animationDelay: ".08s" }}>
+            <div className="fit-top">
+              <h1 className="d fit-name">{c.name}</h1>
+              <dl className="facts">
+                <dt className="cap">Role</dt><dd>{c.role}</dd>
+                <dt className="cap">When</dt><dd>{c.when}</dd>
+                <dt className="cap">Where</dt><dd>{c.where}</dd>
+              </dl>
+            </div>
             <p className="lede">{c.about}</p>
           </div>
-          <div className="rise" style={{ animationDelay: ".28s" }}><Iso scene={c.scene} height={460} /></div>
+          <div className="rise fit-scene" style={{ animationDelay: ".16s" }}><Iso scene={c.scene} height={600} /></div>
         </div>
       </section>
 
