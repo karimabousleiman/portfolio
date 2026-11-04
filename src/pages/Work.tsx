@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import Shell, { Arrow, NewTab, OutArrow } from "@/site/Shell";
+import Shell, { Arrow, Figure, NewTab, OutArrow } from "@/site/Shell";
 import Iso from "@/site/Iso";
 import { chapters } from "@/data/site";
 
@@ -45,7 +45,7 @@ const Work = () => {
               <div key={s.figure} className={`${s.tone} stat-tall`}>
                 <p style={{ margin: 0, fontSize: 16 }}>{s.label}</p>
                 <div>
-                  <p className="d fig-xl">{s.figure}</p>
+                  <p className="d fig-xl"><Figure value={s.figure} /></p>
                   <p style={{ margin: "24px 0 0", fontSize: "clamp(18px, 1.6vw, 24px)", lineHeight: 1.35, maxWidth: "30rem" }}>{s.text}</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ const Work = () => {
           <div className="stat" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))", gap: 40, alignItems: "end" }}>
             <div>
               <p style={{ margin: "0 0 8px", fontSize: 16 }}>{c.result.label}</p>
-              <p className="d fig-xl">{c.result.figure}</p>
+              <p className="d fig-xl"><Figure value={c.result.figure} /></p>
             </div>
             <p style={{ margin: 0, fontSize: "clamp(20px, 1.8vw, 26px)", lineHeight: 1.35, maxWidth: "32rem" }}>{c.result.text}</p>
           </div>
@@ -64,7 +64,7 @@ const Work = () => {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 16, marginTop: 16 }}>
             {c.extras.map((x) => (
               <div key={x.figure} className="card extra">
-                <p className="d fig-l">{x.figure}</p>
+                <p className="d fig-l"><Figure value={x.figure} /></p>
                 <p style={{ margin: 0 }}>{x.text}</p>
               </div>
             ))}

@@ -88,7 +88,7 @@ const SCENES: Record<Scene, { bg: string; alt: string; items: Item[] }> = {
   },
   myki: {
     bg: "#fc5000",
-    alt: "The Myki owl mark, a V-shaped owl with its head, raised in teal on a black base like a badge",
+    alt: "The MYKI owl mark, a V-shaped owl with its head, raised in teal on a black base like a badge",
     items: [
       cab(-16, 5.6, 0.3, 16, 0.6, 0.6), cab(13, 3, 0.3, 16, 0.6, 0.6), cab(5.6, 13, 0.3, 0.6, 16, 0.6), cab(8.4, -16, 0.3, 0.6, 16, 0.6),
       box(0, 0, 0, 13, 13, 1.6, "blk", "p"),

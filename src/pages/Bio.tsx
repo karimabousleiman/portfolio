@@ -65,8 +65,8 @@ const Bio = () => {
       <section className="wrap sec" aria-labelledby="story-h">
         <h2 id="story-h" className="d h2" style={{ marginBottom: 24 }}>The story</h2>
         {[
-          ["Where I started", "My background is in cinema.", "I moved into tech through QA, where the job was finding what breaks, and product management turned that into building things that don't."],
-          ["How I lead", "Measure what matters. Make discovery routine.", "At TF1+ that meant replacing revenue-only reporting with product-health metrics. At Garantme it meant managing four PMs and building a discovery framework that became part of how the company works."],
+          ["Where I started", "I started in cinema, as a director of photography.", "I moved into tech through QA, where the job was finding what breaks, and product management turned that into building things that don't."],
+          ["How I lead", "Measure what matters. Make discovery routine.", "At TF1+ that meant replacing revenue-only reporting with product-health metrics. At Garantme it meant managing four PMs and building a discovery framework that starts every feature from its why."],
           ["Outside work", "More than ten instruments.", "From keys and guitar to brass, woodwinds and percussion. I release music as kimbü."],
         ].map(([label, head, body]) => (
           <div key={label} className="row" style={{ padding: "40px 0" }}>

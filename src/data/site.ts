@@ -60,12 +60,12 @@ export const chapters: Chapter[] = [
     scene: "tf1",
     result: {
       label: "First-session watch rate",
-      figure: "+12%",
-      text: "Raised first-session watch rate 12% by redesigning the first journey and shortening the path to content.",
+      figure: "+12 pts",
+      text: "Raised first-session watch rate by 12 points in the first 30 days, by redesigning the first journey so new viewers reach a programme in fewer steps.",
     },
     rows: [
-      { label: "Metrics", text: "Replaced revenue-only reporting with product-health metrics for TF1+ leadership." },
-      { label: "Ways of working", text: "Moved the team to a product-led model built on discovery and cross-functional squads." },
+      { label: "Metrics", text: "Replaced revenue-only reporting with product-health metrics, which focused the roadmap on clearer priorities." },
+      { label: "Team", text: "Part of a 35-person team, working with it on a product-led model built on discovery and cross-functional squads." },
     ],
   },
   {
@@ -79,10 +79,9 @@ export const chapters: Chapter[] = [
     years: "2021 — 2025",
     about: "Rent-guarantee insurance plus a SaaS platform that estate agencies use to verify and manage tenant applications.",
     scene: "garantme",
-    result: { label: "Upsell revenue a year", figure: "€200k", text: "Built an upsell revenue stream worth €200k a year." },
+    result: { label: "Upsell revenue a year", figure: "€200k", text: "Created an upsell offer that brought in €200k a year in new revenue." },
     extras: [
-      { figure: "+26%", text: "User acquisition, by redesigning onboarding." },
-      { figure: "+8%", text: "Website conversion." },
+      { figure: "+26%", text: "Sign-ups and activation, after I redesigned onboarding." },
       { figure: "10k", text: "Daily users on the new agency SaaS, six months after launch." },
     ],
     roles: [
@@ -91,22 +90,21 @@ export const chapters: Chapter[] = [
         title: "Group Product Manager",
         points: [
           "Managed 4 PMs and led an 11-person squad of engineers, designers and QA.",
-          "Introduced a discovery framework that made product discovery part of how the company works.",
+          "Introduced a discovery framework that starts every feature from its why, making the team user-centric.",
         ],
       },
       {
         years: "2021 — 2022",
         title: "Product Manager",
         points: [
-          "Launched the core SaaS product for estate agencies and grew it to 10k daily users in six months.",
-          "Raised website conversion 8%.",
+          "Launched the agency SaaS and grew it to 10k daily users in six months.",
         ],
       },
     ],
   },
   {
     slug: "myki",
-    name: "Myki",
+    name: "MYKI",
     logo: mykiLogo,
     logoHeight: 36,
     role: "Product Manager",
@@ -115,15 +113,15 @@ export const chapters: Chapter[] = [
     years: "2017 — 2020",
     about: "A password manager and authenticator that kept credentials on the user's devices instead of the cloud. Acquired by JumpCloud in 2022.",
     scene: "myki",
-    result: { label: "User retention", figure: "+29%", text: "Lifted retention 29% by rebuilding onboarding around usage data." },
-    second: { label: "Daily users, in under two years", figure: "1M+", text: "Helped grow the product, working with 12 engineers." },
+    result: { label: "90-day retention", figure: "+29%", text: "Lifted 90-day retention 29% by rebuilding onboarding around usage data." },
+    second: { label: "Daily users, in under two years", figure: "1M+", text: "I was the product manager for a team of 12 engineers." },
     rows: [
-      { label: "Delivery", text: "Designed and ran the team's whole delivery process: sprints, planning, backlog grooming and stand-ups." },
-      { label: "Support", text: "Started the customer support function and used it as a continuous source of user feedback." },
+      { label: "Delivery", text: "As MYKI's first product manager, set up how the team shipped, from planning to stand-ups." },
+      { label: "Support", text: "Started customer support and turned it into a feedback loop that shaped the onboarding rebuild behind +29% retention." },
     ],
     // Myki launched at TechCrunch Disrupt in 2016, before Karim joined: credited to the company.
     press: [
-      { tag: "2018 · during my time", during: true, title: "PCMag Editors' Choice", source: "PCMag review of Myki", url: "https://www.pcmag.com/reviews/myki" },
+      { tag: "2018 · during my time", during: true, title: "PCMag Editors' Choice", source: "PCMag review of MYKI", url: "https://www.pcmag.com/reviews/myki" },
       { tag: "2016 · before I joined", during: false, title: "Launched at TechCrunch Disrupt SF", source: "TechCrunch, Sep 2016", url: "https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/" },
     ],
   },
@@ -151,7 +149,7 @@ export const products = [
     domain: "readmeridian.substack.com",
     book: null,
     description: "World news makes people more anxious than the news itself requires. Meridian covers five stories a week in eight calm minutes: for each one, the context the headline skips, what was claimed against what held up, what is settled versus disputed, and what nobody knows yet.",
-    role: "I created it.",
+    role: "I created it and write every issue.",
     image: { src: meridianShot, width: 2000, height: 1000, alt: "The Meridian logo, a calm robot face on a slate-blue panel, beside the wordmark “Meridian” and the line “Five stories · Zero panic attacks · (Results may vary)”" },
   },
 ];

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Shell, { Arrow } from "@/site/Shell";
+import Shell, { Arrow, Figure } from "@/site/Shell";
 import Iso from "@/site/Iso";
 import { chapters, products } from "@/data/site";
 import lookTheSun from "@/assets/photos/look-the-sun-is-leaving-us.webp";
@@ -19,11 +19,11 @@ const Home = () => {
           <div className="card rise" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 40, animationDelay: ".18s" }}>
             <p className="d" style={{ fontSize: "clamp(40px, 4.4vw, 64px)", lineHeight: 1.14 }}>Building products people <span className="mark">come back to.</span></p>
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <p className="muted" style={{ margin: 0, maxWidth: "34rem" }}>From a password manager with 1M+ daily users to the TF1 group's free streaming platform. I measure what matters and make discovery routine.</p>
+              <p className="muted" style={{ margin: 0, maxWidth: "34rem" }}>Senior PM at TF1+, the TF1 group's free streaming platform. Before that I led a team of 4 PMs at Garantme and helped grow MYKI to 1M+ daily users.</p>
               <ul className="chips">
-                <li>1M+ daily users · Myki</li>
+                <li>+12 pts first-session watch rate · TF1+</li>
                 <li>Managed 4 PMs · Garantme</li>
-                <li>+12% first-session watch rate · TF1+</li>
+                <li>1M+ daily users · MYKI</li>
               </ul>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                 <Link className="cta" to="/work/tf1">See the work <Arrow /></Link>
@@ -51,7 +51,7 @@ const Home = () => {
                 <span>{c.years}</span>
               </div>
               <div style={{ marginTop: "auto" }}>
-                <p className="d num">{c.result.figure}</p>
+                <p className="d num"><Figure value={c.result.figure} /></p>
                 <p style={{ margin: "8px 0 0" }}>{c.result.label.toLowerCase()}</p>
               </div>
               <div className="rfoot"><span>{roleLine[c.slug]}</span><Arrow /></div>

@@ -227,6 +227,7 @@ a:hover .arrow { transform: translateX(4px); }
 .hero-tile { min-height: 520px; }
 .tile { text-decoration: none; min-height: 560px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px; }
 .stat-tall { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 520px; }
+.d .unit { font-size: 0.42em; letter-spacing: 0.04em; }
 .fig-xl { font-size: clamp(80px, 15vw, 240px); line-height: 0.84; }
 .fig-l { font-size: clamp(64px, 6.5vw, 96px); }
 .extra { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 300px; }

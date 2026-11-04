@@ -11,6 +11,12 @@ import { useTheme } from "./theme";
 
 export type Section = "work" | "products" | "music" | "photo" | "bio" | null;
 
+/** Headline figure; a unit after a space ("+12 pts") is set smaller so the number stays one line. */
+export const Figure = ({ value }: { value: string }) => {
+  const [n, ...u] = value.split(" ");
+  return u.length ? <>{n}<span className="unit"> {u.join(" ")}</span></> : <>{value}</>;
+};
+
 export const Arrow = () => <ArrowRight className="arrow" size={18} strokeWidth={2} aria-hidden="true" />;
 export const OutArrow = ({ size = 18 }: { size?: number }) => <ArrowUpRight className="arrow" size={size} strokeWidth={2} aria-hidden="true" />;
 export const NewTab = () => <span className="sr"> (opens in a new tab)</span>;

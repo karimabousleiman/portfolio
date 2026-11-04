@@ -27,11 +27,11 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 
 ## Where things live
 
-- `src/data/site.ts`: all content. `chapters` (TF1+, Garantme, Myki: role, dates, headline result, extra results, rows, roles, press), `products`, `tracks`, `streamingServices`, `photos` (gallery order and mosaic spans), `languages`, contact links (`EMAIL`, `LINKEDIN`, `IMDB`, `FILM`).
+- `src/data/site.ts`: all content. `chapters` (TF1+, Garantme, MYKI: role, dates, headline result, extra results, rows, roles, press), `products`, `tracks`, `streamingServices`, `photos` (gallery order and mosaic spans), `languages`, contact links (`EMAIL`, `LINKEDIN`, `IMDB`, `FILM`).
 - `src/site/site.css`: the Caldera design system. Theme tokens on `:root[data-theme="light"]` (Limestone) and `[data-theme="dark"]` (Magma), plus every component class. Change colours and spacing here, not inline.
 - `src/site/Shell.tsx`: header pill nav (Work dropdown, theme toggle, Contact), full-screen phone menu that grows from the Menu button, contact band with copy-email, footer. Every page wraps in `<Shell title active band>`, which sets `document.title`.
 - `src/site/theme.ts` + the inline script in `index.html`: theme is the saved choice (`localStorage.theme`), else the system setting, applied before first paint.
-- `src/site/Iso.tsx` (+ `iso.css`): isometric scenes (home sound-wave chart, TF1+ wordmark, Garantme G-house, Myki owl mark), traced from the real logos.
+- `src/site/Iso.tsx` (+ `iso.css`): isometric scenes (home sound-wave chart, TF1+ wordmark, Garantme G-house, MYKI owl mark), traced from the real logos.
 - `src/pages/`: `Home`, `Work` (one data-driven page per company at `/work/:slug`), `Products`, `Music` (inline SoundCloud players; `/music#track-1` opens a track paused), `PhotoFilm` (mosaic, lightbox that opens from the tapped photo and can be dragged away, YouTube film), `Bio` (cut-out portrait hero with pointer parallax), `NotFound`.
 - Old URLs redirect: `/experience` → `/work/tf1`, `/visual-arts` → `/photo-film`, `/about` → `/bio`.
 - `public/og.png`: link-preview image (1200×630). `index.html` holds the title, description and absolute `og:image` URL.
@@ -44,12 +44,18 @@ The dark editorial site that ran until Nov 2026 is preserved as tag `legacy-dark
 
 - Only real, attributable facts. Never invent metrics, clients, testimonials, press or claims. Ask before changing any factual copy.
 - Copy is first person, outcome-first ("Raised X by doing Y"). Activity without a result gets cut.
-- Myki launched at TechCrunch Disrupt SF in 2016, before Karim joined (Apr 2017). Credit it to the company, never to Karim. PCMag Editors' Choice 2018 falls within his tenure.
+- MYKI launched at TechCrunch Disrupt SF in 2016, before Karim joined (Apr 2017). Credit it to the company, never to Karim. PCMag Editors' Choice 2018 falls within his tenure.
 - Karim directly managed 4 PMs at Garantme ("Managed 4 PMs and led an 11-person squad").
-- Open questions, not yet answered by the owner; don't guess:
-  - Was Garantme's "+26% user acquisition" really acquisition, or sign-ups/activation?
-  - Are "+12% first-session watch rate" and "+29% retention" relative, and what is the retention period?
-  - What role he's looking for next, current team size at TF1+, his cinema background specifics, and whether a CV PDF should be offered.
+- Write MYKI in capitals in all copy (the URL slug stays `myki`).
+- Answered by the owner (Nov 2026):
+  - TF1+ +12 is percentage points of first-session watch rate, measured over the first 30 days. Shown as "+12 pts".
+  - MYKI +29% is 90-day retention. MYKI support feedback fed the onboarding rebuild behind it, and Karim was MYKI's first PM.
+  - Garantme +26% is sign-ups and activation. The +8% website conversion was dropped.
+  - At TF1+ he works within a 35-person team and does not lead it. The product-health metrics focused the roadmap on clearer priorities.
+  - The Garantme discovery framework starts every feature from its "why" (user-centric).
+  - He writes every Meridian issue. His cinema background: director of photography.
+  - His next role is decided: he is joining Spendesk. Don't add "open to roles" copy. Whether and how the site mentions Spendesk is still open.
+- Still open: whether a CV PDF should be offered.
 
 ## Owner decisions (don't relitigate)
 
@@ -59,7 +65,7 @@ The dark editorial site that ran until Nov 2026 is preserved as tag `legacy-dark
 - Bio hero: natural-colour cut-out portrait, zoomed to head and chest, between a giant white "KARIM" and a solid black "ABOUSLEIMAN"; no floating tags. Heavier stylisation (screenprint) was rejected.
 - Mission/vision lines per company are not shown until the owner confirms them; screenshot slots stay hidden until real images exist.
 - Company logos print monochrome (ink); streaming-service icons keep their brand colours.
-- Nav labels: Work (TF1+, Garantme, Myki), Products, Music, Photo & Film, Bio, Contact.
+- Nav labels: Work (TF1+, Garantme, MYKI), Products, Music, Photo & Film, Bio, Contact.
 - All nine photos stay on Photo & Film.
 - The contact band says "Let's talk about *your product*." (site is for jobs and clients); Music and Photo & Film say "Let's make *something*."
 - Design canvas (source for this direction): https://claude.ai/artifact/FoWPFDWFRsU4iwJz17cyNS. The code is the source of truth.
