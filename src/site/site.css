@@ -223,8 +223,19 @@ a:hover .arrow { transform: translateX(4px); }
 
 
 /* Sized blocks: desktop proportions here, phone overrides in the 900px block below. */
-.name-xl { font-size: clamp(48px, 16.5vw, 189px); }
-.hero-tile { min-height: 520px; }
+/* Home first screen: one ember tile fills the screen, name over the scene (owner pick "C"). */
+.hero { height: calc(100svh - 77px); min-height: 560px; max-height: 1000px; box-sizing: border-box; padding-top: 16px; padding-bottom: 24px; }
+.hero-tile { height: 100%; background: var(--ember); color: var(--on-ember); }
+.hero-tile::before, .hero-tile::after { display: none; }
+.hero-scene { position: absolute; top: 0; bottom: 0; right: 0; width: 58%; display: flex; align-items: center; }
+.hero-scene > * { width: 100%; }
+.hero-body { position: relative; z-index: 1; height: 100%; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+.hero-main { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.hero-name { font-size: min(10.5vw, 17vh); line-height: 0.88; }
+.hero-line { margin: 0; background: var(--surface); color: var(--ink); border-radius: 800px; padding: 10px 20px; font-size: clamp(17px, 1.6vw, 22px); }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-ghost { border-color: currentColor; color: inherit; }
+.hero-intro { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
 .tile { text-decoration: none; min-height: 560px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px; }
 .stat-tall { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 520px; }
 .d .unit { font-size: 0.42em; letter-spacing: 0.04em; }
@@ -283,8 +294,16 @@ a:hover .arrow { transform: translateX(4px); }
   .ht, .stage, .film, .shot, .band { border-radius: 28px; }
   .sec { padding-top: 88px; }
   /* Phone: content sets the height; the figure, not empty colour, fills the card. */
-  .name-xl { font-size: clamp(44px, 16.5vw, 72px); }
-  .hero-tile { min-height: 300px; }
+  /* Phone: same tile, scene on top, name and actions at the bottom; buttons side by side. */
+  .hero { height: calc(100svh - 90px); min-height: 600px; max-height: none; padding-top: 8px; padding-bottom: 0; }
+  .hero-scene { left: 0; width: auto; bottom: auto; height: 52%; }
+  .hero-body { padding: 24px; justify-content: space-between; }
+  .hero-main { gap: 16px; width: 100%; }
+  .hero-name { font-size: 15vw; }
+  .hero-line { font-size: 15px; padding: 8px 14px; white-space: nowrap; }
+  .hero-ctas { flex-wrap: nowrap; gap: 8px; width: 100%; }
+  .hero-ctas > * { flex: 1 1 0; justify-content: center; padding-left: 12px; padding-right: 12px; white-space: nowrap; }
+  .hero-intro { padding: 24px; }
   .tile { min-height: 380px; padding: 24px; }
   .result { min-height: 0; gap: 32px; padding: 24px; }
   .result .num { font-size: clamp(72px, 24vw, 104px); }

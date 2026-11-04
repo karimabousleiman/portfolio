@@ -12,29 +12,30 @@ const Home = () => {
   const cauldron = products[0];
   return (
     <Shell title="Karim Abousleiman · Senior Product Manager, Paris" active={null}>
-      <section className="wrap" style={{ paddingTop: 56 }}>
-        <p className="cap rise" style={{ margin: "0 0 20px", color: "var(--ink)" }}>Senior Product Manager · Music Composer · Paris</p>
-        <h1 className="d rise name-xl" style={{ animationDelay: ".08s" }}>Karim<br />Abousleiman</h1>
-        <div className="grid2" style={{ marginTop: 40 }}>
-          <div className="card rise" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 40, animationDelay: ".18s" }}>
-            <p className="d" style={{ fontSize: "clamp(40px, 4.4vw, 64px)", lineHeight: 1.14 }}>Building products people <span className="mark">come back to.</span></p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <p className="muted" style={{ margin: 0, maxWidth: "34rem" }}>Senior PM at TF1+, the TF1 group's free streaming platform. Before that I led a team of 4 PMs at Garantme and helped grow MYKI to 1M+ daily users.</p>
-              <ul className="chips">
-                <li>+12 pts first-session watch rate · TF1+</li>
-                <li>Managed 4 PMs · Garantme</li>
-                <li>1M+ daily users · MYKI</li>
-              </ul>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-                <Link className="cta" to="/work/tf1">See the work <Arrow /></Link>
-                <Link className="ghost" to="/music">Listen to kimbü</Link>
+      <section className="wrap hero">
+        <div className="ht rise hero-tile">
+          <div className="hero-scene" aria-hidden="true"><Iso scene="home" height={600} transparent /></div>
+          <div className="hero-body">
+            <p className="cap" style={{ margin: 0, color: "inherit" }}>Senior Product Manager · Music Composer · Paris</p>
+            <div className="hero-main">
+              <h1 className="d hero-name">Karim<br />Abousleiman</h1>
+              <p className="hero-line">Building products people come back to.</p>
+              <div className="hero-ctas">
+                <Link className="inkb" to="/work/tf1">See the work <Arrow /></Link>
+                <Link className="ghost hero-ghost" to="/music">Listen to kimbü</Link>
               </div>
             </div>
           </div>
-          <div className="ht rise hero-tile" style={{ animationDelay: ".26s" }}>
-            <div style={{ position: "absolute", inset: 0 }}><Iso scene="home" height={520} transparent /></div>
-            <span className="tag" style={{ position: "absolute", top: 28, left: 28, zIndex: 1 }}>Product × Music</span>
-          </div>
+        </div>
+      </section>
+      <section className="wrap" style={{ paddingTop: 16 }} aria-label="Highlights">
+        <div className="card hero-intro">
+          <p className="muted" style={{ margin: 0, maxWidth: "40rem" }}>Senior PM at TF1+, the TF1 group's free streaming platform. Before that I led a team of 4 PMs at Garantme and helped grow MYKI to 1M+ daily users.</p>
+          <ul className="chips">
+            <li>+12 pts first-session watch rate · TF1+</li>
+            <li>Managed 4 PMs · Garantme</li>
+            <li>1M+ daily users · MYKI</li>
+          </ul>
         </div>
       </section>
 
