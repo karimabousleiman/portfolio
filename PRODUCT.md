@@ -51,7 +51,7 @@ Creativity is the edge, not a side hobby. Karim is a product manager who also re
 - Visual projects (in `src/components/VisualArtsSection.tsx`): "Look, The Sun Is Leaving Us...", "On My Way.", "Under Beirut's Sky.", "Chaotic Vision", "Prince From The Biomass.", "Whatever Works In Venice."
 - Photo: `src/assets/portrait.webp` (Karim playing guitar; used on Music and About).
 - Press (real, linked): MYKI named PCMag Editors' Choice in 2018 (https://www.pcmag.com/reviews/myki), during Karim's tenure. MYKI launched at TechCrunch Disrupt SF in 2016 (https://techcrunch.com/2016/09/13/myki-rolls-out-a-password-manager-that-locks-all-your-info-away-on-your-phone/), before he joined: credit the company, not Karim.
-- Background: cinema (director of photography), then QA, then product. 10+ instruments. Native French, English and Arabic; intermediate Italian.
+- Background: cinema (director of photography), then QA, then product. 10+ instruments. Native French, English and Arabic; beginner Italian.
 - Absent: testimonials, client logos, case-study write-ups, CV PDF. Do not fabricate these.
 
 ## Product Principles

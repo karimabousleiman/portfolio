@@ -27,7 +27,7 @@ const Bio = () => {
 
   return (
     <Shell title="Bio · Karim Abousleiman" active="bio">
-      <section className="wrap" aria-labelledby="bio-h">
+      <section className="wrap fit-bio" aria-labelledby="bio-h">
         <div className="stage" onPointerMove={move} onPointerLeave={() => setP({ x: 0, y: 0 })}>
           <div className="layer" style={shift(-36, -14)}><h1 id="bio-h" className="d giant rise">Karim</h1></div>
           <div className="layer" style={shift(30, 14)}>
