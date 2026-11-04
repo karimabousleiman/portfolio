@@ -18,7 +18,7 @@ const Home = () => {
           <div className="hero-body">
             <p className="cap" style={{ margin: 0, color: "inherit" }}>Senior Product Manager · Music Composer · Paris</p>
             <div className="hero-main">
-              <h1 className="d hero-name">Karim<br />Abousleiman</h1>
+              <h1 className="d hero-name"><span>Karim</span><br />Abousleiman</h1>
               <p className="hero-line">Building products people come back to.</p>
               <div className="hero-ctas">
                 <Link className="inkb" to="/work/tf1">See the work <Arrow /></Link>

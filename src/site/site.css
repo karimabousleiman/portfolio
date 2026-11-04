@@ -69,7 +69,7 @@ html, body { background: var(--canvas); }
 html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease !important; }
 
 .d { font-family: "Anton", Impact, "Arial Narrow", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.94; margin: 0; }
-.wrap { max-width: 1376px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+.wrap { max-width: 2560px; margin: 0 auto; padding-left: clamp(32px, 2.5vw, 64px); padding-right: clamp(32px, 2.5vw, 64px); }
 .cap { font-family: system-ui, sans-serif; font-weight: 400; font-size: 13px; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .sec { padding-top: 120px; }
@@ -81,9 +81,9 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .muted { color: var(--soft); }
 
 /* Header */
-.hdr { position: sticky; top: 0; z-index: 10; padding: 16px 32px 0; transition: padding 0.5s var(--ease); }
+.hdr { position: sticky; top: 0; z-index: 10; padding: 16px clamp(32px, 2.5vw, 64px) 0; transition: padding 0.5s var(--ease); }
 .nav {
-  display: flex; align-items: center; gap: 8px; max-width: 1312px; margin: 0 auto;
+  display: flex; align-items: center; gap: 8px; max-width: 2432px; margin: 0 auto;
   padding: 8px 8px 8px 24px; border-radius: 800px;
   background: var(--glass);
   -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%);
@@ -93,7 +93,7 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .hdr .nav { transition: max-width 0.5s var(--ease), padding 0.5s var(--ease), background-color 0.35s ease, box-shadow 0.35s ease; }
 .hdr.float .nav { max-width: 1040px; }
 .hdr:not(.float) { padding-top: 12px; }
-.hdr:not(.float) .nav { max-width: 1376px; padding: 8px 24px 8px 32px; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+.hdr:not(.float) .nav { max-width: 2560px; padding: 8px 24px 8px 32px; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
 .brand { font-family: "Anton", Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-decoration: none; text-transform: uppercase; margin-right: auto; display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
 .brand span { color: var(--soft); }
 .links { display: flex; align-items: center; gap: 2px; }
@@ -232,6 +232,9 @@ a:hover .arrow { transform: translateX(4px); }
 .hero-body { position: relative; z-index: 1; height: 100%; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
 .hero-main { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
 .hero-name { font-size: min(10.5vw, 17vh); line-height: 0.88; }
+/* An ember halo knocks the dark scene out behind the letters, so the name reads where it crosses the roads. */
+.hero-name { text-shadow: 4px 0px var(--ember), -4px 0px var(--ember), 0px 4px var(--ember), 0px -4px var(--ember), 3px 3px var(--ember), -3px 3px var(--ember), 3px -3px var(--ember), -3px -3px var(--ember); }
+.hero-name span { position: relative; z-index: 1; }
 .hero-line { margin: 0; background: var(--surface); color: var(--ink); border-radius: 800px; padding: 10px 20px; font-size: clamp(17px, 1.6vw, 22px); }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-ghost { border-color: currentColor; color: inherit; }
