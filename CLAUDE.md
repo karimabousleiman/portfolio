@@ -34,6 +34,7 @@ Vite + React 18 + TypeScript + Tailwind, react-router (`BrowserRouter`), framer-
 - `src/site/Iso.tsx` (+ `iso.css`): isometric scenes (home sound-wave chart, TF1+ wordmark, Garantme G-house, MYKI owl mark), traced from the real logos.
 - `src/pages/`: `Home`, `Work` (one data-driven page per company at `/work/:slug`), `Products`, `Music` (inline SoundCloud players; `/music#track-1` opens a track paused), `PhotoFilm` (mosaic, lightbox that opens from the tapped photo and can be dragged away, YouTube film), `Bio` (cut-out portrait hero with pointer parallax), `NotFound`.
 - Old URLs redirect: `/experience` → `/work/tf1`, `/visual-arts` → `/photo-film`, `/about` → `/bio`.
+- Analytics: self-hosted Umami (`analytics.karimabousleiman.com`), script tag in `index.html`. Basic tracker only; session replay and heatmaps stay off until the site has a consent banner.
 - `public/og.png`: link-preview image (1200×630). `index.html` holds the title, description and absolute `og:image` URL.
 
 ## Rollback to the previous site
