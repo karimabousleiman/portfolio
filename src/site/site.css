@@ -105,16 +105,16 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .pl.on { background: var(--ink); color: var(--canvas); }
 .vdiv { width: 0; height: 20px; border-left: 1.5px dotted var(--ink); margin: 0 6px; opacity: 0.5; }
 .has-menu { position: relative; }
-.menu { position: absolute; top: calc(100% + 12px); left: -8px; width: 360px; background: var(--surface); border-radius: 28px; padding: 10px; display: grid; gap: 2px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top left; pointer-events: none; transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); z-index: 5; box-shadow: 0 18px 40px -20px rgba(7, 6, 7, 0.35); }
+.menu { position: absolute; top: calc(100% + 12px); left: -8px; width: 360px; background: var(--surface); border-radius: 28px; padding: 10px; display: grid; gap: 2px; opacity: 0; transform: translateY(-8px) scale(0.98); transform-origin: top left; pointer-events: none; transition: opacity 0.15s ease, transform 0.15s var(--ease); z-index: 5; box-shadow: 0 18px 40px -20px rgba(7, 6, 7, 0.35); }
 /* Invisible bridge over the gap under "Work", so moving the pointer down does not close the menu. */
 .menu::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
-.has-menu:hover .menu, .has-menu:focus-within .menu { opacity: 1; transform: none; pointer-events: auto; }
+.has-menu:hover .menu, .has-menu:focus-within .menu { opacity: 1; transform: none; pointer-events: auto; transition: opacity 0.2s ease, transform 0.2s var(--ease); }
 .mi { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 16px; border-radius: 20px; text-decoration: none; font-size: 16px; }
 .mi:hover { background: var(--canvas); }
 .mi img { height: 16px; width: auto; filter: var(--logo); }
 .theme-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; display: inline-grid; place-items: center; background: transparent; color: var(--ink); cursor: pointer; transition: background-color 0.3s var(--ease); }
 .theme-btn:hover { background: var(--canvas); }
-.theme-btn svg { transition: transform 0.5s var(--ease); }
+.theme-btn svg { transition: transform 0.3s var(--ease); }
 .theme-btn:active svg { transform: rotate(-30deg) scale(0.9); }
 .nav .menu-btn { display: none; }
 
@@ -125,7 +125,7 @@ html.theme-swap .site, html.theme-swap .site * { transition: background-color 0.
 .cta:hover, .inkb:hover { transform: translateY(-2px); }
 .ghost { border-radius: 40px; border: 1.5px solid currentColor; background: transparent; color: inherit; transition: background-color 0.3s, color 0.3s; }
 .ghost:hover { background: var(--ink); color: var(--canvas); }
-.cta:active, .inkb:active, .ghost:active, .pl:active, .chip:active, .play:active, .seg a:active, .mob .sub a:active { transform: scale(0.96); transition: transform 90ms ease-out; }
+.cta:active, .inkb:active, .ghost:active, .pl:active, .chip:active, .play:active, .seg a:active, .mob .sub a:active { transform: scale(0.96); transition: transform 90ms var(--ease); }
 .arrow { transition: transform 0.3s var(--ease); flex: none; }
 a:hover .arrow { transform: translateX(4px); }
 
@@ -135,7 +135,7 @@ a:hover .arrow { transform: translateX(4px); }
 .tag.quiet { background: var(--canvas); color: var(--ink); }
 .lift { transition: transform 0.45s var(--ease); }
 .lift:hover { transform: translateY(-6px); }
-.lift:active { transform: translateY(-2px) scale(0.99); transition: transform 120ms ease-out; }
+.lift:active { transform: translateY(-2px) scale(0.99); transition: transform 120ms var(--ease); }
 .mark { white-space: nowrap; background: var(--ember); color: var(--on-ember); border-radius: 16px; padding: 0 0.18em; }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px; }
 .chips li { background: var(--canvas); border-radius: 800px; padding: 8px 14px; }
@@ -287,7 +287,7 @@ a:hover .arrow { transform: translateX(4px); }
 
 /* Phone menu */
 .mob { position: fixed; inset: 0; z-index: 50; background: var(--canvas); color: var(--ink); padding: 12px 16px 32px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; transform-origin: calc(100% - 52px) 40px; animation: mobIn 0.34s cubic-bezier(0.2, 0.9, 0.25, 1) both; }
-.mob.out { animation: mobOut 0.22s cubic-bezier(0.5, 0, 0.75, 0) both; }
+.mob.out { animation: mobOut 0.2s var(--ease) both; }
 .mob .nav { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
 .mob .big { font-family: "Anton", Impact, sans-serif; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(40px, 12vw, 64px); line-height: 1; text-decoration: none; display: flex; align-items: center; min-height: 64px; border-top: 1.5px dotted var(--ink); }
 .mob .sub { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 8px; }
@@ -370,7 +370,7 @@ a:hover .arrow { transform: translateX(4px); }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .site { -webkit-tap-highlight-color: transparent; min-height: 100dvh; }
 @media (hover: none) {
-  .lift:hover, .cta:hover, .inkb:hover, .chip:hover { transform: none; }
+  .lift:hover, .cta:hover, .inkb:hover, .chip:hover, a:hover .arrow { transform: none; }
   .ph:hover img, .shot:hover img { transform: none; }
   .ghost:hover { background: transparent; color: inherit; }
 }
@@ -384,7 +384,9 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 @media (prefers-reduced-transparency: reduce) { .nav { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @media (prefers-contrast: more) { .nav { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: inset 0 0 0 1.5px var(--ink); } }
 @media (prefers-reduced-motion: reduce) {
-  .site *, .site *::before { animation: none !important; transition: none !important; }
+  /* No movement, but colour and opacity still fade: they carry state, not motion. */
+  .site *, .site *::before { animation: none !important; transition-property: opacity, color, background-color, border-color, box-shadow !important; }
+  .site *:active { transform: none !important; }
   .site .mob { animation: fadeIn 0.2s ease both !important; }
   .site .mob.out { animation: fadeOut 0.15s ease both !important; }
   .site .lb-img, .site .lb-bg, .site .lb-ui { transition: opacity 0.2s ease !important; }
